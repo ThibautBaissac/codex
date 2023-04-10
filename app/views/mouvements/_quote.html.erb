@@ -1,0 +1,34 @@
+<% if mouvement.quotes.any? %>
+  <a class="btn btn-sm mt-3 collapse_themes" id="collapseTheme_btns_1" data-bs-toggle="collapse" href="#collapseThemes_1" role="button" aria-expanded="false" aria-controls="collapseThemes_1">
+  <i class="fa-solid fa-eye"></i> Voir les citations</a>
+  <div class="quotes">
+    <% mouvement.quotes.each do |quote| %>
+      <div class="collapse" id="collapseThemes_1">
+        <% if policy(mouvement).edit? %>
+          <%= link_to "#form_quote_#{quote.id}_modal",
+            data: { bs_toggle: "modal", bs_target: "#form_quote_#{quote.id}_modal"} do %>
+            <%= icon('fa-solid', 'edit', class: "mx-2") %>
+          <% end %>
+          <%= render "quotes/form_quote_modal", quote: quote, mouvement: mouvement %>
+        <% end %>
+        <div class="py-3 border-bottom boder-secondary">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div><%= quote&.title %></div>
+            <div><%= quote.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %></div>
+          </div>
+          <p class="text-secondary">
+            <%= quote&.description %>
+          </p>
+          <div>Histoire :
+            <p class="text-secondary">
+            <%= quote&.history %>
+            </p>
+          </div>
+          <div><%= category_label(quote) %></div>
+          <div><%= popular_label(quote) %></div>
+          <div><%= with_influence_label(quote) %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

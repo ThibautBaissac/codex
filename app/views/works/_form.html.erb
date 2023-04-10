@@ -1,0 +1,20 @@
+<%= form_with(model: work, id: "work_form") do |form| %>
+  <% if work.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+        <% work.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="d-flex">
+    <%= form.number_field :opus, class: "w-25 form-control d-block mt-3 me-3", placeholder: "Opus" %>
+    <%= form.text_field :title, class: "w-100 form-control d-block mt-3", placeholder: "Titre" %>
+  </div>
+  <%= form.text_area :description, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Description" %>
+  <%= instrumentation_options(work) %>
+<% end %>

@@ -1,0 +1,19 @@
+<div>
+  <div class="d-flex justify-content-between align-items-center">
+    <h1><%= @work&.title %></h1>
+    <div>
+      Opus <%= @work&.opus %>
+      <% if policy(Work).create? %>
+        <%= link_to "#form_work_modal",
+          data: { bs_toggle: "modal", bs_target: "#form_work_modal"} do %>
+          <%= icon('fa-solid', 'edit') %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= @work.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
+  <p class="pb-3 text-secondary border-bottom border-secondary">
+    <%= @work.description %>
+  </p>
+</div>
+<%= render "form_work_modal", work: @work %>

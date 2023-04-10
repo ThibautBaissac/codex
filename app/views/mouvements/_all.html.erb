@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h4>Mouvements</h4>
+
+  <% if policy(Mouvement).create? %>
+    <%= link_to("#form_mouvement__modal",
+      data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}) do %>
+      <%= icon('fa-solid', 'plus-circle') %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <% @work.mouvements.each do |mouvement| %>
+    <%= render "mouvements/mouvement_card", mouvement: mouvement %>
+  <% end %>
+</div>
+<%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>

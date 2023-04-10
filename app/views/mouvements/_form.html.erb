@@ -1,0 +1,21 @@
+<%= form_with(model: mouvement, id: "mouvement_form_#{mouvement.id}") do |form| %>
+  <% if mouvement.errors.any? %>
+    <% mouvement.errors.each do |error| %>
+      <div class="alert alert-warning alert-dismissible fade show position-relative top-0 start-0" role="alert">
+        <%= error.full_message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= hidden_field_tag :work_id, @work&.id %>
+  <div class="d-flex">
+    <%= form.number_field :number, class: "w-25 form-control mt-3 me-3", placeholder: "Numéro", required: true %>
+    <%= form.text_field :title, class: "w-100 form-control mt-3", placeholder: "Titre", required: true %>
+  </div>
+  <%= form.text_area :dedication, class: "form-control form-control-text-area d-block mt-3", placeholder: "Dédicace" %>
+  <div class="d-flex mt-3">
+    <%= form.text_field :start_date, type: "date", class: "form-control d-block me-2", placeholder: "Date de début" %>
+    <%= form.text_field :end_date, type: "date", class: "form-control d-block ms-2", placeholder: "Date de fin" %>
+  </div>
+<% end %>

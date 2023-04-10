@@ -1,0 +1,34 @@
+<div>
+  <div class="card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5><%= "#{mouvement.number}. #{mouvement.title}" %></h5>
+      <div class="d-flex">
+        <%= mouvement.start_date&.strftime('%d.%m.%Y') %>
+        <% if policy(mouvement).edit? %>
+          <%= link_to "#form_mouvement_#{mouvement.id}_modal",
+            data: { bs_toggle: "modal", bs_target: "#form_mouvement_#{mouvement.id}_modal"} do %>
+            <%= icon('fa-solid', 'edit', class: "mx-2") %>
+          <% end %>
+        <% end %>
+        <% if policy(mouvement).destroy? %>
+          <%= link_to("#deleteMouvement_#{mouvement.id}_Modal",
+                  data: { bs_toggle: "modal", bs_target: "#deleteMouvement_#{mouvement.id}_Modal"}) do %>
+                  <%= icon('fa-solid', 'trash-alt', class: "text-secondary") %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div>Dédicace : <%= mouvement.dedication %></div>
+    <div>Poète : </div>
+    <div>Œuvre : </div>
+
+    <%= link_to "#form_quote__modal",
+      data: { bs_toggle: "modal", bs_target: "#form_quote__modal"} do %>
+      <%= icon('fa-solid', 'plus-circle') %>
+    <% end %>
+    <%= render "quotes/form_quote_modal", quote: @quote, mouvement: mouvement %>
+    <%= render "mouvements/quote", mouvement: mouvement %>
+  </div>
+</div>
+<%= render "mouvements/form_mouvement_modal", mouvement: mouvement %>
+<%= render "mouvements/delete_mouvement_modal", mouvement: mouvement %>

@@ -1,0 +1,8 @@
+<footer class="container-fluid d-flex justify-content-center align-items-center border-top">
+  © 2023 -
+  <% if current_user %>
+     Anne-Élise Thouvenin - Connecté en tant que <%= current_user.fullname %><%= link_to(icon('fa-solid', 'sign-out-alt'), signout_path, class: "link-dark ms-2")  %>
+  <% else %>
+    <%= link_to("Anne-Élise Thouvenin", new_session_path, class: "link-dark text-decoration-none") %>
+  <% end %>
+</footer>

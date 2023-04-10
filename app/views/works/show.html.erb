@@ -1,0 +1,17 @@
+<div class="col-lg-8 mt-3 mx-auto">
+  <%= render "details" %>
+  <%= render "mouvements/all" %>
+</div>
+
+<script>
+  document.querySelectorAll('.collapse_themes').forEach((collapse_theme) => {
+    collapse_theme.addEventListener('click', (e) => {
+      console.log(collapse_theme);
+      if (collapse_theme.innerHTML.includes('fa-eye-slash')) {
+        collapse_theme.innerHTML = `<i class="fa-solid fa-eye"></i> Voir les citations`;
+      } else {
+        collapse_theme.innerHTML = `<i class="fa-solid fa-eye-slash"></i> Cacher les citations`;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,17 @@
+<div class="col-lg-8 mt-3 mx-auto">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Œuvres</h1>
+    <% if policy(Work).create? %>
+      <%= link_to "#form_work_modal",
+        data: { bs_toggle: "modal", bs_target: "#form_work_modal"} do %>
+        <%= icon('fa-solid', 'plus-circle') %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% @works.each do |work| %>
+    <%= render partial: "work_card", locals: { work: work } %>
+  <% end %>
+</div>
+
+<%= render partial: "form_work_modal" %>

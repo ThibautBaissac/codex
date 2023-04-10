@@ -1,0 +1,12 @@
+.card {
+  border: 0px solid transparent !important;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: justify;
+  background-color: $light;
+}
+
+.card:hover {
+  background-color: $light-gray;
+}

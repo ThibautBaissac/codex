@@ -1,0 +1,19 @@
+<div class="col-lg-8 mt-3 mx-auto">
+  <% if @works.nil? && @quotes.nil? || @works.count.zero? && @quotes.count.zero? %>
+    <h1>Aucun résultat <i class="far fa-surprise"></i></h1>
+  <% else %>
+    <% if @works.any? %>
+      <h1>Œuvres</h1>
+      <% @works.each do |work| %>
+        <%= render partial: "works/work_card", locals: { work: work } %>
+      <% end %>
+    <% end %>
+
+    <% if @quotes.any? %>
+      <h1>Citations</h1>
+      <% @quotes.each do |quote| %>
+        <%= render partial: "quotes/quote_card", locals: { quote: quote } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

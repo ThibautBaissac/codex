@@ -1,0 +1,18 @@
+<!-- Modal -->
+<div class="modal fade" id="destroy_work_<%= work.id %>_Modal" tabindex="-1" aria-labelledby="destroy_work_<%= work.id %>_ModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Êtes-vous sûr de vouloir supprimer cette oeuvre ?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">
+          <%= t('close') %>
+        </button>
+      <%= button_to("Supprimer", work_path(work),
+          method: :delete,
+          class: "bg-danger border-0 rounded-pill text-white p-2") %>
+      </div>
+    </div>
+  </div>
+</div>
