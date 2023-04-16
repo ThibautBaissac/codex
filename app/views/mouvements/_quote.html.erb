@@ -6,15 +6,19 @@
   <div class="quotes">
     <% mouvement.quotes.each_with_index do |quote, index| %>
       <div class="collapse" id="collapseThemes_<%= mouvement.id %>">
-        <div class="py-3 border-bottom boder-secondary">
+        <div class="py-3 border rounded-4 mb-2 p-2">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div><%= quote&.title %></div>
             <div>
               <%= quote.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
+              <%= link_to quote_path(quote), class: "text-decoration-none" do %>
+                <%= icon('fa-solid', 'eye', class: "small mx-2 text-decoration-none") %>
+              <% end %>
               <% if policy(Quote).edit? %>
                 <%= link_to "#form_quote_#{mouvement.id}_#{quote.id}_modal",
-                  data: { bs_toggle: "modal", bs_target: "#form_quote_#{mouvement.id}_#{quote.id}_modal"} do %>
-                  <%= icon('fa-solid', 'edit', class: "small mx-2 text-decoration-none") %>
+                  data: { bs_toggle: "modal", bs_target: "#form_quote_#{mouvement.id}_#{quote.id}_modal"},
+                  class: "text-decoration-none" do %>
+                  <%= icon('fa-solid', 'edit', class: "small me-2") %>
                 <% end %>
                 <%= render "quotes/form_quote_modal", quote: quote, mouvement: mouvement %>
               <% end %>

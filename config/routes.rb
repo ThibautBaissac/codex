@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :works
   resources :mouvements
   resources :quotes
+  resources :quotes
+  resources :metrics, only: %i[index]
   resources :sessions, only: %i[new create destroy]
   get '/signout', to: 'sessions#destroy', as: :signout
 end

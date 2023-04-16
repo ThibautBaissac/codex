@@ -1,0 +1,14 @@
+<% quotes.each do |quote| %>
+  <%= link_to(quote_path(quote), class: "text-dark text-decoration-none") do %>
+    <div class="card">
+      <%= quote.title %>
+      <% if quote.mouvements.any?  %>
+        <ul>
+          <% quote.mouvements.each do |mouvement| %>
+            <li><%= mouvement.work.title %> - <%= mouvement.title %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

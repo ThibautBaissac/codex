@@ -1,10 +1,10 @@
 class QuotesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[show]
   before_action :set_quote, only: %i[edit update destroy]
   before_action :set_mouvement, only: %i[create update destroy]
 
-  def index
-    @quotes = Quote.all
+  def show
+    @quote = Quote.find(params[:id])
   end
 
   def new

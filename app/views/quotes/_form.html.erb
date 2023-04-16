@@ -15,9 +15,9 @@
 
   <div class="d-flex justify-content-between mt-3">
     <div>
-      <%= form.collection_check_boxes :category, Quote.category_values, :to_s, :humanize do |b| %>
+      <%= form.collection_check_boxes :category, Quote.category_values, :to_s, :humanize do |category| %>
         <div class="form-check">
-          <%= b.label(:"data-value" => b.value, class: "check_box") { b.check_box(class: "form-check-input") + b.text } %>
+          <%= category.label(:"data-value" => category.value, class: "check_box", for: "quote_category_#{category.text.downcase.gsub(' ', '_')}_#{quote.id}") { category.check_box(class: "form-check-input", id: "quote_category_#{category.text.downcase.gsub(' ', '_')}_#{quote.id}") + category.text } %>
         </div>
       <% end %>
     </div>

@@ -21,7 +21,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <%= link_to("Citations", quotes_path, class: "nav-link #{'active' if controller_name == "quotes"}") %>
+          <%= link_to("Statistiques", metrics_path, class: "nav-link #{'active' if controller_name == "metrics"}") %>
         </li>
       </ul>
       <%= form_tag(search_path, method: :get, class: 'form-inline') do %>

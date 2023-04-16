@@ -4,9 +4,9 @@
   margin-bottom: 20px;
   padding: 20px;
   text-align: justify;
-  background-color: $light;
+  background-color: rgba($color: $light, $alpha: 0.5)
 }
 
 .card:hover {
-  background-color: $light-gray;
+  background-color: rgba($color: $light, $alpha: 1)
 }

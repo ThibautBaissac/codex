@@ -5,4 +5,6 @@ class Quote < ApplicationRecord
   validates :description, :title, :category, presence: true
 
   string_enum category: Constants::Quote::CATEGORIES
+
+  scope :with_category, ->(category) { where("? = ANY (category)", category) }
 end
