@@ -3,8 +3,8 @@
     <h1>Œuvres</h1>
     <% if policy(Work).create? %>
       <%= link_to "#form_work_modal",
-        data: { bs_toggle: "modal", bs_target: "#form_work_modal"} do %>
-        <%= icon('fa-solid', 'plus-circle') %>
+        data: { bs_toggle: "modal", bs_target: "#form_work_modal"}, class: "small d-flex align-items-center text-decoration-none" do %>
+        <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer une œuvre
       <% end %>
     <% end %>
   </div>

@@ -6,7 +6,7 @@
       <% if policy(Work).create? %>
         <%= link_to "#form_work_modal",
           data: { bs_toggle: "modal", bs_target: "#form_work_modal"} do %>
-          <%= icon('fa-solid', 'edit') %>
+          <%= icon('fa-solid', 'edit', class: "small") %>
         <% end %>
       <% end %>
     </div>

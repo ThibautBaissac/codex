@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :works
   resources :mouvements
   resources :quotes
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: %i[new create destroy]
   get '/signout', to: 'sessions#destroy', as: :signout
 end

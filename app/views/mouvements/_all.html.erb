@@ -3,8 +3,8 @@
 
   <% if policy(Mouvement).create? %>
     <%= link_to("#form_mouvement__modal",
-      data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}) do %>
-      <%= icon('fa-solid', 'plus-circle') %>
+      data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
+      <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
     <% end %>
   <% end %>
 </div>

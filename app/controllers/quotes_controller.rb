@@ -1,6 +1,7 @@
 class QuotesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
   before_action :set_quote, only: %i[edit update destroy]
+  before_action :set_mouvement, only: %i[create update destroy]
 
   def index
     @quotes = Quote.all
@@ -18,8 +19,6 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
     authorize @quote
-
-    @mouvement = Mouvement.find(params[:mouvement_id])
     @quote.category = quote_params[:category].reject(&:blank?)
     if @quote.save
       MouvementQuote.create!(mouvement: @mouvement, quote: @quote)
@@ -31,7 +30,6 @@ class QuotesController < ApplicationController
 
   def update
     authorize @quote
-    @mouvement = Mouvement.find(params[:mouvement_id])
     @quote.category = quote_params[:category].reject(&:blank?)
     if @quote.update(quote_params.except(:category))
       redirect_to work_path(@mouvement.work), notice: "Quote was successfully updated."
@@ -40,10 +38,20 @@ class QuotesController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @quote
+    @quote.destroy
+    redirect_to work_url(@mouvement.work), notice: "Quote was successfully destroyed."
+  end
+
   private
 
   def set_quote
     @quote = Quote.find(params[:id])
+  end
+
+  def set_mouvement
+    @mouvement = Mouvement.find(params[:mouvement_id])
   end
 
   def quote_params

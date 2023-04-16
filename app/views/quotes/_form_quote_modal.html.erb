@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="form_quote_<%= quote.id %>_modal" tabindex="-1" aria-labelledby="form_quote_<%= quote.id %>_modalLabel" aria-hidden="true">
+<div class="modal fade" id="form_quote_<%= mouvement.id %>_<%= quote.id %>_modal" tabindex="-1" aria-labelledby="form_quote_<%= mouvement.id %>_<%= quote.id %>_modalLabel" aria-hidden="true">
   <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">
           <%= t('close') %>
         </button>
-        <%= submit_tag(t("save"), class: "btn btn-success mt-2", form: "quote_form_#{quote.id}") %>
+        <%= submit_tag(t("save"), class: "btn btn-success mt-2", form: "quote_form_#{mouvement.id}_#{quote.id}") %>
       </div>
     </div>
   </div>
