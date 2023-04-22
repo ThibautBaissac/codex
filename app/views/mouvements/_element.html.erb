@@ -1,0 +1,58 @@
+<% if mouvement.elements.any? %>
+  <a class="btn btn-sm mt-3 collapse_themes" data-bs-toggle="collapse" href="#collapseThemes_<%= mouvement.id %>" role="button" aria-expanded="false" aria-controls="collapseThemes_<%= mouvement.id %>">
+    <i class="fa-solid fa-eye"></i> Voir les éléments
+  </a>
+
+  <div class="elements">
+    <% mouvement.elements.each_with_index do |element, index| %>
+      <div class="collapse" id="collapseThemes_<%= mouvement.id %>">
+        <div class="py-3 border rounded-4 mb-2 p-2">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div><%= element&.title %></div>
+            <div>
+              <%= element.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
+              <%= link_to element_path(element), class: "text-decoration-none" do %>
+                <%= icon('fa-solid', 'eye', class: "small mx-2 text-decoration-none") %>
+              <% end %>
+              <% if policy(Element).edit? %>
+                <%= link_to "#form_element_#{mouvement.id}_#{element.id}_modal",
+                  data: { bs_toggle: "modal", bs_target: "#form_element_#{mouvement.id}_#{element.id}_modal"},
+                  class: "text-decoration-none" do %>
+                  <%= icon('fa-solid', 'edit', class: "small me-2") %>
+                <% end %>
+                <%= render "elements/form_element_modal", element: element, mouvement: mouvement %>
+              <% end %>
+              <% if policy(Element).destroy? %>
+                <%= link_to("#deleteElement_#{mouvement.id}_#{element.id}_Modal",
+                        data: { bs_toggle: "modal", bs_target: "#deleteElement_#{mouvement.id}_#{element.id}_Modal"}) do %>
+                        <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>
+                <% end %>
+                <%= render "elements/delete_element_modal", element: element, mouvement: mouvement %>
+              <% end %>
+            </div>
+          </div>
+          <p class="text-secondary">
+            <%= element&.description %>
+          </p>
+          <div>Histoire :
+            <p class="text-secondary">
+            <%= element&.history %>
+            </p>
+          </div>
+          <div><%= category_label(element) %></div>
+          <div><%= popular_label(element) %></div>
+          <div><%= with_influence_label(element) %></div>
+        </div>
+        <% if policy(Element).new? && mouvement.elements.count == index + 1  %>
+          <div class="text-center">
+            <%= render "elements/create_element_btn", mouvement: mouvement %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <% if policy(Element).new? %>
+    <%= render "elements/create_element_btn", mouvement: mouvement %>
+  <% end %>
+<% end %>

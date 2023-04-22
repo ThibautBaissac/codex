@@ -1,4 +1,4 @@
-class QuotePolicy < ApplicationPolicy
+class ElementPolicy < ApplicationPolicy
   def new?
     user
   end

@@ -1,0 +1,19 @@
+<!-- Modal -->
+<div class="modal fade" id="form_element_<%= mouvement.id %>_<%= element.id %>_modal" tabindex="-1" aria-labelledby="form_element_<%= mouvement.id %>_<%= element.id %>_modalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Élément</h5>
+      </div>
+      <div class="modal-body">
+        <%= render "elements/form", element: element, mouvement: mouvement %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">
+          <%= t('close') %>
+        </button>
+        <%= submit_tag(t("save"), class: "btn btn-success mt-2", form: "element_form_#{mouvement.id}_#{element.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

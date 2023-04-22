@@ -26,12 +26,12 @@ class ApplicationController < ActionController::Base
     q = params[:q]&.downcase
 
     @works = Work.where("lower(title) LIKE :q OR lower(description) LIKE :q", {q: "%#{q}%"} )
-    @quotes = Quote.where("lower(title) LIKE :q OR lower(description) LIKE :q", {q: "%#{q}%"})
+    @elements = Element.where("lower(title) LIKE :q OR lower(description) LIKE :q", {q: "%#{q}%"})
 
     @works = @works.or(Work.where("opus = ?", q)) if q.to_i.to_s == q
 
     @works.distinct!
-    @quotes.distinct!
+    @elements.distinct!
     render :search
   end
 

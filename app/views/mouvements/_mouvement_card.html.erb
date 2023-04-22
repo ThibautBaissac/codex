@@ -20,8 +20,8 @@
     </div>
     <div>Dédicace : <%= mouvement.dedication %></div>
 
-    <%= render "quotes/form_quote_modal", quote: @quote, mouvement: mouvement %>
-    <%= render "mouvements/quote", mouvement: mouvement %>
+    <%= render "elements/form_element_modal", element: @element, mouvement: mouvement %>
+    <%= render "mouvements/element", mouvement: mouvement %>
   </div>
 </div>
 <%= render "mouvements/form_mouvement_modal", mouvement: mouvement %>

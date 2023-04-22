@@ -14,7 +14,7 @@ class WorksController < ApplicationController
 
   def show
     @new_mouvement = Mouvement.new
-    @quote = Quote.new
+    @element = Element.new
     authorize @work
   end
 

@@ -9,10 +9,10 @@ module InstrumentationHelper
   end
 
 
-  def quote_instrumentation_options(quote)
+  def element_instrumentation_options(element)
     instrumentations = Work.instrumentation_keys.map{|instrument| [t("intrumentation.#{instrument.downcase}"), instrument.upcase] }
-    select_tag 'quote[instrumentation]',
-      options_for_select(instrumentations, quote&.instrumentation),
+    select_tag 'element[instrumentation]',
+      options_for_select(instrumentations, element&.instrumentation),
       multiple: true,
       class: "d-block mt-3",
       placeholder: "Instrumentation"

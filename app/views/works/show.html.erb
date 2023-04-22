@@ -7,9 +7,9 @@
   document.querySelectorAll('.collapse_themes').forEach((collapse_theme) => {
     collapse_theme.addEventListener('click', (e) => {
       if (collapse_theme.innerHTML.includes('fa-eye-slash')) {
-        collapse_theme.innerHTML = `<i class="fa-solid fa-eye"></i> Voir les citations`;
+        collapse_theme.innerHTML = `<i class="fa-solid fa-eye"></i> Voir les éléments`;
       } else {
-        collapse_theme.innerHTML = `<i class="fa-solid fa-eye-slash"></i> Cacher les citations`;
+        collapse_theme.innerHTML = `<i class="fa-solid fa-eye-slash"></i> Cacher les éléments`;
       }
     });
   });

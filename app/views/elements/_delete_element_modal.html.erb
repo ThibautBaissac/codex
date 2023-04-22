@@ -1,17 +1,17 @@
 <!-- Modal -->
-<div class="modal fade" id="deleteQuote_<%= mouvement.id %>_<%= quote.id %>_Modal" tabindex="-1" aria-labelledby="deleteQuote_<%= mouvement.id %>_<%= quote.id %>_ModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteElement_<%= mouvement.id %>_<%= element.id %>_Modal" tabindex="-1" aria-labelledby="deleteElement_<%= mouvement.id %>_<%= element.id %>_ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-fullscreen-md-down modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Êtes-vous certain de vouloir supprimer cette citation ?</h5>
+        <h5 class="modal-title">Êtes-vous certain de vouloir supprimer cet élément ?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= quote.title%>
+        <%= element.title%>
       </div>
       <div class="modal-footer">
         <%= button_to("Supprimer",
-                      quote_path(quote, mouvement_id: mouvement.id),
+                      element_path(element, mouvement_id: mouvement.id),
                       data: {bs_dismiss:"modal"},
                       method: :delete,
                       class: "link-light border-0 bg-danger rounded-pill p-2") %>

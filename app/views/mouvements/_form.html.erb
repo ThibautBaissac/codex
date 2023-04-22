@@ -1,4 +1,4 @@
-<%= form_with(model: mouvement, id: "mouvement_form_#{mouvement.id}") do |form| %>
+<%= form_with(model: [@work, mouvement], id: "mouvement_form_#{mouvement.id}") do |form| %>
   <% if mouvement.errors.any? %>
     <% mouvement.errors.each do |error| %>
       <div class="alert alert-warning alert-dismissible fade show position-relative top-0 start-0" role="alert">

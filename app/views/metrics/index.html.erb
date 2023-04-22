@@ -2,27 +2,27 @@
   <h1>Statistiques</h1>
 
   <div class="my-3 py-3 border-bottom">
-    <h4>Citation de type "musicale" : <%= @quotes_musical.count %></h4>
-    <%= render "citation_card", quotes: @quotes_musical %>
+    <h4>Éléments de type "musicale" : <%= @elements_musical.count %></h4>
+    <%= render "citation_card", elements: @elements_musical %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h4>Citation de type "thème" : <%= @quotes_theme.count %></h4>
-    <%= render "citation_card", quotes: @quotes_theme %>
+    <h4>Éléments de type "thème" : <%= @elements_theme.count %></h4>
+    <%= render "citation_card", elements: @elements_theme %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h4>Citation de type "motif" : <%= @quotes_motif.count %></h4>
-    <%= render "citation_card", quotes: @quotes_motif %>
+    <h4>Éléments de type "motif" : <%= @elements_motif.count %></h4>
+    <%= render "citation_card", elements: @elements_motif %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h4>Citation de type "phantomatique" : <%= @quotes_phantomatic.count %></h4>
-    <%= render "citation_card", quotes: @quotes_phantomatic %>
+    <h4>Éléments de type "phantomatique" : <%= @elements_phantomatic.count %></h4>
+    <%= render "citation_card", elements: @elements_phantomatic %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h4>Citation de type "mention verbale" : <%= @quotes_verbal_mention.count %></h4>
-    <%= render "citation_card", quotes: @quotes_verbal_mention %>
+    <h4>Éléments de type "mention verbale" : <%= @elements_verbal_mention.count %></h4>
+    <%= render "citation_card", elements: @elements_verbal_mention %>
   </div>
 </div>

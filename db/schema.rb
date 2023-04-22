@@ -16,14 +16,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_130519) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "mouvement_quotes", force: :cascade do |t|
-    t.string "location"
-    t.bigint "mouvement_id", null: false
-    t.bigint "quote_id", null: false
+  create_table "elements", force: :cascade do |t|
+    t.string "title"
+    t.string "category", default: [], null: false, array: true
+    t.text "description"
+    t.text "history"
+    t.string "instrumentation", default: [], array: true
+    t.boolean "popular", default: false
+    t.boolean "with_influence", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mouvement_id"], name: "index_mouvement_quotes_on_mouvement_id"
-    t.index ["quote_id"], name: "index_mouvement_quotes_on_quote_id"
+  end
+
+  create_table "mouvement_elements", force: :cascade do |t|
+    t.string "location"
+    t.bigint "mouvement_id", null: false
+    t.bigint "element_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["element_id"], name: "index_mouvement_elements_on_element_id"
+    t.index ["mouvement_id"], name: "index_mouvement_elements_on_mouvement_id"
   end
 
   create_table "mouvements", force: :cascade do |t|
@@ -36,18 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_130519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["work_id"], name: "index_mouvements_on_work_id"
-  end
-
-  create_table "quotes", force: :cascade do |t|
-    t.string "title"
-    t.string "category", default: [], array: true
-    t.text "description"
-    t.text "history"
-    t.string "instrumentation", default: [], array: true
-    t.boolean "popular", default: false
-    t.boolean "with_influence", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_130519) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "mouvement_quotes", "mouvements"
-  add_foreign_key "mouvement_quotes", "quotes"
+  add_foreign_key "mouvement_elements", "elements"
+  add_foreign_key "mouvement_elements", "mouvements"
   add_foreign_key "mouvements", "works"
 end
