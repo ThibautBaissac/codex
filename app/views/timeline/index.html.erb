@@ -1,0 +1,75 @@
+<div class="timeline-container">
+  <% @mouvements.each do |mouvement| %>
+    <div class="timeline-event">
+      <div class="timeline-date"><%= mouvement.start_date.strftime("%B %d, %Y") %></div>
+      <div class="timeline-description"><%= mouvement.title %></div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+.timeline-container {
+  position: relative;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.timeline-event {
+  position: relative;
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 50%;
+}
+
+.timeline-date {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-description {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-event:nth-child(odd) {
+  float: left;
+}
+
+.timeline-event:nth-child(even) {
+  float: right;
+}
+
+.timeline-event:nth-child(odd) .timeline-date {
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.timeline-event:nth-child(even) .timeline-description {
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-event {
+    width: 100%;
+    clear: both;
+  }
+
+  .timeline-event:nth-child(odd),
+  .timeline-event:nth-child(even) {
+    float: none;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-date,
+  .timeline-event:nth-child(even) .timeline-description {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+}
+</style>

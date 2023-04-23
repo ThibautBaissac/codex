@@ -1,4 +1,5 @@
-<%= form_with(model: element, id: "element_form_#{mouvement.id}_#{element.id}") do |form| %>
+<%= form_with(model: element, id: "element_form_#{mouvement.id}_#{element.id}",
+              data: { mouvement_id: mouvement.id, element_id: element.id }) do |form| %>
   <% if element.errors.any? %>
     <% element.errors.each do |error| %>
       <div class="alert alert-warning alert-dismissible fade show position-relative top-0 start-0" role="alert">
@@ -14,34 +15,38 @@
   <%= form.text_area :history, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Histoire" %>
 
   <div class="d-flex justify-content-between mt-3">
-    <div>
+    <div class="datas" data-mouvement-id="<%= mouvement.id %>" data-element-id="<%= element.id %>">
       <%= form.collection_check_boxes :category, Element.category_values, :to_s, :humanize do |category| %>
         <div class="form-check">
-          <%= category.label(:"data-value" => category.value, class: "check_box", for: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{element.id}") { category.check_box(class: "form-check-input", id: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{element.id}") + category.text } %>
+          <%= category.label(class: "check_box",
+                             for: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{mouvement.id}_#{element.id}") do %>
+            <%= category.check_box(class: "form-check-input", id: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{mouvement.id}_#{element.id}") %>
+            <%= t("elements.category.#{category.text.downcase}") %>
+          <% end %>
         </div>
       <% end %>
     </div>
 
     <div class="d-flex flex-column w-50">
-      <div id="popular_block" class="flex-grow-1 <%= "d-none" unless element.popular? %>">
+      <div id="popular_block_<%= "#{mouvement.id}_#{element.id}" %>" class="flex-grow-1 <%= "d-none" unless element.category.include?(Element::Musical) %>">
         <div class="form-check">
-          <%= form.radio_button :popular, true, checked: element.popular, id: "populaire", type: "radio", class: "form-check-input" %>
-          <%= form.label "Populaire", for: "populaire", class: "form-check-label" %>
+          <%= form.radio_button :popular, true, checked: element.popular, id: "populaire_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Populaire", for: "populaire_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
         </div>
         <div class="form-check">
-          <%= form.radio_button :popular, false, checked: element.popular, id: "savante", type: "radio", class: "form-check-input" %>
-          <%= form.label "Savante", for: "savante", class: "form-check-label" %>
+          <%= form.radio_button :popular, false, checked: !element.popular, id: "savante_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Savante", for: "savante_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
         </div>
       </div>
 
-      <div id="with_influence_block" class="<%= "d-none" unless element.motif? %>">
+      <div id="with_influence_block_<%= "#{mouvement.id}_#{element.id}" %>" class="<%= "d-none" unless element.category.include?(Element::Motif) %>">
         <div class="form-check">
-          <%= form.radio_button :with_influence, true, checked: element.with_influence, id: "with_influence", type: "radio", class: "form-check-input" %>
-          <%= form.label "Avec influence", for: "with_influence", class: "form-check-label" %>
+          <%= form.radio_button :with_influence, true, checked: element.with_influence, id: "with_influence_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Avec influence", for: "with_influence_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
         </div>
         <div class="form-check">
-          <%= form.radio_button :with_influence, false, checked: element.with_influence, id: "without_influence",  type: "radio", class: "form-check-input" %>
-          <%= form.label "Sans influence", for: "without_influence", class: "form-check-label" %>
+          <%= form.radio_button :with_influence, false, checked: !element.with_influence, id: "without_influence_#{mouvement.id}_#{element.id}",  type: "radio", class: "form-check-input" %>
+          <%= form.label "Sans influence", for: "without_influence_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
         </div>
       </div>
     </div>
@@ -50,19 +55,23 @@
 <% end %>
 
 <script>
-  document.querySelector('#element_category_motif').addEventListener('click', function() {
-    if (this.checked) {
-      document.querySelector('#with_influence_block').classList.remove('d-none');
-    } else {
-      document.querySelector('#with_influence_block').classList.add('d-none');
-    }
-  });
+  document.querySelectorAll('.datas').forEach((data) => {
+    const mouvementId = data.dataset.mouvementId;
+    const elementId = data.dataset.elementId;
+    document.getElementById(`element_category_motif_${mouvementId}_${elementId}`).addEventListener('click', function() {
+      if (this.checked) {
+        document.getElementById(`with_influence_block_${mouvementId}_${elementId}`).classList.remove('d-none');
+      } else {
+        document.getElementById(`with_influence_block_${mouvementId}_${elementId}`).classList.add('d-none');
+      }
+    });
 
-    document.querySelector('#element_category_musical').addEventListener('click', function() {
-    if (this.checked) {
-      document.querySelector('#popular_block').classList.remove('d-none');
-    } else {
-      document.querySelector('#popular_block').classList.add('d-none');
-    }
+    document.getElementById(`element_category_musical_${mouvementId}_${elementId}`).addEventListener('click', function() {
+      if (this.checked) {
+        document.getElementById(`popular_block_${mouvementId}_${elementId}`).classList.remove('d-none');
+      } else {
+        document.getElementById(`popular_block_${mouvementId}_${elementId}`).classList.add('d-none');
+      }
+    });
   });
 </script>

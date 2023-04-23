@@ -4,7 +4,6 @@ brew services restart postgresql
 ./bin/dev
 
 <!-- TO DO -->
-Remove element description, histoire...from mouvement
 Single select to add existing citation to mouvement
 Fix JS for showing/hiding with_influence
 

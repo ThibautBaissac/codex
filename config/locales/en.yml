@@ -8,8 +8,8 @@ en:
     baryton: baryton
   elements:
     category:
-      musical: Musicale
-      theme: Thème
-      motif: Motif
+      musical: Citation musicale
+      theme: Thème apocryphe
+      motif: Motif / Cellule motivique
       phantomatic: Fantomatique
       verbal_mention: Mention verbale
