@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: d1eseief7mbf33
-  username: jxggcptmvywzlg
+  database: codex_production
+  username: codex
   password: <%= ENV["CODEX_DATABASE_PASSWORD"] %>
