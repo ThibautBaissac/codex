@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: "works#index"
   get :search, to: "application#search"
   resources :works do
+    post :add_selected_element, on: :member
+    post :remove_selected_element, on: :member
     resources :mouvements do
       post :add_selected_element, on: :member
       post :remove_selected_element, on: :member

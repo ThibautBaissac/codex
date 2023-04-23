@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="remove_element_<%= @work.id %>_<%= element.id %>_modal" tabindex="-1" aria-labelledby="remove_element_<%= @work.id %>_<%= element.id %>_modalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sélectionner un élément à ajouter</h5>
+      </div>
+      <div class="modal-body">
+        <%= form_with( url: remove_selected_element_work_path(@work), id: "remove_form_#{@work.id}_#{element.id}") do |form| %>
+          <%= hidden_field_tag :element_id, element.id %>
+          Êtes-vous sûr de vouloir supprimer l'élément <%= element.title %> de cette œuvre ?
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">
+          <%= t('close') %>
+        </button>
+        <%= submit_tag("Supprimer", class: "btn btn-danger mt-2", form: "remove_form_#{@work.id}_#{element.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

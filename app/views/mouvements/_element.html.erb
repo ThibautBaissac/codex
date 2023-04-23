@@ -27,7 +27,7 @@
                         data: { bs_toggle: "modal", bs_target: "#remove_element_#{mouvement.id}_#{element.id}_modal"}) do %>
                         <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>
                 <% end %>
-                <%= render "elements/remove_element_modal", element: element, mouvement: mouvement %>
+                <%= render "mouvements/remove_element_modal", element: element, mouvement: mouvement %>
               <% end %>
             </div>
           </div>

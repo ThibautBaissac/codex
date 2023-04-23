@@ -4,8 +4,7 @@ brew services restart postgresql
 ./bin/dev
 
 <!-- TO DO -->
-Single select to add existing citation to mouvement
-Fix JS for showing/hiding with_influence
+Add element to work
 
 
 rails g model Work title opus:integer description:text

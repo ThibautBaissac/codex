@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_work, only: %i[show edit update destroy]
+  before_action :set_work, only: %i[show edit update destroy add_selected_element]
 
   def index
     @works = Work.all
@@ -45,6 +45,16 @@ class WorksController < ApplicationController
     authorize @work
     @work.destroy
     redirect_to works_url, notice: "Work was successfully destroyed."
+  end
+
+  def add_selected_element
+    authorize @work
+    element = Element.find(params[:element_id])
+    @work.elements << element
+    redirect_to work_path(@work), notice: "Element was successfully added."
+  end
+
+  def remove_selected_element
   end
 
   private

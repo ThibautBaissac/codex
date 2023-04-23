@@ -10,7 +10,7 @@
 
   <%= hidden_field_tag :work_id, @work&.id %>
   <div class="d-flex">
-    <%= form.number_field :number, class: "w-25 form-control mt-3 me-3", placeholder: "Numéro", required: true %>
+    <%= form.number_field :number, class: "w-25 form-control mt-3 me-3", placeholder: "Numéro", min: 1, required: true %>
     <%= form.text_field :title, class: "w-100 form-control mt-3", placeholder: "Titre", required: true %>
   </div>
   <%= form.text_area :dedication, class: "form-control form-control-text-area d-block mt-3", placeholder: "Dédicace" %>

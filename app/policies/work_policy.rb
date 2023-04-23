@@ -22,4 +22,8 @@ class WorkPolicy < ApplicationPolicy
   def destroy?
     user
   end
+
+  def add_selected_element?
+    user
+  end
 end
