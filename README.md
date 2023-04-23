@@ -5,5 +5,7 @@ brew services restart postgresql
 
 git push heroku main
 heroku logs --tail
+heroku run rake db:migrate
+heroku run rails console
 
 <!-- TO DO -->
