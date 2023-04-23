@@ -33,7 +33,7 @@
   </div>
 </div>
 <div>
-  <% @work.mouvements.each do |mouvement| %>
+  <% @work.mouvements.order(:number).each do |mouvement| %>
     <%= render "mouvements/mouvement_card", mouvement: mouvement %>
   <% end %>
   <% @work.elements.each do |element| %>
