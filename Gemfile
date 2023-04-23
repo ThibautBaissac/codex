@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 git_source(:github) { |repo| "http://github.com/#{repo}.git" }
 
 ruby "3.0.6"
