@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="select_element_<%= mouvement.id %>_modal" tabindex="-1" aria-labelledby="select_element_<%= mouvement.id %>_modalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sélectionner un élément à ajouter</h5>
+      </div>
+      <div class="modal-body">
+        <%= form_with( url: add_selected_element_work_mouvement_path(@work, mouvement), id: "select_form_#{mouvement.id}") do |form| %>
+          <%= form.select :element_id, options_for_select(Element.where.not(id: mouvement.element_ids).map{[_1.title, _1.id]}), {}, { class: "form-control" } %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">
+          <%= t('close') %>
+        </button>
+        <%= submit_tag(t("save"), class: "btn btn-success mt-2", form: "select_form_#{mouvement.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

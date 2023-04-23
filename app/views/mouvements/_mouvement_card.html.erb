@@ -21,6 +21,7 @@
     <div>Dédicace : <%= mouvement.dedication %></div>
 
     <%= render "elements/form_element_modal", element: @element, mouvement: mouvement %>
+    <%= render "elements/select_element_modal", mouvement: mouvement %>
     <%= render "mouvements/element", mouvement: mouvement %>
   </div>
 </div>

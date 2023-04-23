@@ -1,5 +1,5 @@
 class MouvementsController < ApplicationController
-  before_action :set_mouvement, only: %i[edit update destroy]
+  before_action :set_mouvement, only: %i[edit update destroy add_selected_element]
 
   def edit
     authorize @mouvement
@@ -20,7 +20,7 @@ class MouvementsController < ApplicationController
   def update
     authorize @mouvement
     if @mouvement.update!(mouvement_params)
-      redirect_to work_url(@mouvement.work), notice: "Mouvement was successfully updated."
+      redirect_to work_path(@mouvement.work), notice: "Mouvement was successfully updated."
     else
       render :edit
     end
@@ -29,7 +29,14 @@ class MouvementsController < ApplicationController
   def destroy
     authorize @mouvement
     @mouvement.destroy
-    redirect_to work_url(@mouvement.work), notice: "Mouvement was successfully destroyed."
+    redirect_to work_path(@mouvement.work), notice: "Mouvement was successfully destroyed."
+  end
+
+  def add_selected_element
+    authorize @mouvement
+    element = Element.find(params[:element_id])
+    @mouvement.elements << element
+    redirect_to work_path(@mouvement.work), notice: "Element was successfully added."
   end
 
   private
