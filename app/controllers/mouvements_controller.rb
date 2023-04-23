@@ -1,5 +1,5 @@
 class MouvementsController < ApplicationController
-  before_action :set_mouvement, only: %i[edit update destroy add_selected_element]
+  before_action :set_mouvement, only: %i[edit update destroy add_selected_element remove_selected_element]
 
   def edit
     authorize @mouvement
@@ -37,6 +37,13 @@ class MouvementsController < ApplicationController
     element = Element.find(params[:element_id])
     @mouvement.elements << element
     redirect_to work_path(@mouvement.work), notice: "Element was successfully added."
+  end
+
+  def remove_selected_element
+    authorize @mouvement
+    element = Element.find(params[:element_id])
+    @mouvement.elements.delete(element)
+    redirect_to work_path(@mouvement.work), notice: "Element was successfully removed."
   end
 
   private

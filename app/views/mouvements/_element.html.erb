@@ -14,7 +14,7 @@
               <%= link_to element_path(element), class: "text-decoration-none" do %>
                 <%= icon('fa-solid', 'eye', class: "small mx-2 text-decoration-none") %>
               <% end %>
-              <% if policy(Element).edit? %>
+              <% if policy(element).edit? %>
                 <%= link_to "#form_element_#{mouvement.id}_#{element.id}_modal",
                   data: { bs_toggle: "modal", bs_target: "#form_element_#{mouvement.id}_#{element.id}_modal"},
                   class: "text-decoration-none" do %>
@@ -22,12 +22,12 @@
                 <% end %>
                 <%= render "elements/form_element_modal", element: element, mouvement: mouvement %>
               <% end %>
-              <% if policy(Element).destroy? %>
-                <%= link_to("#deleteElement_#{mouvement.id}_#{element.id}_Modal",
-                        data: { bs_toggle: "modal", bs_target: "#deleteElement_#{mouvement.id}_#{element.id}_Modal"}) do %>
+              <% if policy(mouvement).remove_selected_element? %>
+                <%= link_to("#remove_element_#{mouvement.id}_#{element.id}_modal",
+                        data: { bs_toggle: "modal", bs_target: "#remove_element_#{mouvement.id}_#{element.id}_modal"}) do %>
                         <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>
                 <% end %>
-                <%= render "elements/delete_element_modal", element: element, mouvement: mouvement %>
+                <%= render "elements/remove_element_modal", element: element, mouvement: mouvement %>
               <% end %>
             </div>
           </div>

@@ -14,8 +14,4 @@ class ElementPolicy < ApplicationPolicy
   def update?
     user
   end
-
-  def destroy?
-    user
-  end
 end

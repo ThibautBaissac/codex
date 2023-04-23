@@ -38,11 +38,11 @@ class ElementsController < ApplicationController
     end
   end
 
-  def destroy
-    authorize @element
-    @element.destroy
-    redirect_to work_url(@mouvement.work), notice: "Element was successfully destroyed."
-  end
+  # def destroy
+  #   authorize @element
+  #   @element.destroy
+  #   redirect_to work_url(@mouvement.work), notice: "Element was successfully destroyed."
+  # end
 
   private
 

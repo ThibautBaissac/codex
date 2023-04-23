@@ -18,4 +18,8 @@ class MouvementPolicy < ApplicationPolicy
   def add_selected_element?
     user
   end
+
+  def remove_selected_element?
+    user
+  end
 end

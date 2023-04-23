@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :works do
     resources :mouvements do
       post :add_selected_element, on: :member
+      post :remove_selected_element, on: :member
     end
   end
   resources :elements
