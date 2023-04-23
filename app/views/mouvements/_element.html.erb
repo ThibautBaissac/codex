@@ -14,7 +14,7 @@
               <%= link_to element_path(element), class: "text-decoration-none" do %>
                 <%= icon('fa-solid', 'eye', class: "small mx-2 text-decoration-none") %>
               <% end %>
-              <% if policy(element).edit? %>
+              <% if current_user %>
                 <%= link_to "#form_element_#{mouvement.id}_#{element.id}_modal",
                   data: { bs_toggle: "modal", bs_target: "#form_element_#{mouvement.id}_#{element.id}_modal"},
                   class: "text-decoration-none" do %>
@@ -22,7 +22,7 @@
                 <% end %>
                 <%= render "elements/form_element_modal", element: element, mouvement: mouvement %>
               <% end %>
-              <% if policy(mouvement).remove_selected_element? %>
+              <% if current_user %>
                 <%= link_to("#remove_element_#{mouvement.id}_#{element.id}_modal",
                         data: { bs_toggle: "modal", bs_target: "#remove_element_#{mouvement.id}_#{element.id}_modal"}) do %>
                         <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>
@@ -35,7 +35,7 @@
           <div><%= popular_label(element) %></div>
           <div><%= with_influence_label(element) %></div>
         </div>
-        <% if policy(Element).new? && mouvement.elements.count == index + 1  %>
+        <% if current_user && mouvement.elements.count == index + 1  %>
           <div class="text-center">
             <%= render "elements/create_element_btn", mouvement: mouvement %>
           </div>
@@ -44,7 +44,7 @@
     <% end %>
   </div>
 <% else %>
-  <% if policy(Element).new? %>
+  <% if current_user %>
     <%= render "elements/create_element_btn", mouvement: mouvement %>
   <% end %>
 <% end %>

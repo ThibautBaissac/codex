@@ -4,13 +4,13 @@
       <h5><%= "#{mouvement.number}. #{mouvement.title}" %></h5>
       <div class="d-flex">
         <%= mouvement.start_date&.strftime('%d.%m.%Y') %>
-        <% if policy(mouvement).edit? %>
+        <% if current_user %>
           <%= link_to "#form_mouvement_#{mouvement.id}_modal",
             data: { bs_toggle: "modal", bs_target: "#form_mouvement_#{mouvement.id}_modal"} do %>
             <%= icon('fa-solid', 'edit', class: "mx-2 small") %>
           <% end %>
         <% end %>
-        <% if policy(mouvement).destroy? %>
+        <% if current_user %>
           <%= link_to("#deleteMouvement_#{mouvement.id}_Modal",
                   data: { bs_toggle: "modal", bs_target: "#deleteMouvement_#{mouvement.id}_Modal"}) do %>
                   <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>

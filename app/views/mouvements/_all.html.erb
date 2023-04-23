@@ -4,31 +4,31 @@
   <% end %>
   <div class="d-flex">
 
-    <% if @work.mouvements.any? %>
-      <% if policy(Mouvement).create? %>
+    <% if current_user %>
+      <% if @work.mouvements.any? %>
         <%= link_to("#form_mouvement__modal",
           data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
           <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
         <% end %>
         <%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>
-      <% end %>
-    <% else %>
-      <% if policy(Mouvement).create? %>
-        <%= link_to("#form_mouvement__modal",
-          data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
-          <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
+      <% elsif @work.work_elements.any? %>
+        <%= link_to "#select_element_work_#{@work.id}_modal",
+          data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-primary" do %>
+          <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
         <% end %>
-        <%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>
+        <%= render "works/select_element_modal" %>
+        <% else %>
+          <%= link_to("#form_mouvement__modal",
+            data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
+            <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
+          <% end %>
+          <%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>
+          <%= link_to "#select_element_work_#{@work.id}_modal",
+            data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-primary" do %>
+            <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
+          <% end %>
+          <%= render "works/select_element_modal" %>
       <% end %>
-      <%= link_to "#form_element_work_#{@work.id}__modal",
-        data: { bs_toggle: "modal", bs_target: "#form_element_work_#{@work.id}__modal"}, class: "btn btn-sm link-primary" do %>
-        <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un élément
-      <% end %>
-      <%= link_to "#select_element_work_#{@work.id}_modal",
-        data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-primary" do %>
-        <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
-      <% end %>
-      <%= render "works/select_element_modal" %>
     <% end %>
   </div>
 </div>
