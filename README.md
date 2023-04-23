@@ -4,5 +4,6 @@ brew services restart postgresql
 ./bin/dev
 
 git push heroku main
+heroku logs --tail
 
 <!-- TO DO -->
