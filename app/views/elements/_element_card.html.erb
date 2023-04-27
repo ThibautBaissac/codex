@@ -14,11 +14,11 @@
           <%= link_to("#{mouvement.work&.title} : #{mouvement.title}", work_path(mouvement.work), class: "link-secondary text-decoration-none") %>
         <% end %>
         <p class="text-secondary">
-          <%= element&.description %>
+          <%= simple_format(element&.description) %>
         </p>
         <div>Histoire :
           <p class="text-secondary">
-          <%= element&.history %>
+          <%= simple_format(element&.history) %>
           </p>
         </div>
       </div>

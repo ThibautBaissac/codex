@@ -3,12 +3,12 @@
 
   <div>Description :
     <p class="text-secondary">
-      <%= @element&.description %>
+      <%= simple_format(@element&.description) %>
     </p>
   </div>
   <div>Histoire :
     <p class="text-secondary">
-    <%= @element&.history %>
+    <%= simple_format(@element&.history) %>
     </p>
   </div>
   <div><%= category_label(@element) %></div>
