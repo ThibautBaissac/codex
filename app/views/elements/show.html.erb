@@ -3,7 +3,7 @@
 
   <div>Description :
     <p class="text-secondary">
-      <%= simple_format(@element&.description) %>
+      <%= my_format(@element&.description) %>
     </p>
   </div>
   <div><%= category_label(@element) %></div>
@@ -15,7 +15,7 @@
     <% @element.mouvements.each do |mouvement| %>
       <%= link_to(mouvement.work.title, work_path(mouvement.work)) %>
       -
-      <%= mouvement.title %>
+      <%= mouvement.number %>. <%= mouvement.title %>
     <% end %>
   </div>
 </div>
