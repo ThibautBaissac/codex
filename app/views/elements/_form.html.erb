@@ -12,7 +12,6 @@
   <%= hidden_field_tag :mouvement_id, mouvement.id %>
   <%= form.text_field :title, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Titre" %>
   <%= form.text_area :description, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Description" %>
-  <%= form.text_area :history, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Histoire" %>
 
   <div class="d-flex justify-content-between mt-3">
     <div class="datas" data-mouvement-id="<%= mouvement.id %>" data-element-id="<%= element.id %>">

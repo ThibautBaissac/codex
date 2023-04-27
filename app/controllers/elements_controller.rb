@@ -52,7 +52,6 @@ class ElementsController < ApplicationController
     params.require(:element).permit(
       :title,
       :description,
-      :history,
       :popular,
       :with_influence,
       category: [],
