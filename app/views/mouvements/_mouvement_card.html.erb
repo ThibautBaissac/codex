@@ -1,7 +1,7 @@
 <div>
   <div class="card">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h5><%= "#{mouvement.number}. #{mouvement.title}" %></h5>
+      <h5><%= "#{mouvement.number}. #{my_format(mouvement.title)}" %></h5>
       <div class="d-flex">
         <%= mouvement.start_date&.strftime('%d.%m.%Y') %>
         <% if current_user %>

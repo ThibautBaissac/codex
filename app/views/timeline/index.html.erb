@@ -2,7 +2,7 @@
   <% @mouvements.each do |mouvement| %>
     <div class="timeline-event">
       <div class="timeline-date"><%= mouvement.start_date.strftime("%B %d, %Y") %></div>
-      <div class="timeline-description"><%= mouvement.title %></div>
+      <div class="timeline-description"><%= my_format(mouvement.title) %></div>
     </div>
   <% end %>
 </div>
