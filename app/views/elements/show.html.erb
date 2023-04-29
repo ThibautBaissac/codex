@@ -1,9 +1,9 @@
 <div class="col-lg-8 mt-3 mx-auto">
-  <h1><%= my_format(@element.title) %></h1>
+  <h1><%= simple_format(@element.title) %></h1>
 
   <div>Description :
     <p class="text-secondary">
-      <%= my_format(@element&.description) %>
+      <%= simple_format(@element&.description) %>
     </p>
   </div>
   <div><%= category_label(@element) %></div>
@@ -15,7 +15,7 @@
     <% @element.mouvements.each do |mouvement| %>
       <%= link_to(mouvement.work.title, work_path(mouvement.work)) %>
       -
-      <%= mouvement.number %>. <%= my_format(mouvement.title) %>
+      <%= mouvement.number %>. <%= simple_format(mouvement.title) %>
     <% end %>
   </div>
 </div>

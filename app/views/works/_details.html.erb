@@ -1,6 +1,6 @@
 <div>
   <div class="d-flex justify-content-between align-items-center">
-    <h1><%= my_format(@work&.title) %></h1>
+    <h1><%= simple_format(@work&.title) %></h1>
     <div>
       Opus <%= @work&.opus %>
       <% if current_user %>
@@ -13,7 +13,7 @@
   </div>
   <%= @work.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
   <p class="pb-3 text-secondary border-bottom border-secondary">
-    <%= my_format(@work.description) %>
+    <%= simple_format(@work.description) %>
   </p>
 </div>
 <%= render "works/form_work_modal", work: @work %>

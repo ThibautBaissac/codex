@@ -8,7 +8,7 @@
       <div class="modal-body">
         <%= form_with( url: remove_selected_element_work_path(@work), id: "remove_form_#{@work.id}_#{element.id}") do |form| %>
           <%= hidden_field_tag :element_id, element.id %>
-          Êtes-vous sûr de vouloir supprimer l'élément <%= my_format(element.title) %> de cette œuvre ?
+          Êtes-vous sûr de vouloir supprimer l'élément <%= simple_format(element.title) %> de cette œuvre ?
         <% end %>
       </div>
       <div class="modal-footer">

@@ -1,11 +1,11 @@
 <% elements.each do |element| %>
   <%= link_to(element_path(element), class: "text-dark text-decoration-none") do %>
     <div class="card">
-      <%= my_format(element.title) %>
+      <%= simple_format(element.title) %>
       <% if element.mouvements.any?  %>
         <ul>
           <% element.mouvements.each do |mouvement| %>
-            <li><%= my_format(mouvement.work.title) %> - <%= my_format(mouvement.title) %></li>
+            <li><%= simple_format(mouvement.work.title) %> - <%= simple_format(mouvement.title) %></li>
           <% end %>
         </ul>
       <% end %>
