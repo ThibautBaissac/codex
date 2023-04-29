@@ -7,4 +7,8 @@ class Element < ApplicationRecord
   string_enum category: Constants::Element::CATEGORIES
 
   scope :with_category, ->(category) { where("? = ANY (category)", category) }
+
+  def with_motif?
+    category.include?("MOTIF")
+  end
 end

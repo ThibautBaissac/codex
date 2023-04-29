@@ -1,9 +1,11 @@
 module ElementsHelper
   def popular_label(element)
-    element.popular? ? 'Populaire' : 'Savante'
+    element.popular? ? 'Populaire' : 'Savant'
   end
 
   def with_influence_label(element)
+    return unless element.with_motif?
+    return if element.with_influence.nil?
     element.with_influence? ? 'Avec influence' : 'Sans influence'
   end
 
