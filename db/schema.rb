@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_29_115017) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_120555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_115017) do
     t.string "title"
     t.string "category", default: [], null: false, array: true
     t.text "description"
-    t.text "history"
     t.string "instrumentation", default: [], array: true
     t.boolean "popular", default: false
     t.boolean "with_influence"

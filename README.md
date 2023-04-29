@@ -12,6 +12,4 @@ heroku run rake db:migrate
 heroku run rails console
 
 <!-- TO DO -->
-order works by opus number
 Add image to elements (cloudinary)
-Remove history (migration)
