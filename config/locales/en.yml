@@ -6,6 +6,27 @@ en:
     voice: voix
     soprano: soprano
     baryton: baryton
+    saxo_alto: saxo alto
+    violin: violon
+    cello: violoncelle
+    alto: alto
+    oboe: hautbois
+    harpsichord: clavecin
+    mezzo_sopprano: mezzo-soprano
+    clarinet_b_flat: clarinette en si bémol
+    percussion: percussions
+    two_pianos: deux pianos
+    horn: cor
+    bassoon: basson
+    flute: flûte
+    english_horn: cor anglais
+    mixed_choir: choeur mixte
+    orchestra: orchestre
+    small_flute: petite flûte
+    two_violins: deux violons
+    harp: harpe
+    celesta: célesta
+    synthesizer: synthétiseur
   elements:
     category:
       musical: Citation musicale
