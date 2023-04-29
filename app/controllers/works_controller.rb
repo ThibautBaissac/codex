@@ -3,7 +3,7 @@ class WorksController < ApplicationController
   before_action :set_work, only: %i[show edit update destroy add_selected_element]
 
   def index
-    @works = Work.all
+    @works = Work.all.order(:opus)
     @work = Work.new
   end
 
