@@ -14,7 +14,7 @@
           <%= link_to("#{simple_format(mouvement.work&.title)} : #{simple_format(mouvement.title)}", work_path(mouvement.work), class: "link-secondary text-decoration-none") %>
         <% end %>
         <p class="text-secondary">
-          <%= simple_format(element&.description) %>
+          <%= element&.description %>
         </p>
       </div>
     </div>
