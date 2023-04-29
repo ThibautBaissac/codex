@@ -14,7 +14,7 @@ module InstrumentationHelper
     select_tag 'element[instrumentation]',
       options_for_select(instrumentations, element&.instrumentation),
       multiple: true,
-      class: "d-block mt-3",
+      class: "d-block",
       placeholder: "Instrumentation"
   end
 end
