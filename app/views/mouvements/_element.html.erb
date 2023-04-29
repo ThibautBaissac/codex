@@ -35,6 +35,9 @@
           <div><%= popular_label(element) %></div>
           <div><%= with_influence_label(element) %></div>
           <div class="mt-2"><%= element&.description %></div>
+          <% if element.extract.attached? %>
+              <%= cl_image_tag element.extract.key, :crop=>"fill" %>
+          <% end %>
         </div>
         <% if current_user && mouvement.elements.count == index + 1  %>
           <div class="text-center">

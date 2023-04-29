@@ -1,5 +1,6 @@
 class Element < ApplicationRecord
   has_rich_text :description
+  has_one_attached :extract
 
   has_many :mouvement_elements, dependent: :destroy
   has_many :mouvements, through: :mouvement_elements
