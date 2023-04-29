@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="d-flex">
+  <div class="d-flex mb-3">
     <%= form.number_field :opus, class: "w-25 form-control d-block mt-3 me-3", placeholder: "Opus", min: 1 %>
     <%= form.text_field :title, class: "w-100 form-control d-block mt-3", placeholder: "Titre" %>
   </div>
-  <%= form.text_area :description, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Description" %>
+  <%= form.rich_text_area :description, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Description" %>
   <%= instrumentation_options(work) %>
 <% end %>

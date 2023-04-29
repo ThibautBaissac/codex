@@ -12,8 +12,8 @@
     </div>
   </div>
   <%= @work.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
-  <p class="pb-3 text-secondary border-bottom border-secondary">
-    <%= simple_format(@work.description) %>
-  </p>
+  <div class="mb-3 pb-3 text-secondary border-bottom border-primary">
+    <%= @work.description %>
+  </div>
 </div>
 <%= render "works/form_work_modal", work: @work %>

@@ -34,7 +34,7 @@
           <div><%= category_label(element) %></div>
           <div><%= popular_label(element) %></div>
           <div><%= with_influence_label(element) %></div>
-          <%= simple_format(element&.description) %>
+          <div class="mt-2"><%= element&.description %></div>
         </div>
         <% if current_user && mouvement.elements.count == index + 1  %>
           <div class="text-center">

@@ -1,3 +1,5 @@
+// *= require trix
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -7,6 +9,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "actiontext";
 
 // Your CSS partials
 @import "components/index";
