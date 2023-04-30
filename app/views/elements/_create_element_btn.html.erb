@@ -1,10 +1,10 @@
-<div class="d-flex justify-content-around mt-3">
+<div class="d-flex justify-content-around mt-3 border-top">
   <%= link_to "#form_element_#{mouvement.id}__modal",
-    data: { bs_toggle: "modal", bs_target: "#form_element_#{mouvement.id}__modal"}, class: "btn btn-sm link-primary" do %>
+    data: { bs_toggle: "modal", bs_target: "#form_element_#{mouvement.id}__modal"}, class: "btn btn-sm link-secondary" do %>
     <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un élément
   <% end %>
   <%= link_to "#select_element_#{mouvement.id}_modal",
-    data: { bs_toggle: "modal", bs_target: "#select_element_#{mouvement.id}_modal"}, class: "btn btn-sm link-primary" do %>
+    data: { bs_toggle: "modal", bs_target: "#select_element_#{mouvement.id}_modal"}, class: "btn btn-sm link-secondary" do %>
     <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
   <% end %>
 </div>

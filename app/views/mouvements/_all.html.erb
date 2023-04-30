@@ -7,24 +7,24 @@
     <% if current_user %>
       <% if @work.mouvements.any? %>
         <%= link_to("#form_mouvement__modal",
-          data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
+          data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none link-secondary") do %>
           <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
         <% end %>
         <%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>
       <% elsif @work.work_elements.any? %>
         <%= link_to "#select_element_work_#{@work.id}_modal",
-          data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-primary" do %>
+          data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-secondary" do %>
           <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
         <% end %>
         <%= render "works/select_element_modal" %>
         <% else %>
           <%= link_to("#form_mouvement__modal",
-            data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none") do %>
+            data: { bs_toggle: "modal", bs_target: "#form_mouvement__modal"}, class: "small d-flex align-items-center text-decoration-none link-secondary") do %>
             <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un mouvement
           <% end %>
           <%= render "mouvements/form_mouvement_modal", mouvement: @new_mouvement %>
           <%= link_to "#select_element_work_#{@work.id}_modal",
-            data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-primary" do %>
+            data: { bs_toggle: "modal", bs_target: "#select_element_work_#{@work.id}_modal"}, class: "btn btn-sm link-secondary" do %>
             <%= icon('fa-solid', 'hand-pointer', class: "me-1") %> Sélectionner un élément existant
           <% end %>
           <%= render "works/select_element_modal" %>

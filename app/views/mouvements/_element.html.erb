@@ -1,13 +1,15 @@
 <% if mouvement.elements.any? %>
+<!--
   <a class="btn btn-sm mt-3 collapse_themes" data-bs-toggle="collapse" href="#collapseThemes_<%= mouvement.id %>" role="button" aria-expanded="false" aria-controls="collapseThemes_<%= mouvement.id %>">
     <i class="fa-solid fa-eye"></i> Voir les éléments
   </a>
-
+-->
   <div class="elements">
     <% mouvement.elements.each_with_index do |element, index| %>
-      <div class="collapse" id="collapseThemes_<%= mouvement.id %>">
-        <div class="py-3 border rounded-4 mb-2 p-2">
-          <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- <div class="collapse" id="collapseThemes_<%= mouvement.id %>"> -->
+      <div>
+        <div class="border-top border-primary p-2">
+          <div class="d-flex justify-content-between align-items-center">
             <div><%= element&.title %></div>
             <div>
               <%= element.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
@@ -34,10 +36,10 @@
           <div><%= category_label(element) %></div>
           <div><%= popular_label(element) %></div>
           <div><%= with_influence_label(element) %></div>
-          <div class="mt-2"><%= element&.description %></div>
           <% if element.extract.attached? %>
               <%= cl_image_tag element.extract.key, :crop=>"fill" %>
           <% end %>
+          <div class="mt-2 text-secondary"><%= element&.description %></div>
         </div>
         <% if current_user && mouvement.elements.count == index + 1  %>
           <div class="text-center">
