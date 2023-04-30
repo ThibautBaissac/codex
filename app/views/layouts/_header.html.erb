@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div>
       <%= link_to("CODEX", root_path, class: "navbar-brand me-1") %>
-      <small class="text-secondary">Base de données d’élements de langage</small>
+      <small class="text-secondary">Base de données d’éléments de langage</small>
     </div>
     <%#= image_tag "og_signature.png", height: 40 %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@
           <ul class="dropdown-menu" aria-labelledby="composersDropdown">
             <li><%= link_to("Toutes les œuvres", works_path, class: "dropdown-item") %></li>
             <li><hr class="dropdown-divider"></li>
-            <% Work.all.each do |work| %>
+            <% Work.all.order(:opus).each do |work| %>
               <li><%= link_to(work&.title, work_path(work), class: "dropdown-item") %></li>
             <% end %>
           </ul>

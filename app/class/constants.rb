@@ -1,30 +1,32 @@
 class Constants
   module Instrumentation
-    LIST = %i[voice
-      piano
+    LIST = %i[
+      voice
       soprano
-      baryton
-      saxo_alto
-      violin
-      cello
-      alto
-      oboe
-      harpsichord
       mezzo_sopprano
-      clarinet_b_flat
-      percussion
-      two_pianos
-      horn
-      bassoon
-      flute
-      english_horn
-      mixed_choir
-      orchestra
-      small_flute
+      baryton
+      violin
       two_violins
-      harp
+      saxo_alto
+      alto
+      cello
+      piano
+      two_pianos
+      harpsichord
       celesta
-      synthesizer].freeze
+      synthesizer
+      flute
+      small_flute
+      oboe
+      english_horn
+      clarinet_b_flat
+      bassoon
+      horn
+      percussion
+      mixed_choir
+      harp
+      orchestra
+    ].freeze
   end
 
   module Element
