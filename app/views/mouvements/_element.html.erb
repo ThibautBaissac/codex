@@ -37,7 +37,9 @@
           <div><%= popular_label(element) %></div>
           <div><%= with_influence_label(element) %></div>
           <% if element.extract.attached? %>
-              <%= cl_image_tag element.extract.key, :crop=>"fill" %>
+            <div class="text-center">
+              <%= cl_image_tag element.extract.key, :crop=>"fill", style: "width: #{element.extract_size}%" %>
+            </div>
           <% end %>
           <div class="mt-2 text-secondary"><%= element&.description %></div>
         </div>

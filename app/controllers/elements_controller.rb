@@ -55,6 +55,7 @@ class ElementsController < ApplicationController
       :popular,
       :with_influence,
       :extract,
+      :extract_size,
       category: [],
       instrumentation: []
     )
