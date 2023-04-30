@@ -1,12 +1,10 @@
 <div class="card card-hover">
-  <div class="d-flex justify-content-between">
-    <%= link_to(work_path(work), class: "link-dark text-decoration-none flex-grow-1 me-3") do %>
-        <div class="d-flex justify-content-between">
-          <h3><%= simple_format(work&.title) %></h3>
-          <div>Opus <%= work&.opus %></div>
-        </div>
-        <%= work.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
-    <% end %>
-    <%= render "works/destroy_work_modal", work: work %>
-  </div>
+  <%= link_to(work_path(work), class: "link-dark text-decoration-none flex-grow-1 me-3") do %>
+      <div class="d-flex justify-content-between">
+        <h3 class="text-primary"><%= simple_format(work&.title) %></h3>
+        <div>Opus <%= work&.opus %></div>
+      </div>
+      <%= work.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
+  <% end %>
+  <%= render "works/destroy_work_modal", work: work %>
 </div>

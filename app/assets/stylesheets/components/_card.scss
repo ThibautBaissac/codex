@@ -1,10 +1,9 @@
 .card {
-  border: 0px solid transparent !important;
   border-radius: 20px;
   margin-bottom: 20px;
   padding: 20px;
   text-align: justify;
-  background-color: rgba($color: $light, $alpha: 0.5)
+  border: 1px solid $primary;
 }
 
 .card:hover {

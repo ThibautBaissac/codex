@@ -1,6 +1,6 @@
 <div class="col-lg-8 mt-3 mx-auto">
   <% if @works.nil? && @elements.nil? || @works.count.zero? && @elements.count.zero? %>
-    <h1>Aucun résultat <i class="far fa-surprise"></i></h1>
+    <h1>Aucun résultat pour "<%= params[:q] %>"</h1>
   <% else %>
     <% if @works.any? %>
       <h1>Œuvres</h1>

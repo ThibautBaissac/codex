@@ -1,21 +1,27 @@
 <div class="col-lg-8 mt-3 mx-auto">
-  <h1><%= simple_format(@element.title) %></h1>
+  <h1 class="link-primary"><%= @element.title %></h1>
 
-  <div>Description :
-    <p class="text-secondary">
-      <%= @element&.description %>
-    </p>
-  </div>
   <div><%= category_label(@element) %></div>
   <div><%= popular_label(@element) %></div>
   <div><%= with_influence_label(@element) %></div>
+  <% if @element.extract.attached? %>
+    <div class="text-center">
+      <%= cl_image_tag @element.extract.key, :crop=>"fill", style: "width: #{@element.extract_size}%" %>
+    </div>
+  <% end %>
+  <div class="text-secondary"><%= @element&.description %></div>
 
-  <div class="my-3 py-3 border-top">
-    <h4>Œuvres et Mouvements</h4>
+  <div class="my-3 py-3 border-top border-primary">
+    <h2>Œuvres et Mouvements</h2>
     <% @element.mouvements.each do |mouvement| %>
-      <%= link_to(mouvement.work.title, work_path(mouvement.work)) %>
-      -
-      <%= mouvement.number %>. <%= simple_format(mouvement.title) %>
+      <div class="card card-hover">
+        <%= link_to(work_path(mouvement.work, anchor: mouvement.id), class: "link-dark text-decoration-none me-3") do %>
+          <div class="d-flex justify-content-between">
+            <h3 class="text-primary mb-0"><%= mouvement.work&.title.html_safe %></h3>
+            <%= mouvement.number %>. <%= mouvement.title %>
+          </div>
+        <% end %>
     <% end %>
+    </div>
   </div>
 </div>

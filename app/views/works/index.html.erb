@@ -3,7 +3,7 @@
     <h1>Œuvres</h1>
     <% if current_user %>
       <%= link_to "#form_work_modal",
-        data: { bs_toggle: "modal", bs_target: "#form_work_modal"}, class: "small d-flex align-items-center text-decoration-none" do %>
+        data: { bs_toggle: "modal", bs_target: "#form_work_modal"}, class: "small d-flex align-items-center text-decoration-none link-secondary" do %>
         <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer une œuvre
       <% end %>
     <% end %>

@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <div>
-      <%= link_to("CODEX", root_path, class: "navbar-brand me-1") %>
+    <%= link_to(root_path, class: "text-decoration-none d-flex flex-column") do %>
+      <span class="h4 m-0 fw-bold">CODEX</span>
       <small class="text-secondary">Base de données d’éléments de langage</small>
-    </div>
+    <% end %>
     <%#= image_tag "og_signature.png", height: 40 %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -26,14 +26,18 @@
           <%= link_to("Statistiques", metrics_path, class: "nav-link #{'active' if controller_name == "metrics"}") %>
         </li>
       </ul>
-      <%= form_tag(search_path, method: :get, class: 'form-inline') do %>
+      <div class="btn btn-outline-primary rounded-circle" id="search_btn">
+        <i class="fa fa-search"></i>
+      </div>
+      <%= form_tag(search_path, method: :get, class: 'form-inline', id: "search-form") do %>
         <div class="form-group me-3">
           <div class="input-group">
             <%= text_field_tag :q,
                 params[:q],
                 placeholder: "Rechercher",
-                class: 'form-control' %>
-            <%= button_tag(type: 'submit', class: 'input-group-text btn btn-outline-primary') do %>
+                class: 'form-control d-none',
+                id: "search_bar" %>
+            <%= button_tag(type: 'submit', id: "submit_btn", class: 'input-group-text btn btn-outline-primary d-none') do %>
               <i class="fa fa-search"></i>
             <% end %>
           </div>
@@ -42,3 +46,15 @@
     </div>
   </div>
 </nav>
+<script>
+  document.addEventListener("turbo:load", function() {
+    const searchBtn = document.getElementById("search_btn")
+    const submitBtn = document.getElementById("submit_btn")
+    const searchBar = document.getElementById("search_bar")
+    searchBtn.addEventListener("click", function() {
+      submitBtn.classList.remove("d-none");
+      searchBar.classList.remove("d-none");
+      searchBtn.classList.add("d-none");
+    });
+  });
+</script>
