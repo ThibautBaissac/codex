@@ -5,7 +5,7 @@ class Element < ApplicationRecord
   has_many :mouvement_elements, dependent: :destroy
   has_many :mouvements, through: :mouvement_elements
 
-  # validates :description, :title, :category, presence: true
+  validates :description, :title, presence: true
   validates :extract_size, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 100 }
 
   string_enum category: Constants::Element::CATEGORIES

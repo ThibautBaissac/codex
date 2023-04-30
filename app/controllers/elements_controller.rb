@@ -24,7 +24,7 @@ class ElementsController < ApplicationController
       MouvementElement.create!(mouvement: @mouvement, element: @element)
       redirect_to work_path(@mouvement.work), notice: "Element was successfully created."
     else
-      render :new
+      redirect_to work_path(@mouvement.work), notice: @element.errors.full_messages.join(", ")
     end
   end
 
@@ -34,7 +34,7 @@ class ElementsController < ApplicationController
     if @element.update(element_params.except(:category))
       redirect_to work_path(@mouvement.work), notice: "Element was successfully updated."
     else
-      render :edit
+      redirect_to work_path(@mouvement.work), notice: @element.errors.full_messages.join(", ")
     end
   end
 
