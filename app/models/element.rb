@@ -4,6 +4,8 @@ class Element < ApplicationRecord
 
   has_many :mouvement_elements, dependent: :destroy
   has_many :mouvements, through: :mouvement_elements
+  has_many :work_elements, dependent: :destroy
+  has_many :works, through: :work_elements
 
   validates :description, :title, presence: true
   validates :extract_size, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 100 }

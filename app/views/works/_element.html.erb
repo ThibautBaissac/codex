@@ -1,16 +1,37 @@
 <div class="elements">
   <div class="py-3 border rounded-4 mb-2 p-2">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center">
       <div><%= element&.title %></div>
       <div>
         <%= element.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
         <%= link_to element_path(element), class: "text-decoration-none" do %>
           <%= icon('fa-solid', 'eye', class: "small mx-2 text-decoration-none") %>
         <% end %>
+        <% if current_user %>
+          <%= link_to "#form_element_#{@work.id}_#{element.id}_modal",
+            data: { bs_toggle: "modal", bs_target: "#form_element_#{@work.id}_#{element.id}_modal"},
+            class: "text-decoration-none" do %>
+            <%= icon('fa-solid', 'edit', class: "small me-2") %>
+          <% end %>
+          <%= render "elements/form_element_modal", element: element, object: @work %>
+        <% end %>
+        <% if current_user %>
+          <%= link_to("#remove_element_#{@work.id}_#{element.id}_modal",
+                  data: { bs_toggle: "modal", bs_target: "#remove_element_#{@work.id}_#{element.id}_modal"}) do %>
+                  <%= icon('fa-solid', 'trash-alt', class: "small text-secondary") %>
+          <% end %>
+          <%= render "works/remove_element_modal", element: element, work: @work %>
+        <% end %>
       </div>
     </div>
     <div><%= category_label(element) %></div>
     <div><%= popular_label(element) %></div>
     <div><%= with_influence_label(element) %></div>
+    <% if element.extract.attached? %>
+      <div class="text-center">
+        <%= cl_image_tag element.extract.key, :crop=>"fill", style: "width: #{element.extract_size}%" %>
+      </div>
+    <% end %>
+    <div class="mt-2 text-secondary"><%= element&.description %></div>
   </div>
 </div>

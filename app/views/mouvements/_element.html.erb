@@ -22,7 +22,7 @@
                   class: "text-decoration-none" do %>
                   <%= icon('fa-solid', 'edit', class: "small me-2") %>
                 <% end %>
-                <%= render "elements/form_element_modal", element: element, mouvement: mouvement %>
+                <%= render "elements/form_element_modal", element: element, object: mouvement %>
               <% end %>
               <% if current_user %>
                 <%= link_to("#remove_element_#{mouvement.id}_#{element.id}_modal",

@@ -1,5 +1,5 @@
-<%= form_with(model: element, id: "element_form_#{mouvement.id}_#{element.id}",
-              data: { mouvement_id: mouvement.id, element_id: element.id }) do |form| %>
+<%= form_with(model: element, id: "element_form_#{object.id}_#{element.id}",
+              data: { object_id: object.id, element_id: element.id }) do |form| %>
   <% if element.errors.any? %>
     <% element.errors.each do |error| %>
       <div class="alert alert-warning alert-dismissible fade show position-relative top-0 start-0" role="alert">
@@ -9,19 +9,20 @@
     <% end %>
   <% end %>
 
-  <%= hidden_field_tag :mouvement_id, mouvement.id %>
+  <%= hidden_field_tag :object_type, object.class.name.downcase == "work" ? :work : :mouvement %>
+  <%= hidden_field_tag :object_id, object.id %>
   <%= form.text_field :title, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Titre" %>
   <div class="mt-3">
     <%= form.rich_text_area :description, class: "form-control form-control-text-area d-block mt-3", rows: 10, placeholder: "Description" %>
   </div>
 
   <div class="d-flex justify-content-between mt-3">
-    <div class="datas" data-mouvement-id="<%= mouvement.id %>" data-element-id="<%= element.id %>">
+    <div class="datas" data-object-id="<%= object.id %>" data-element-id="<%= element.id %>">
       <%= form.collection_check_boxes :category, Element.category_values, :to_s, :humanize do |category| %>
         <div class="form-check">
           <%= category.label(class: "check_box",
-                             for: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{mouvement.id}_#{element.id}") do %>
-            <%= category.check_box(class: "form-check-input", id: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{mouvement.id}_#{element.id}") %>
+                             for: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{object.id}_#{element.id}") do %>
+            <%= category.check_box(class: "form-check-input", id: "element_category_#{category.text.downcase.gsub(' ', '_')}_#{object.id}_#{element.id}") %>
             <%= t("elements.category.#{category.text.downcase}") %>
           <% end %>
         </div>
@@ -29,25 +30,25 @@
     </div>
 
     <div class="d-flex flex-column w-50">
-      <div id="popular_block_<%= "#{mouvement.id}_#{element.id}" %>" class="flex-grow-1 <%= "d-none" unless element.category.include?(Element::Musical) %>">
+      <div id="popular_block_<%= "#{object.id}_#{element.id}" %>" class="flex-grow-1 <%= "d-none" unless element.category.include?(Element::Musical) %>">
         <div class="form-check">
-          <%= form.radio_button :popular, true, checked: element.popular, id: "populaire_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
-          <%= form.label "Populaire", for: "populaire_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
+          <%= form.radio_button :popular, true, checked: element.popular, id: "populaire_#{object.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Populaire", for: "populaire_#{object.id}_#{element.id}", class: "form-check-label" %>
         </div>
         <div class="form-check">
-          <%= form.radio_button :popular, false, checked: !element.popular, id: "savant_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
-          <%= form.label "Savant", for: "savant_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
+          <%= form.radio_button :popular, false, checked: !element.popular, id: "savant_#{object.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Savant", for: "savant_#{object.id}_#{element.id}", class: "form-check-label" %>
         </div>
       </div>
 
-      <div id="with_influence_block_<%= "#{mouvement.id}_#{element.id}" %>" class="<%= "d-none" unless element.category.include?(Element::Motif) %>">
+      <div id="with_influence_block_<%= "#{object.id}_#{element.id}" %>" class="<%= "d-none" unless element.category.include?(Element::Motif) %>">
         <div class="form-check">
-          <%= form.radio_button :with_influence, true, checked: element.with_influence, id: "with_influence_#{mouvement.id}_#{element.id}", type: "radio", class: "form-check-input" %>
-          <%= form.label "Avec influence", for: "with_influence_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
+          <%= form.radio_button :with_influence, true, checked: element.with_influence, id: "with_influence_#{object.id}_#{element.id}", type: "radio", class: "form-check-input" %>
+          <%= form.label "Avec influence", for: "with_influence_#{object.id}_#{element.id}", class: "form-check-label" %>
         </div>
         <div class="form-check">
-          <%= form.radio_button :with_influence, false, checked: !element.with_influence, id: "without_influence_#{mouvement.id}_#{element.id}",  type: "radio", class: "form-check-input" %>
-          <%= form.label "Sans influence", for: "without_influence_#{mouvement.id}_#{element.id}", class: "form-check-label" %>
+          <%= form.radio_button :with_influence, false, checked: !element.with_influence, id: "without_influence_#{object.id}_#{element.id}",  type: "radio", class: "form-check-input" %>
+          <%= form.label "Sans influence", for: "without_influence_#{object.id}_#{element.id}", class: "form-check-label" %>
         </div>
       </div>
     </div>
@@ -68,21 +69,21 @@
 
 <script>
   document.querySelectorAll('.datas').forEach((data) => {
-    const mouvementId = data.dataset.mouvementId;
+    const objectId = data.dataset.objectId;
     const elementId = data.dataset.elementId;
-    document.getElementById(`element_category_motif_${mouvementId}_${elementId}`).addEventListener('click', function() {
+    document.getElementById(`element_category_motif_${objectId}_${elementId}`).addEventListener('click', function() {
       if (this.checked) {
-        document.getElementById(`with_influence_block_${mouvementId}_${elementId}`).classList.remove('d-none');
+        document.getElementById(`with_influence_block_${objectId}_${elementId}`).classList.remove('d-none');
       } else {
-        document.getElementById(`with_influence_block_${mouvementId}_${elementId}`).classList.add('d-none');
+        document.getElementById(`with_influence_block_${objectId}_${elementId}`).classList.add('d-none');
       }
     });
 
-    document.getElementById(`element_category_musical_${mouvementId}_${elementId}`).addEventListener('click', function() {
+    document.getElementById(`element_category_musical_${objectId}_${elementId}`).addEventListener('click', function() {
       if (this.checked) {
-        document.getElementById(`popular_block_${mouvementId}_${elementId}`).classList.remove('d-none');
+        document.getElementById(`popular_block_${objectId}_${elementId}`).classList.remove('d-none');
       } else {
-        document.getElementById(`popular_block_${mouvementId}_${elementId}`).classList.add('d-none');
+        document.getElementById(`popular_block_${objectId}_${elementId}`).classList.add('d-none');
       }
     });
   });

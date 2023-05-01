@@ -22,7 +22,7 @@
       <div>Dédicace : <%= mouvement.dedication %></div>
     </div>
 
-    <%= render "elements/form_element_modal", element: @element, mouvement: mouvement %>
+    <%= render "elements/form_element_modal", element: @element, object: mouvement %>
     <%= render "mouvements/select_element_modal", mouvement: mouvement %>
     <%= render "mouvements/element", mouvement: mouvement %>
   </div>

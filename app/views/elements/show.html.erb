@@ -22,6 +22,15 @@
           </div>
         <% end %>
     <% end %>
+
+    <% @element.works.each do |work| %>
+      <div class="card card-hover">
+        <%= link_to(work_path(work), class: "link-dark text-decoration-none me-3") do %>
+          <div class="d-flex justify-content-between">
+            <h3 class="text-primary mb-0"><%= work&.title.html_safe %></h3>
+          </div>
+        <% end %>
+    <% end %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class ElementsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
-  before_action :set_element, only: %i[edit update destroy]
-  before_action :set_mouvement, only: %i[create update destroy]
+  before_action :set_element, only: %i[edit update]
+  before_action :set_object, only: %i[create update]
 
   def show
     @element = Element.find(params[:id])
@@ -21,21 +21,23 @@ class ElementsController < ApplicationController
     authorize @element
     @element.category = element_params[:category].reject(&:blank?)
     if @element.save
-      MouvementElement.create!(mouvement: @mouvement, element: @element)
-      redirect_to work_path(@mouvement.work), notice: "Element was successfully created."
+      create_object_element
+      flash[:notice] = "Element was successfully created."
     else
-      redirect_to work_path(@mouvement.work), notice: @element.errors.full_messages.join(", ")
+      flash[:notice] = @element.errors.full_messages.join(", ")
     end
+    redirection
   end
 
   def update
     authorize @element
     @element.category = element_params[:category].reject(&:blank?)
     if @element.update(element_params.except(:category))
-      redirect_to work_path(@mouvement.work), notice: "Element was successfully updated."
+      flash[:notice] = "Element was successfully created."
     else
-      redirect_to work_path(@mouvement.work), notice: @element.errors.full_messages.join(", ")
+      flash[:notice] = @element.errors.full_messages.join(", ")
     end
+    redirection
   end
 
   private
@@ -44,8 +46,28 @@ class ElementsController < ApplicationController
     @element = Element.find(params[:id])
   end
 
-  def set_mouvement
-    @mouvement = Mouvement.find(params[:mouvement_id])
+  def set_object
+    if params[:object_type] == "work"
+      @object = Work.find(params[:object_id])
+    else
+      @object = Mouvement.find(params[:object_id])
+    end
+  end
+
+  def create_object_element
+    if params[:object_type] == "work"
+      WorkElement.create!(work: @object, element: @element)
+    else
+      MouvementElement.create!(mouvement: @object, element: @element)
+    end
+  end
+
+  def redirection
+    if params[:object_type] == "work"
+      redirect_to work_path(@object)
+    else
+      redirect_to work_path(@object.work)
+    end
   end
 
   def element_params
