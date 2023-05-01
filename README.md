@@ -1,3 +1,4 @@
+<!-- Compile ruby with openssl 1.0 -->
 RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)" rbenv install 3.2.2
 
 brew install postgresql@15
@@ -12,4 +13,3 @@ heroku run rake db:migrate
 heroku run rails console
 
 <!-- TO DO -->
-Add image to elements (cloudinary)

@@ -2,35 +2,35 @@
   <h1>Statistiques</h1>
 
   <div class="my-3 py-3 border-bottom">
-    <h2>Éléments de langage de type "musicale" : <%= @elements_musical.count %></h2>
+    <h2>Éléments de langage de type "<%= t("elements.category.musical") %>" : <%= @elements_musical.count %></h2>
     <% @elements_musical.each do |element| %>
       <%= render "elements/element_card", element: element %>
     <% end %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h2>Éléments de langage de type "thème" : <%= @elements_theme.count %></h2>
+    <h2>Éléments de langage de type "<%= t("elements.category.theme") %>" : <%= @elements_theme.count %></h2>
     <% @elements_theme.each do |element| %>
       <%= render "elements/element_card", element: element %>
     <% end %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h2>Éléments de langage de type "motif" : <%= @elements_motif.count %></h2>
+    <h2>Éléments de langage de type "<%= t("elements.category.motif") %>" : <%= @elements_motif.count %></h2>
     <% @elements_motif.each do |element| %>
       <%= render "elements/element_card", element: element %>
     <% end %>
   </div>
 
   <div class="my-3 py-3 border-bottom">
-    <h2>Éléments de langage de type "phantomatique" : <%= @elements_phantomatic.count %></h2>
+    <h2>Éléments de langage de type "<%= t("elements.category.phantomatic") %>" : <%= @elements_phantomatic.count %></h2>
     <% @elements_phantomatic.each do |element| %>
       <%= render "elements/element_card", element: element %>
     <% end %>
   </div>
 
   <div class="my-3 py-3">
-    <h2>Éléments de langage de type "mention verbale" : <%= @elements_verbal_mention.count %></h2>
+    <h2>Éléments de langage de type "<%= t("elements.category.verbal_mention") %>" : <%= @elements_verbal_mention.count %></h2>
     <% @elements_verbal_mention.each do |element| %>
       <%= render "elements/element_card", element: element %>
     <% end %>
