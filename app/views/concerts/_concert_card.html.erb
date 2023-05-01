@@ -1,0 +1,26 @@
+<div class="card card-hover px-0">
+  <div class="border-bottom border-primary px-3 pb-3">
+    <div class="d-flex justify-content-between">
+      <h3 class="text-primary"><%= l(concert.date, format: :long).capitalize %></h3>
+      <% if current_user %>
+        <%= link_to "#form_concert_#{concert.id}_modal",
+          data: { bs_toggle: "modal", bs_target: "#form_concert_#{concert.id}_modal"} do %>
+          <%= icon('fa-solid', 'edit', class: "small") %>
+        <% end %>
+      <% end %>
+    </div>
+    <div><%= concert.location %>, <%= concert.time&.strftime("%Hh%M") %></div>
+  </div>
+  <div class="px-3 pt-3">
+    <div><%= concert.artists %></div>
+    <div>
+      <h3>Programme</h3>
+      <%= concert.program %>
+    </div>
+    <div>
+      <h3>Notes</h3>
+      <%= concert.notes %>
+    </div>
+  </div>
+  <%= render "concerts/form_concert_modal", concert: concert %>
+</div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :elements
   resources :metrics, only: %i[index]
+  resources :concerts
   resources :sessions, only: %i[new create destroy]
   get '/signout', to: 'sessions#destroy', as: :signout
 end

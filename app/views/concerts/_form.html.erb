@@ -1,0 +1,23 @@
+<%= form_with(model: concert, id: "concert_form_#{concert&.id}") do |form| %>
+  <% if concert.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+        <% concert.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="d-flex mb-3">
+    <%= form.date_field :date, class: "w-25 form-control d-block me-3", placeholder: "Date", required: true %>
+    <%= form.time_field :time, class: "w-25 form-control d-block me-3", placeholder: "Heure" %>
+    <%= form.text_field :location, class: "w-100 form-control d-block mb-3", placeholder: "Lieu" %>
+  </div>
+  <%= render "typography" %>
+  <%= form.text_area :artists, class: "form-control form-control-text-area d-block mb-3", rows: 2, placeholder: "Artistes" %>
+  <%= form.text_area :program, class: "form-control form-control-text-area d-block mb-3", rows: 10, placeholder: "Programme" %>
+  <%= form.text_area :notes, class: "form-control form-control-text-area d-block", rows: 10, placeholder: "Notes" %>
+<% end %>

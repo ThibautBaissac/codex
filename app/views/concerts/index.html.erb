@@ -1,0 +1,16 @@
+<div class="col-lg-8 mt-3 mx-auto">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Concerts</h1>
+    <% if current_user %>
+      <%= link_to "#form_concert__modal",
+        data: { bs_toggle: "modal", bs_target: "#form_concert__modal"}, class: "small d-flex align-items-center text-decoration-none link-secondary" do %>
+        <%= icon('fa-solid', 'plus-circle', class: "me-1") %> Créer un concert
+      <% end %>
+      <%= render "form_concert_modal", concert: @concert %>
+    <% end %>
+  </div>
+
+  <% @concerts.each do |concert| %>
+    <%= render "concert_card", concert: concert %>
+  <% end %>
+</div>

@@ -35,7 +35,7 @@ class WorksController < ApplicationController
   def update
     authorize @work
     if @work.update(work_params)
-      redirect_to work_url(@work), notice: "Work was successfully updated."
+      redirect_to work_path(@work), notice: "Work was successfully updated."
     else
       render :show
     end
@@ -44,7 +44,7 @@ class WorksController < ApplicationController
   def destroy
     authorize @work
     @work.destroy
-    redirect_to works_url, notice: "Work was successfully destroyed."
+    redirect_to works_path, notice: "Work was successfully destroyed."
   end
 
   def add_selected_element

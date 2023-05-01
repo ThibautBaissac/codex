@@ -14,7 +14,7 @@
           <a class="nav-link dropdown-toggle <%= "active" if controller_name == "works" %>" href="#" id="composersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Œuvres
           </a>
-          <ul class="dropdown-menu" aria-labelledby="composersDropdown">
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="composersDropdown">
             <li><%= link_to("Toutes les œuvres", works_path, class: "dropdown-item") %></li>
             <li><hr class="dropdown-divider"></li>
             <% Work.all.order(:opus).each do |work| %>
@@ -24,6 +24,9 @@
         </li>
         <li class="nav-item">
           <%= link_to("Statistiques", metrics_path, class: "nav-link #{'active' if controller_name == "metrics"}") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to("Concerts", concerts_path, class: "nav-link #{'active' if controller_name == "concerts"}") %>
         </li>
       </ul>
       <div class="btn btn-outline-primary rounded-circle" id="search_btn">
