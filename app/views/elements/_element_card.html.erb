@@ -4,7 +4,7 @@
         <h3 class="text-primary"><%= element&.title.html_safe %></h3>
         <%= element.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
       </div>
-      <%= element&.description %>
+      <%= simple_format(element&.description) %>
       <% element.mouvements.each do |mouvement| %>
         <%= link_to("#{mouvement.work.title} : #{mouvement.title}", work_path(mouvement.work), class: "link-secondary text-decoration-none") %>
       <% end %>

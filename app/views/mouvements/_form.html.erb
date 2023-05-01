@@ -9,11 +9,13 @@
   <% end %>
 
   <%= hidden_field_tag :work_id, @work&.id %>
-  <div class="d-flex">
+
+  <div class="d-flex mb-3">
     <%= form.number_field :number, class: "w-25 form-control mt-3 me-3", placeholder: "Numéro", min: 1, required: true %>
     <%= form.text_field :title, class: "w-100 form-control mt-3", placeholder: "Titre", required: true %>
   </div>
-  <%= form.text_area :dedication, class: "form-control form-control-text-area d-block mt-3", placeholder: "Dédicace" %>
+  <%= render "typography" %>
+  <%= form.text_area :dedication, class: "form-control form-control-text-area d-block", placeholder: "Dédicace" %>
   <div class="d-flex mt-3">
     <%= form.text_field :start_date, type: "date", class: "form-control d-block me-2", placeholder: "Date de début" %>
     <%= form.text_field :end_date, type: "date", class: "form-control d-block ms-2", placeholder: "Date de fin" %>

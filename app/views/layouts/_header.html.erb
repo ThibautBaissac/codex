@@ -18,7 +18,7 @@
             <li><%= link_to("Toutes les œuvres", works_path, class: "dropdown-item") %></li>
             <li><hr class="dropdown-divider"></li>
             <% Work.all.order(:opus).each do |work| %>
-              <li><%= link_to(work&.title, work_path(work), class: "dropdown-item") %></li>
+              <li><%= link_to(work&.title.html_safe, work_path(work), class: "dropdown-item mb-0") %></li>
             <% end %>
           </ul>
         </li>

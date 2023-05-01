@@ -1,5 +1,5 @@
 <div class="col-lg-8 mt-3 mx-auto">
-  <h1 class="link-primary"><%= @element.title %></h1>
+  <h1 class="link-primary"><%= @element.title.html_safe %></h1>
 
   <div><%= category_label(@element) %></div>
   <div><%= popular_label(@element) %></div>
@@ -9,18 +9,19 @@
       <%= cl_image_tag @element.extract.key, :crop=>"fill", style: "width: #{@element.extract_size}%" %>
     </div>
   <% end %>
-  <div class="text-secondary"><%= @element&.description %></div>
+  <%= simple_format(@element&.description, class: "text-secondary") %>
 
-  <div class="my-3 py-3 border-top border-primary">
+  <div class="my-3">
     <h2>Œuvres et Mouvements</h2>
     <% @element.mouvements.each do |mouvement| %>
       <div class="card card-hover">
         <%= link_to(work_path(mouvement.work, anchor: mouvement.id), class: "link-dark text-decoration-none me-3") do %>
           <div class="d-flex justify-content-between">
             <h3 class="text-primary mb-0"><%= mouvement.work&.title.html_safe %></h3>
-            <%= mouvement.number %>. <%= mouvement.title %>
+            <%= mouvement.number %>. <%= mouvement.title.html_safe %>
           </div>
         <% end %>
+      </div>
     <% end %>
 
     <% @element.works.each do |work| %>
@@ -30,7 +31,7 @@
             <h3 class="text-primary mb-0"><%= work&.title.html_safe %></h3>
           </div>
         <% end %>
+      </div>
     <% end %>
-    </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
       <div>
         <div class="border-top border-primary p-2">
           <div class="d-flex justify-content-between align-items-center">
-            <div><%= element&.title %></div>
+            <div><%= simple_format(element&.title) %></div>
             <div>
               <%= element.instrumentation&.map{|instrument| t("intrumentation.#{instrument.downcase}").capitalize}&.join(", ") %>
               <%= link_to element_path(element), class: "text-decoration-none" do %>
@@ -41,7 +41,7 @@
               <%= cl_image_tag element.extract.key, :crop=>"fill", style: "width: #{element.extract_size}%" %>
             </div>
           <% end %>
-          <div class="mt-2 text-secondary"><%= element&.description %></div>
+          <%= simple_format(element&.description, class: "mt-2 text-secondary") %>
         </div>
         <% if current_user && mouvement.elements.count == index + 1  %>
           <div class="text-center">

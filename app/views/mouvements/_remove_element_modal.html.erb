@@ -3,12 +3,12 @@
   <div class="modal-dialog  modal-lg modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Sélectionner un élément à ajouter</h5>
+        <h3 class="modal-title">Souhaitez-vous retirer cet élément ?</h5>
       </div>
       <div class="modal-body">
         <%= form_with( url: remove_selected_element_work_mouvement_path(@work, mouvement), id: "remove_form_#{mouvement.id}_#{element.id}") do |form| %>
           <%= hidden_field_tag :element_id, element.id %>
-          Êtes-vous sûr de vouloir supprimer l'élément <%= simple_format(element.title) %> de ce mouvement ?
+          Êtes-vous sûr de vouloir supprimer l'élément <%= element.title %> de ce mouvement ?
         <% end %>
       </div>
       <div class="modal-footer">

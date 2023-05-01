@@ -1,6 +1,6 @@
 class ElementsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
-  before_action :set_element, only: %i[edit update]
+  before_action :set_element, only: %i[update]
   before_action :set_object, only: %i[create update]
 
   def show
@@ -12,10 +12,6 @@ class ElementsController < ApplicationController
     authorize @element
   end
 
-  def edit
-    authorize @element
-  end
-
   def create
     @element = Element.new(element_params)
     authorize @element
@@ -24,7 +20,7 @@ class ElementsController < ApplicationController
       create_object_element
       flash[:notice] = "Element was successfully created."
     else
-      flash[:notice] = @element.errors.full_messages.join(", ")
+      flash[:alert] = @element.errors.full_messages.join(", ")
     end
     redirection
   end
@@ -35,7 +31,8 @@ class ElementsController < ApplicationController
     if @element.update(element_params.except(:category))
       flash[:notice] = "Element was successfully created."
     else
-      flash[:notice] = @element.errors.full_messages.join(", ")
+      # raise
+      flash[:alert] = @element.errors.full_messages.join(", ")
     end
     redirection
   end
