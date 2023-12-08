@@ -1,9 +1,6 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Writing.destroy_all
+Writer.destroy_all
+
+og = Writer.create(firstname: "Olivier", lastname: "Greif", birthdate: Date.new(1950,05,13), bio: "Olivier Greif est né le 3 janvier 1950 à Paris. Son père a étudié le piano en Pologne avant d’émigrer en France et de devenir médecin. Enfant prodige, Olivier découvre le piano à trois ans dans un jardin d’enfants. Entré au CNSM à dix ans, il étudie le piano avec Lucette Descaves et la composition avec Tony Aubin. Il se perfectionne à New York auprès de Luciano Berio. Il compose une première série d’œuvres très personnelles, à l’écart des courants en vogue, de 1961 à 1981. Puis il cesse de composer pendant une dizaine d’années pour se consacrer à une “recherche spirituelle” auprès d’un maître indien établi à New York. À partir de 1991, il écrit une nouvelle série d’œuvres, intenses et sombres. Il évoque des sujets qui ont marqué son enfance: la guerre, le séjour de son père à Auschwitz, la disparition d’une grande partie de sa famille dans les camps. Il met en musique des poèmes de Paul Celan. Gravement malade à deux reprises, il meurt à son domicile le 13 mai 2000.")
+Writing.create!(writer: og, date: Date.new(1957,05,13), content: "Salle Berlioz. Cet après-midi, audition des élèves de Lucette Descaves. Je joue un “Menuet” et une “Fugue” de Telemann, ainsi qu’une “Petite sonatine” et “En jouant à la balle” de Kabalevsky.")
+Writing.create!(writer: og, date: Date.new(1959,10,15), content: "Audition des élèves de Lucette Descaves à la salle Berlioz. Je joue une “Bagatelle” (en fa) de Beethoven, le “Golliwog’s Cake-Walk” extrait du “Children’s Corner” de Debussy et “Nausicaa”, ma première œuvre, composée en 1957 d’après un épisode célèbre de l’Odyssée d’Homère, dont je possédais alors une édition illustrée pour les enfants. Mon écriture était encore si gauche et incorrecte à l’époque que mon père avait dû prendre lui-même ce morceau en dictée — tandis que je le lui jouais au piano – et en mettre la partition au propre.")
