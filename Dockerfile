@@ -1,75 +1,79 @@
-# syntax = docker/dockerfile:1
+FROM ruby:3.2.2-slim-bookworm AS assets
+LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.0.5
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+WORKDIR /app
 
-# Rails app lives here
-WORKDIR /rails
+ARG UID=1000
+ARG GID=1000
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+RUN bash -c "set -o pipefail && apt-get update \
+  && apt-get install -y --no-install-recommends build-essential curl git libpq-dev \
+  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key -o /etc/apt/keyrings/nodesource.asc \
+  && echo 'deb [signed-by=/etc/apt/keyrings/nodesource.asc] https://deb.nodesource.com/node_20.x nodistro main' | tee /etc/apt/sources.list.d/nodesource.list \
+  && apt-get update && apt-get install -y --no-install-recommends nodejs \
+  && corepack enable \
+  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
+  && apt-get clean \
+  && groupadd -g \"${GID}\" ruby \
+  && useradd --create-home --no-log-init -u \"${UID}\" -g \"${GID}\" ruby \
+  && mkdir /node_modules && chown ruby:ruby -R /node_modules /app"
 
+USER ruby
 
-# Throw-away build stage to reduce size of final image
-FROM base as build
+COPY --chown=ruby:ruby Gemfile* ./
+RUN bundle install
 
-# Install packages needed to build gems and node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
+COPY --chown=ruby:ruby package.json *yarn* ./
+RUN yarn install
 
-# Install JavaScript dependencies
-ARG NODE_VERSION=16.13.1
-ARG YARN_VERSION=1.22.17
-ENV PATH=/usr/local/node/bin:$PATH
-RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-    npm install -g yarn@$YARN_VERSION && \
-    rm -rf /tmp/node-build-master
+ARG RAILS_ENV="production"
+ARG NODE_ENV="production"
+ENV RAILS_ENV="${RAILS_ENV}" \
+    NODE_ENV="${NODE_ENV}" \
+    PATH="${PATH}:/home/ruby/.local/bin:/node_modules/.bin" \
+    USER="ruby"
 
-# Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    bundle exec bootsnap precompile --gemfile
+COPY --chown=ruby:ruby . .
 
-# Install node modules
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN if [ "${RAILS_ENV}" != "development" ]; then \
+  SECRET_KEY_BASE_DUMMY=1 rails assets:precompile; fi
 
-# Copy application code
-COPY . .
+CMD ["bash"]
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
+###############################################################################
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+FROM ruby:3.2.2-slim-bookworm AS app
+LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
+WORKDIR /app
 
-# Final stage for app image
-FROM base
+ARG UID=1000
+ARG GID=1000
 
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends build-essential curl libpq-dev \
+  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
+  && apt-get clean \
+  && groupadd -g "${GID}" ruby \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" ruby \
+  && chown ruby:ruby -R /app
 
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+USER ruby
 
-# Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER rails:rails
+COPY --chown=ruby:ruby bin/ ./bin
+RUN chmod 0755 bin/*
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ARG RAILS_ENV="production"
+ENV RAILS_ENV="${RAILS_ENV}" \
+    PATH="${PATH}:/home/ruby/.local/bin" \
+    USER="ruby"
 
-# Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
-CMD ["./bin/rails", "server"]
+COPY --chown=ruby:ruby --from=assets /usr/local/bundle /usr/local/bundle
+COPY --chown=ruby:ruby --from=assets /app/public /public
+COPY --chown=ruby:ruby . .
+
+ENTRYPOINT ["/app/bin/docker-entrypoint-web"]
+
+EXPOSE 8000
+
+CMD ["rails", "s"]
