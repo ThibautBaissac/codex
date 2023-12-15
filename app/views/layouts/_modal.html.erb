@@ -1,0 +1,16 @@
+<div id="<%= modal %>"
+  class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center opacity-0 transition-opacity duration-500"
+  aria-modal="true" role="dialog" aria-labelledby="<%= modal %>Title" onclick="overlayClick(event)">
+  <div class="bg-white rounded-xl overflow-hidden shadow-xl transform transition-all  sm:w-full md:max-w-2xl lg:max-w-3xl divide-y"
+       style="max-height: 90vh;">
+    <div class="px-6 pt-6">
+      <h2 id="<%= modal %>Title" class="text-lg font-medium text-gray-900"><%= title %></h2>
+    </div>
+    <div class="px-6 py-4 overflow-y-auto" style="max-height: 75vh;">
+      <p class="text-gray-500"><%= content %></p>
+    </div>
+    <div class="px-6 pt-2 pb-6">
+      <button class="bg-gray-300 rounded-xl px-3 py-2" data-close-button>Fermer</button>
+    </div>
+  </div>
+</div>

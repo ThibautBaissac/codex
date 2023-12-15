@@ -8,21 +8,6 @@
     <div class="flex h-screen">
       <%= render partial: "layouts/sidebar" %>
       <%= render partial: "layouts/main" %>
-
-    <div id="modal1"
-      class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center opacity-0 transition-opacity duration-500"
-      aria-modal="true" role="dialog" aria-labelledby="modal1Title" onclick="overlayClick(event)">
-      <div class="bg-white rounded-xl overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full divide-y">
-        <div class="px-6 pt-6">
-          <h2 id="modal1Title" class="text-lg font-medium text-gray-900">Modal Title 1</h2>
-        </div>
-        <div class="px-6 py-4">
-          <p class="text-gray-500">Your modal content goes here.</p>
-        </div>
-        <div class="px-6 pt-2 pb-6">
-          <button class="bg-gray-300 rounded-xl px-3 py-2" data-close-button>Close</button>
-        </div>
-      </div>
     </div>
 
     <script>
