@@ -10,12 +10,15 @@
     </button>
   </div>
   <div class="relative">
-    <input type="text" name="search"
-      class="pl-4 pr-10 py-2 w-full bg-indigo-700 border border-gray-600 rounded-xl focus:outline-none focus:border-gray-500 focus:bg-gray-700"
-      placeholder="Rechercher..." aria-label="Rechercher">
-    <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400">
-      <i class="fas fa-search" aria-hidden="true"></i>
-    </div>
+    <%= form_with(url: "#", method: :get, local: true, class: "search-form") do %>
+      <%= text_field_tag :search, nil,
+        class: "pl-4 pr-10 py-2 w-full bg-indigo-700 border border-gray-600 rounded-xl focus:outline-none focus:border-gray-500 focus:bg-gray-700",
+        placeholder: "Rechercher...",
+        "aria-label": "Rechercher" %>
+      <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </div>
+    <% end %>
   </div>
   <ul class="space-y-2">
     <li>
