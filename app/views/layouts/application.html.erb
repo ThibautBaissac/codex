@@ -1,16 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Writings</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= render partial: "layouts/include" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-white">
+    <div class="flex h-screen">
+      <%= render partial: "layouts/sidebar" %>
+      <%= render partial: "layouts/main" %>
+
+    <div id="modal1"
+      class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center opacity-0 transition-opacity duration-500"
+      aria-modal="true" role="dialog" aria-labelledby="modal1Title" onclick="overlayClick(event)">
+      <div class="bg-white rounded-xl overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full divide-y">
+        <div class="px-6 pt-6">
+          <h2 id="modal1Title" class="text-lg font-medium text-gray-900">Modal Title 1</h2>
+        </div>
+        <div class="px-6 py-4">
+          <p class="text-gray-500">Your modal content goes here.</p>
+        </div>
+        <div class="px-6 pt-2 pb-6">
+          <button class="bg-gray-300 rounded-xl px-3 py-2" data-close-button>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar
+      var menuButton = document.getElementById('menuButton');
+      var sidebar = document.getElementById('sidebar');
+      var hamburgerIcon = document.getElementById('hamburgerIcon');
+      var crossIcon = document.getElementById('crossIcon');
+      var main = document.getElementById('main');
+
+      menuButton.addEventListener('click', function () {
+        if (sidebar.classList.contains('-translate-x-full')) {
+          sidebar.classList.remove('-translate-x-full');
+          hamburgerIcon.classList.add('hidden');
+          crossIcon.classList.remove('hidden');
+          main.classList.add('overlay');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          hamburgerIcon.classList.remove('hidden');
+          crossIcon.classList.add('hidden');
+          main.classList.remove('overlay');
+        }
+      });
+
+      crossIcon.addEventListener('click', function () {
+        sidebar.classList.add('-translate-x-full');
+        hamburgerIcon.classList.remove('hidden');
+        crossIcon.classList.add('hidden');
+        main.classList.remove('overlay');
+      });
+
+      // Modal
+      document.querySelectorAll('.modal-open').forEach(button => {
+        button.addEventListener('click', () => {
+          const modal = document.querySelector(button.dataset.modalTarget);
+          openModal(modal);
+        });
+      });
+
+      document.querySelectorAll('[data-close-button]').forEach(button => {
+        button.addEventListener('click', () => {
+          const modal = button.closest('.modal');
+          closeModal(modal);
+        });
+      });
+
+      function openModal(modal) {
+        if (modal == null) return;
+        modal.classList.remove('hidden'); // Remove hidden first
+        setTimeout(() => {
+          modal.classList.remove('opacity-0'); // Then remove opacity-0
+          modal.classList.add('opacity-100'); // Add opacity-100 for fade-in effect
+        }, 10); // A short delay to allow the browser to render the modal before starting the fade-in
+      }
+
+      function closeModal(modal) {
+        if (modal == null) return;
+        modal.classList.remove('opacity-100'); // Remove opacity-100
+        modal.classList.add('opacity-0'); // Add opacity-0 for fade-out effect
+
+        // Use setTimeout to wait for the fade-out transition before setting the modal to hidden
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 500); // This duration should match the CSS transition duration
+      }
+
+      function overlayClick(event) {
+        // Check if the clicked element is the modal overlay itself
+        if (event.target.classList.contains('modal')) {
+          closeModal(event.target);
+        }
+      }
+
+      // Drop-up Menu
+      document.getElementById('userMenuButton').addEventListener('click', function (event) {
+          event.stopPropagation();
+          document.getElementById('userMenu').classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', function () {
+          if (!document.getElementById('userMenu').classList.contains('hidden')) {
+            document.getElementById('userMenu').classList.add('hidden');
+          }
+        });
+    </script>
   </body>
 </html>

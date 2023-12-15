@@ -1,0 +1,15 @@
+
+<main id="main" class="flex-1 pt-3 overflow-y-auto md:ml-72 relative" role="main">
+  <header class="fixed top-0 bg-white shadow-md z-10 w-full flex items-center px-3 py-2">
+    <button class="focus:outline-none md:hidden z-50 mr-2" id="menuButton" aria-label="Open menu">
+      <svg id="hamburgerIcon" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <i class="fas fa-hippo mr-2"></i><span class="text-lg font-semibold hidden md:block"></i>Permanents</span>
+  </header>
+  <div class="mt-10 mx-3">
+    <%= yield %>
+  </div>
+</main>
