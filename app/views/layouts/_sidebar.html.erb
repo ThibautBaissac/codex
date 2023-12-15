@@ -19,16 +19,14 @@
   </div>
   <ul class="space-y-2">
     <li>
-      <a href="#" role="menuitem"
-        class="flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group">
-        <span>Accueil</span>
-      </a>
+      <%= link_to(artists_path, role: 'menuitem', class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group") do %>
+        <span>Artistes</span>
+      <% end %>
     </li>
     <li>
-      <a href="#" role="menuitem"
-        class="flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group">
-        <span>Artistes</span>
-      </a>
+      <%= link_to(artist_path(Artist.where('LOWER(lastname) = ?', "greif").first), role: 'menuitem', class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group") do %>
+        <span>Olivier Greif</span>
+      <% end %>
     </li>
     <li
       class="flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group">
