@@ -1,0 +1,5 @@
+<div class="artist">
+  <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl"><%= artist.fullname %></h2>
+  <div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= artist.biography %></div>
+  <%= render partial: 'writings/writings', collection: artist.limited_writings, as: :writing %>
+</div>
