@@ -23,6 +23,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+gem 'pagy', '~> 6.2'
+
 group :development, :test do
   gem "bootsnap", require: false
   gem 'byebug'

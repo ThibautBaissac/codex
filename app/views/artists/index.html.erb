@@ -1,4 +1,4 @@
-<% artists_presenter = ArtistsPresenter.new %>
-<% artists_presenter.all_artists_with_writings.each do |artist| %>
-  <%= render 'artist', artist: artist %>
+<% @artists.each do |artist| %>
+  <%= render 'artist', artist: artist.decorate %>
 <% end %>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>

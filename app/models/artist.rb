@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
 
   include Decorable
 
-  def limited_writings(limit = 5)
-    writings.limit(limit)
+  def random_writings(limit = 5)
+    writings.order('RANDOM()').limit(limit)
   end
 end
