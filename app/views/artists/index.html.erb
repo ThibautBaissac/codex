@@ -1,0 +1,6 @@
+<h1 class="text-3xl">Artists</h1>
+
+<% artists_presenter = ArtistsPresenter.new %>
+<% artists_presenter.all_artists_with_writings.each do |artist| %>
+  <%= render 'artist', artist: artist %>
+<% end %>

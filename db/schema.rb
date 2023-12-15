@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_131714) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "writers", force: :cascade do |t|
+  create_table "artists", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.date "birthdate"
@@ -63,13 +63,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_131714) do
 
   create_table "writings", force: :cascade do |t|
     t.date "date"
-    t.bigint "writer_id", null: false
+    t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["writer_id"], name: "index_writings_on_writer_id"
+    t.index ["artist_id"], name: "index_writings_on_artist_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "writings", "writers"
+  add_foreign_key "writings", "artists"
 end

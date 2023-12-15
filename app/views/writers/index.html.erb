@@ -1,6 +1,0 @@
-<h1 class="text-3xl">Writers</h1>
-
-<% writers_presenter = WritersPresenter.new %>
-<% writers_presenter.all_writers_with_writings.each do |writer| %>
-  <%= render 'writer', writer: writer %>
-<% end %>
