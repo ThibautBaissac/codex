@@ -4,9 +4,6 @@
 
 <div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= @artist.biography %></div>
 
-
 <%= render partial: 'writings/search' %>
-
 <%= render partial: 'writings/writings', collection: @writings, as: :writing %>
-
-<div class="flex items-center justify-center"><%== pagy_nav(@pagy) if @pagy.pages > 1 %></div>
+<%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>

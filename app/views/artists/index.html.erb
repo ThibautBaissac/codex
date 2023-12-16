@@ -2,4 +2,4 @@
   <%= render 'artist', artist: artist.decorate %>
 <% end %>
 
-<div class="flex items-center justify-center"><%== pagy_nav(@pagy) if @pagy.pages > 1 %></div>
+<%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>

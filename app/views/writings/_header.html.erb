@@ -1,0 +1,16 @@
+<div class="border-b-2 flex items-center justify-between">
+  <span class="font-bold"><%= writing.date %></span>
+  <div>
+    <% if on_page?("artists", "show") %>
+      <button data-modal-target="#modal_edit<%= writing.id %>" class="modal-open">
+        <i class="fa-solid fa-edit text-indigo-900"></i>
+      </button>
+      <%= render partial: "layouts/modal", locals: {modal: "modal_edit#{writing.id}", title: writing.date, content: writing.content} %>
+    <% else %>
+      <button data-modal-target="#modal_show<%= writing.id %>" class="modal-open">
+        <i class="fa-solid fa-eye text-indigo-900"></i>
+      </button>
+      <%= render partial: "layouts/modal", locals: {modal: "modal_show#{writing.id}", title: writing.date, content: writing.content} %>
+    <% end %>
+  </div>
+</div>

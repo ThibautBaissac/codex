@@ -1,0 +1,5 @@
+<% if on_page?("artists", "show") || on_page?("writings", "search") %>
+  <%= writing.content %>
+<% else %>
+  <%= truncate(writing.content.to_plain_text, length: 200) %>
+<% end %>
