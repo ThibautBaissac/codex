@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :artists do
     resources :writings do
       get :search, on: :collection
+      resources :tags, only: %i[create destroy], controller: 'tags'
     end
   end
 

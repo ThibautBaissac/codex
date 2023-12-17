@@ -1,0 +1,5 @@
+<%= form_with(url: remove_url, method: :delete) do |form| %>
+  <%= button_tag(type: 'submit', class: 'text-xs hover:bg-red-500 rounded-full h-4 w-4 ml-1') do %>
+    <i class="fa fa-times"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="mb-4 mx-10 p-4 border border-indigo-100 rounded-xl relative">
+  <div class="absolute top-0 left-0 mx-4 -translate-y-1/2 bg-white text-gray-400">
+    Filtrer par tags
+  </div>
+
+  <% tags.each do |tag| %>
+    <span class="border border-gray-500 text-gray-500 rounded-full px-2 text-sm inline-block align-middle">
+      <%= tag.name %>
+    </span>
+  <% end %>
+</div>
