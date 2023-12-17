@@ -6,5 +6,5 @@
 
 <%= render partial: 'writings/search' %>
 <%= render partial: 'artists/tags', locals: { tags: @tags } %>
-<%= render partial: 'writings/writings', collection: @writings, as: :writing %>
+<%= render partial: 'writings/writings', collection: @writings, as: :writing, locals: { artist: @artist } %>
 <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>

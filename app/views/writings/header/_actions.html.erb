@@ -3,5 +3,9 @@
   <button data-modal-target="#modal_<%= modal_type %><%= writing.id %>" class="modal-open">
     <i class="fa-solid fa-<%= icon_class %> text-indigo-900"></i>
   </button>
-  <%= render partial: "shared/modal", locals: { modal: "modal_#{modal_type}#{writing.id}", title: writing.date, content: writing.content } %>
+  <%= render partial: "shared/modal_form", locals: {
+              modal: "modal_#{modal_type}#{writing.id}",
+              title: writing.date,
+              form_partial: "writings/form",
+              form_locals: { artist:, writing:}  } %>
 </div>

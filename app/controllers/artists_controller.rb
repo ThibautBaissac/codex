@@ -5,6 +5,6 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id]).decorate
-    @pagy, @writings = pagy(@artist.writings, items: 20)
+    @pagy, @writings = pagy(@artist.writings.order(date: :asc), items: 20)
   end
 end

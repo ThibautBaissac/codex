@@ -14,6 +14,7 @@
 ```bash
 docker-compose build
 docker-compose up
+docker compose exec js bin/rails action_text:install
 ```
 
 Visit: http://localhost:8000

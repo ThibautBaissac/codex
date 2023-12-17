@@ -1,9 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import 'actiontext.css';
 
+/* trix-editor { @apply prose max-w-none } */
+/* Remove the attachment button from Trix */
+.trix-button-group.trix-button-group--file-tools {
+  display: none;
+}
 
+/* Remove the link button from Trix */
+.trix-button--icon-link {
+  display: none;
+}
 /* MODAL */
 .overlay::before {
   content: '';
@@ -43,3 +49,7 @@
 .page.active {
   @apply z-10 border-indigo-500 bg-indigo-50 text-indigo-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

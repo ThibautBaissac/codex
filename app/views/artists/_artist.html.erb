@@ -3,7 +3,7 @@
   <div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= truncate(artist.biography.to_plain_text, length: 200) %></div>
 
   <div class="flex space-x-4">
-    <%= render partial: 'writings/writings', collection: artist.random_writings(3), as: :writing %>
+    <%= render partial: 'writings/writings', collection: artist.random_writings(3), as: :writing, locals: { artist: } %>
   </div>
 
   <%= link_to(artist_path(artist)) do %>
