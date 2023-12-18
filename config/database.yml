@@ -1,8 +1,8 @@
 default: &default
   adapter: "postgresql"
   encoding: "unicode"
-  database: "<%= ENV.fetch("POSTGRES_DB") { "writings" } %>"
-  username: "<%= ENV.fetch("POSTGRES_USER") { "writings" } %>"
+  database: "<%= ENV.fetch("POSTGRES_DB") { "codex" } %>"
+  username: "<%= ENV.fetch("POSTGRES_USER") { "codex" } %>"
   password: "<%= ENV.fetch("POSTGRES_PASSWORD") { "password" } %>"
   host: "<%= ENV.fetch("POSTGRES_HOST") { "postgres" } %>"
   port: "<%= ENV.fetch("POSTGRES_PORT") { 5432 } %>"
@@ -11,12 +11,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("POSTGRES_DB") { "writings" } %>_development
+  database: <%= ENV.fetch("POSTGRES_DB") { "codex" } %>_development
 
 test:
   <<: *default
-  database: <%= ENV.fetch("POSTGRES_DB") { "writings" } %>_test
+  database: <%= ENV.fetch("POSTGRES_DB") { "codex" } %>_test
 
 production:
   <<: *default
-  database: <%= ENV.fetch("POSTGRES_DB") { "writings" } %>_production
+  database: <%= ENV.fetch("POSTGRES_DB") { "codex" } %>_production
