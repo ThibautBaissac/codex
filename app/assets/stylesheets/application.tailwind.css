@@ -1,55 +1,10 @@
 @import 'actiontext.css';
-
-/* trix-editor { @apply prose max-w-none } */
-/* Remove the attachment button from Trix */
-.trix-button-group.trix-button-group--file-tools {
-  display: none;
-}
-
-/* Remove the link button from Trix */
-.trix-button--icon-link {
-  display: none;
-}
-/* MODAL */
-.overlay::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 30;
-}
-.modal {
-  z-index: 1000;
-}
-
-
-/* PAGY */
-.pagy-nav.pagination {
-  @apply isolate inline-flex -space-x-px rounded-md shadow-sm;
-}
-.page.next a {
-  @apply relative inline-flex items-center rounded-r-md border border-indigo-300 bg-white px-2 py-2 text-sm font-medium text-indigo-500 hover:bg-indigo-50 focus:z-20;
-}
-.page.prev a {
-  @apply relative inline-flex items-center rounded-l-md border border-indigo-300 bg-white px-2 py-2 text-sm font-medium text-indigo-500 hover:bg-indigo-50 focus:z-20;
-}
-.page.next.disabled {
-  @apply relative inline-flex items-center rounded-r-md border border-indigo-300 bg-slate-100 px-2 py-2 text-sm font-medium text-indigo-500 hover:bg-indigo-50 focus:z-20;
-}
-.page.prev.disabled {
-  @apply relative inline-flex items-center rounded-l-md border border-indigo-300 bg-slate-100 px-2 py-2 text-sm font-medium text-indigo-500 hover:bg-indigo-50 focus:z-20;
-}
-.page a,
-.page.gap {
-  @apply bg-white border-indigo-300 text-indigo-500 hover:bg-indigo-50 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
-}
-.page.active {
-  @apply z-10 border-indigo-500 bg-indigo-50 text-indigo-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
-}
-
+@import 'components/index.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+  font-family: 'Spectral', serif;
+}
