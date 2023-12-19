@@ -1,0 +1,10 @@
+<% if flash[type] %>
+  <div data-controller="alerts" data-alerts-target="alert"
+       class="<%= bg_class %> text-white text-sm px-4 py-3 rounded-xl my-2"
+       role="alert">
+    <%= flash[type].html_safe %>
+    <button type="button" data-action="click->alerts#close" class="float-right">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+<% end %>

@@ -2,8 +2,11 @@ class WritingsController < ApplicationController
 
   def update
     @writing = Writing.find(params[:id])
-    @writing.update(writing_params)
-    redirect_back(fallback_location: root_path, notice:)
+    if @writing.update!(writing_params)
+      redirect_back(fallback_location: root_path, notice: "Writing updated")
+    else
+      redirect_back(fallback_location: root_path, alert: "Someting went wrong")
+    end
   end
 
   def search
