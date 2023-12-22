@@ -1,4 +1,4 @@
-<%= form_with(model: [artist, writing], data: { turbo: true } ) do |form| %>
+<%= form_with(model: [artist, writing], data: { turbo: true, turbo_frame: "writing_#{writing.id}"  } ) do |form| %>
   <div class="mb-4" data-controller="trix">
     <%= form.rich_text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>

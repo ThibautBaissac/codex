@@ -10,7 +10,9 @@
     <i class="fas fa-hippo mr-2"></i><span class="text-lg font-semibold hidden md:block"></i>Codex</span>
   </header>
   <div class="mt-10 mx-4 xl:mx-auto xl:w-1/2">
-    <%= render partial: "shared/alerts/alerts" %>
+    <%= turbo_frame_tag "alerts" do %>
+      <%= render partial: "shared/alerts/alerts" %>
+    <% end %>
     <%= yield %>
   </div>
 </main>

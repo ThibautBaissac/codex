@@ -1,4 +1,4 @@
-<% if on_page?("artists", "show") || on_page?("writings", "search") %>
+<% if on_page?("artists", "show") || on_page?("writings", "search") || on_page?("writings", "update") %>
   <%= writing.content %>
   <%= render "tags/add_tag", url: artist_writing_tags_path(@artist, writing, taggable_type: "writing") %>
 <% else %>

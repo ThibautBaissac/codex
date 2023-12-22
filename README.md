@@ -18,3 +18,14 @@ docker compose exec js bin/rails action_text:install
 ```
 
 Visit: http://localhost:8000
+
+
+If this error occurs:
+`A server is already running (pid: 1, file: /app/tmp/pids/server.pid).``
+Run:
+`docker compose run web bash -c "rm -f /app/tmp/pids/server.pid"`
+or
+```bash
+docker compose exec web bash
+rm /app/tmp/pids/server.pid
+```

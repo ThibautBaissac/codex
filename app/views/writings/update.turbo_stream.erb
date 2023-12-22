@@ -1,0 +1,2 @@
+<%= turbo_stream.replace(@writing, partial: "writings/writing", locals: { artist: @artist, writing: @writing }) %>
+<%= turbo_stream.prepend("writing_#{@writing.id}_alert", partial: "writings/updated_alert", locals: { writing: @writing }) %>

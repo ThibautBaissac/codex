@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def determine_modal_type_and_icon
-    if on_page?("artists", "show") || on_page?("writings", "search")
+    if on_page?("artists", "show") || on_page?("writings", "search") || on_page?("writings", "update")
       ["edit", "edit"]
     else
       ["show", "eye"]

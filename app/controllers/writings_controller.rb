@@ -2,8 +2,12 @@ class WritingsController < ApplicationController
 
   def update
     @writing = Writing.find(params[:id])
+    @artist = @writing.artist
     if @writing.update!(writing_params)
-      redirect_back(fallback_location: root_path, notice: "Writing updated")
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path, notice: "Writing updated") }
+        format.turbo_stream
+      end
     else
       redirect_back(fallback_location: root_path, alert: "Someting went wrong")
     end

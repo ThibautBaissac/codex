@@ -1,7 +1,7 @@
 class Writing < ApplicationRecord
   belongs_to :artist
   has_rich_text :content
-  has_many :taggings, as: :taggable
+  has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
   scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
