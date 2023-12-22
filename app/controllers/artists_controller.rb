@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
 
   def load_tags
     tagging_ids = Tagging.where(taggable_type: 'Writing', taggable_id: @artist.writings.select(:id)).pluck(:tag_id)
-    Tag.where(id: tagging_ids)
+    Tag.where(id: tagging_ids).order(:name)
   end
 
   def pagy_ordered_writings

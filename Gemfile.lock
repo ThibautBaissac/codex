@@ -289,6 +289,10 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uniform_notifier (1.16.0)
+    view_component (3.8.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -341,6 +345,7 @@ DEPENDENCIES
   timecop (~> 0.9.4)
   turbo-rails
   tzinfo-data
+  view_component
   web-console
   webdrivers
 

@@ -4,8 +4,6 @@
   </div>
 
   <% tags&.each do |tag| %>
-    <span class="border border-gray-500 text-gray-500 rounded-full px-2 text-sm inline-block align-middle">
-      <%= tag.name %>
-    </span>
+    <%= render(TagComponent.new(name: tag.name)) %>
   <% end %>
 </div>
