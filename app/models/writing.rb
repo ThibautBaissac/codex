@@ -19,4 +19,8 @@ class Writing < ApplicationRecord
     tag = Tag.find(tag_id)
     tags.delete(tag) if tag
   end
+
+  def self.tags_for_display
+    includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+  end
 end

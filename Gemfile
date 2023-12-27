@@ -25,6 +25,7 @@ gem "image_processing", "~> 1.2"
 
 gem 'pagy', '~> 6.2'
 gem "view_component"
+gem "simple_command"
 
 group :development, :test do
   gem "bootsnap", require: false

@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = load_artist
+    @years = @artist.writings.pluck(:date).map(&:year).uniq.sort
     @tags = load_tags
     @pagy, @writings = pagy_ordered_writings
   end

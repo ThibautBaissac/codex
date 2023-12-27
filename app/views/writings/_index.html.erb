@@ -1,4 +1,6 @@
-<%= render partial: 'writings/search' %>
-<%= render partial: 'artists/tags', locals: { tags: @tags } %>
+<div class="relative mx-10 mb-4">
+  <%= render partial: 'writings/search' %>
+  <%= render partial: 'artists/tags', locals: { tags: @tags } %>
+</div>
 <%= render partial: 'writings/writing', collection: @writings, as: :writing, locals: { artist: @artist } %>
 <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>

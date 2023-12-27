@@ -7,4 +7,8 @@ class Artist < ApplicationRecord
   def random_writings(limit = 5)
     writings.order('RANDOM()').limit(limit)
   end
+
+  def years_of_writings
+    writings.pluck(:date).map(&:year).uniq.sort
+  end
 end
