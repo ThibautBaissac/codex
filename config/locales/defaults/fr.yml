@@ -36,7 +36,7 @@ fr:
       - samedi
     formats:
       default: "%d/%m/%Y"
-      long: "%e %B %Y"
+      long: "%d %B %Y"
       short: "%e %b"
       ymd: "%d/%m/%Y"
     month_names:
@@ -212,5 +212,3 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%Hh%M"
     pm: pm
-
-  success: 'Operation enregistrée'

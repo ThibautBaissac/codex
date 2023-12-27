@@ -1,7 +1,7 @@
 <nav id="sidebar" role="navigation" aria-label="Main navigation"
   class="transform transition-transform duration-300 ease-in-out md:block w-72 bg-indigo-950 p-4 overflow-y-auto fixed h-full z-40 text-white space-y-2 -translate-x-full md:translate-x-0">
   <div class="flex items-center">
-    <h1 class="text-xl font-bold md:ml-0 flex-grow md:hidden">Artistes</h1>
+    <h1 class="text-xl font-bold md:ml-0 flex-grow md:hidden"><%= Artist.model_name.human(count: 2) %></h1>
     <button id="crossIcon" class="w-6 h-6 hidden cursor-pointer" aria-label="Close menu">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true">
@@ -23,7 +23,7 @@
   <ul class="space-y-2">
     <li>
       <%= link_to(artists_path, role: 'menuitem', class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-indigo-700 hover:bg-white hover:text-gray-900 group") do %>
-        <span>Artistes</span>
+        <span><%= Artist.model_name.human(count: 2) %></span>
       <% end %>
     </li>
     <li>

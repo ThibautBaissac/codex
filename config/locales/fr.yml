@@ -1,0 +1,42 @@
+---
+fr:
+  activerecord:
+    attributes:
+      artist:
+        birthdate: Date de naissance
+        deathdate: Date de décès
+        firstname: Prénom
+        lastname: Nom
+      tag:
+        name: Nom
+      writing:
+        artist: Artiste
+        date: Date
+    models:
+      artist:
+        one: Artiste
+        other: Artistes
+      tag: Tag
+      writing: Écrit
+  artists:
+    artistes: Artistes
+    see_all_wrtings: Voir tous les écrits de %{name} (%{count})
+  default:
+    back: Retour
+    cancel: Annuler
+    close: Fermer
+    create: Créer
+    delete: Supprimer
+    edit: Modifier
+    new: Nouveau
+    save: Sauvegarder
+    search: Rechercher
+    show: Afficher
+    submit: Valider
+    update: Mettre à jour
+    search_placeholder: Rechercher...
+  tags:
+    filter_by_tag: Filtrer par tags
+  writings:
+    filter_by_date: Filtrer par année
+    reset_filter_by_date: Réinitialiser le filtre par année

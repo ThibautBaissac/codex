@@ -3,7 +3,7 @@
     <%= form.rich_text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
   <div class="flex items-center justify-between">
-    <button class="bg-gray-300 rounded-xl px-3 py-2" data-close-button>Fermer</button>
-    <%= form.submit "Enregistrer", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline" %>
+    <button class="bg-gray-300 rounded-xl px-3 py-2" data-close-button><%= t("default.close") %></button>
+    <%= form.submit t("default.save"), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>
