@@ -1,0 +1,4 @@
+<%= render partial: 'writings/breadcrumb' %>
+<%= render partial: 'writings/search_form' %>
+<%= render partial: 'writings/card', collection: @writings, as: :writing, locals: { artist: @artist } %>
+<%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>

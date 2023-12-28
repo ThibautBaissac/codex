@@ -1,15 +1,10 @@
-<div class="artist mb-10">
-  <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl"><%= artist.fullname %></h2>
-  <div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= artist.biography %></div>
+<div class="mb-10">
+  <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
+    <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-indigo-800") %>
+  </h2>
+  <div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= truncate(artist.biography.to_plain_text, length: 500) %></div>
 
   <div class="flex space-x-4">
-    <%= render partial: 'writings/writing', collection: artist.random_writings(3), as: :writing, locals: { artist: } %>
+    <%= render partial: 'writings/card', collection: artist.random_writings(3), as: :writing, locals: { artist: } %>
   </div>
-
-  <%= link_to(artist_path(artist)) do %>
-    <i class="fa-solid fa-circle-chevron-right mr-2"></i>
-    <span class="font-medium text-indigo-900 hover:underline">
-      <%= t("artists.see_all_wrtings", name: artist.fullname, count: artist.writings.count) %>
-    </span>
-  <% end %>
 </div>

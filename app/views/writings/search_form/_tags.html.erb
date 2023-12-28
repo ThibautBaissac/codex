@@ -3,7 +3,7 @@
     <%= t("tags.filter_by_tag") %>
   </div>
 
-  <% tags&.each do |tag| %>
-    <%= render(TagComponent.new(name: tag.name)) %>
+  <% @tags&.each do |tag| %>
+    <%= render FilterByTagComponent.new(tag:, param: params[:tags]&.include?(tag.id.to_s)) %>
   <% end %>
 </div>

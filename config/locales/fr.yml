@@ -17,10 +17,12 @@ fr:
         one: Artiste
         other: Artistes
       tag: Tag
-      writing: Écrit
+      writing:
+        one: Écrit
+        other: Ces écrits
   artists:
     artistes: Artistes
-    see_all_wrtings: Voir tous les écrits de %{name} (%{count})
+    see_all_writings: Voir tous les écrits de %{name} (%{count})
   default:
     back: Retour
     cancel: Annuler

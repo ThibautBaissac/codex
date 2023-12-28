@@ -1,0 +1,4 @@
+<div class="tag-item" data-action="click->form_submit_by_tag#submitForm" >
+  <%= check_box_tag 'tags[]', @tag.id, @param, id: "tag_#{@tag.id}", class: "tag-selector" %>
+  <%= label_tag "tag_#{@tag.id}", @tag.name %>
+</div>

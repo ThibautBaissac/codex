@@ -8,3 +8,7 @@ import { application } from "./application"
 // application.register("trix", TrixController)
 import AlertsController from "./alerts_controller"
 application.register("alerts", AlertsController)
+
+
+import FormSubmitByTagController from "./form_submit_by_tag_controller"
+application.register("form_submit_by_tag", FormSubmitByTagController)
