@@ -14,6 +14,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 gem "sidekiq", "~> 7.2"
 gem "redis", "~> 5.0"
+gem "bcrypt", "~> 3.1.7"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

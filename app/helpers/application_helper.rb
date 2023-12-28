@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def determine_modal_type_and_icon
-    if on_page?("writings", "index") || on_page?("writings", "search") || on_page?("writings", "update")
+    if user_signed_in?
       ["edit", "edit"]
     else
       ["show", "eye"]

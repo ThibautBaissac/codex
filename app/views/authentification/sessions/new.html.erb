@@ -1,0 +1,19 @@
+<div class="w-full max-w-xs">
+  <h1 class="mb-10 text-3xl">Log in</h1>
+
+  <%= form_with(model: @user, url: authentification_session_path) do |form| %>
+    <div class="mb-4">
+      <%= form.label :email, class: "block text-gray-700 text-sm font-bold mb-2", for: :email %>
+      <%= form.email_field :email, class: "appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :password, class: "block text-gray-700 text-sm font-bold mb-2", for: :password  %>
+      <%= form.password_field :password, class: "appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= form.submit "Log in", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline" %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to("Mot de passe oublié ?", new_authentification_password_reset_path) %>

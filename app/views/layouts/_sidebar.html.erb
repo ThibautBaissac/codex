@@ -33,19 +33,5 @@
     </li>
   </ul>
 
-  <!-- Drop-up Menu -->
-  <div class="absolute bottom-0 py-2">
-    <button class="flex items-center justify-center bg-indigo-700 text-white rounded-full hover:bg-indigo-600 p-4"
-      id="userMenuButton" aria-haspopup="true" aria-controls="userMenu">
-      <i class="fas fa-user"></i>
-    </button>
-    <div class="absolute bottom-10 left-10 w-48 bg-white rounded-xl shadow-lg hidden" id="userMenu" role="menu">
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200"
-        role="menuitem">Profile</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200"
-        role="menuitem">Settings</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200"
-        role="menuitem">Logout</a>
-    </div>
-  </div>
+  <%= render partial: "layouts/user_menu" %>
 </nav>

@@ -1,0 +1,19 @@
+<div class="absolute bottom-0 py-2">
+  <button class="flex items-center justify-center bg-indigo-700 text-white rounded-full hover:bg-indigo-600 p-4"
+    id="userMenuButton" aria-haspopup="true" aria-controls="userMenu">
+    <% if user_signed_in? %>
+      <i class="fa-solid fa-user-pen"></i>
+    <% else %>
+      <i class="fas fa-user"></i>
+    <% end %>
+  </button>
+  <div class="absolute bottom-10 left-10 w-48 bg-white rounded-xl shadow-lg hidden" id="userMenu" role="menu">
+    <% if user_signed_in? %>
+      <%= link_to("Edit password", edit_authentification_password_path(current_user), class: "block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
+      <%= button_to("Log out", authentification_session_path(current_user), method: :delete, class: "block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
+    <% else %>
+      <%= link_to("Sign up", new_authentification_registration_path, class: "block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
+      <%= link_to("Log in", new_authentification_session_path, class: "block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
+    <% end %>
+  </div>
+</div>
