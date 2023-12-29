@@ -1,12 +1,11 @@
 <div>
   <%= turbo_frame_tag("writing_#{writing.id}_alert") %>
-  <% modal_type, icon_class = determine_modal_type_and_icon %>
-  <button data-modal-target="#modal_<%= modal_type %><%= writing.id %>" class="modal-open">
-    <i class="fa-solid fa-<%= icon_class %> text-indigo-900"></i>
+  <button data-modal-target="#modal_<%= writing.id %>" class="modal-open">
+    <i class="fa-solid fa-edit text-indigo-900"></i>
   </button>
   <%= render partial: "shared/modal_form", locals: {
-              modal: "modal_#{modal_type}#{writing.id}",
-              title: writing.date,
-              form_partial: "writings/form",
-              form_locals: { artist:, writing:}  } %>
+             modal: "modal_#{writing.id}",
+             title: writing.date,
+             form_partial: "writings/form",
+             form_locals: { artist:, writing:}  } %>
 </div>

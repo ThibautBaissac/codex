@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resource :registration, only: %i[new create]
     resource :session, only: %i[new create destroy]
     resource :password_reset, only: %i[new create edit update]
-    resource :password, only: %i[new update]
+    resource :password, only: %i[edit update]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

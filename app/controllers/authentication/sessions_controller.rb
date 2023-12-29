@@ -15,7 +15,7 @@ module Authentication
 
     def destroy
       logout(current_user)
-      redirect_to root_path, notice: 'Logged out!'
+      redirect_back(fallback_location: root_path, notice: 'Logged out!')
     end
 
     private

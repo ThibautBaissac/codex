@@ -1,6 +1,6 @@
-<% if on_page?("writings", "index") || on_page?("writings", "search") || on_page?("writings", "update") %>
+<% if controller_name == "writings" %>
   <%= writing.content %>
-  <%= render "tags/add_tag", url: artist_writing_tags_path(@artist, writing, taggable_type: "writing") %>
+  <%= render "tags/add_tag", url: artist_writing_tags_path(@artist, writing, taggable_type: "writing") if user_signed_in? %>
 <% else %>
   <%= truncate(writing.content.to_plain_text, length: 200) %>
 <% end %>
