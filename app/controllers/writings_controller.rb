@@ -15,11 +15,12 @@ class WritingsController < ApplicationController
 
   def update
     @writing = Writing.find(params[:id])
+    authorize @writing
     @artist = @writing.artist
     if @writing.update(writing_params)
       respond_with_update
     else
-      redirect_back_with_error
+      redirect_back(fallback_location: root_path, alert: "Something went wrong")
     end
   end
 
@@ -50,9 +51,5 @@ class WritingsController < ApplicationController
       format.html { redirect_back(fallback_location: root_path, notice: "Writing updated") }
       format.turbo_stream
     end
-  end
-
-  def redirect_back_with_error
-    redirect_back(fallback_location: root_path, alert: "Something went wrong")
   end
 end

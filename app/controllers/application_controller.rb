@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  include Pundit::Authorization
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
@@ -30,5 +32,15 @@ class ApplicationController < ActionController::Base
   def logout(user)
     Current.user = nil
     reset_session
+  end
+
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+
+    flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.turbo_stream { render turbo_stream: turbo_stream.update("alerts", partial: "shared/alerts/alerts", locals: { flash: }) }
+    end
   end
 end

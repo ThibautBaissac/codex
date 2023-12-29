@@ -1,7 +1,9 @@
 <% writing.tag_list.each do |tag| %>
   <span class="flex justify-center items-center border border-gray-500 text-gray-500 rounded-full px-2 ms-1 text-sm">
     <%= tag.name %>
-    <%= render partial: "tags/remove_tag",
-               locals: {tag:, remove_url: artist_writing_tag_path(artist, writing, tag, taggable_type: "writing")} %>
+    <% if user_signed_in? %>
+      <%= render partial: "tags/remove_tag",
+                locals: {tag:, remove_url: artist_writing_tag_path(artist, writing, tag, taggable_type: "writing")} %>
+    <% end %>
   </span>
 <% end %>

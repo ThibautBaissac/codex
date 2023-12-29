@@ -1,13 +1,9 @@
 <div class="border-b-2 flex items-center justify-between">
   <%= render partial: "writings/card/date", locals: {writing:} %>
 
-  <% if user_signed_in? %>
-    <div id="tag_list" class="flex mb-1">
-      <%= render partial: 'tags/tag_list', locals: { artist:, writing:} %>
-    </div>
-  <% else %>
-    <!-- ADD tag list without form -->
-  <% end %>
+  <div id="tag_list" class="flex mb-1">
+    <%= render partial: 'tags/tag_list', locals: { artist:, writing:} %>
+  </div>
 
   <%= render partial: "writings/card/actions", locals: {artist:, writing:} %>
 </div>

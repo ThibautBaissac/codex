@@ -42,3 +42,10 @@ fr:
   writings:
     filter_by_date: Filtrer par année
     reset_filter_by_date: Réinitialiser le filtre par année
+  pundit:
+    default: Vous n'êtes pas autorisé à effectuer cette action.
+    tag_policy:
+      create?: Vous ne pouvez pas créer de tag !
+      destroy?: Vous ne pouvez pas supprimer ce tag !
+    writing_policy:
+      update?: Vous ne pouvez pas modifier cet écrit !

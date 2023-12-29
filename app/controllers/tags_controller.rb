@@ -2,6 +2,7 @@ class TagsController < ApplicationController
   before_action :set_taggable
 
   def create
+    authorize Tag
     if @taggable.add_tag(tag_params[:name])
       redirect_back_with_notice('Tag added successfully')
     else
@@ -10,6 +11,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    authorize Tag
     if @taggable.remove_tag(params[:id])
       redirect_back_with_notice('Tag removed successfully')
     else
