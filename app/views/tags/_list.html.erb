@@ -2,7 +2,7 @@
   <span class="flex justify-center items-center border border-gray-500 text-gray-500 rounded-full px-2 ms-1 text-sm">
     <%= tag.name %>
     <% if user_signed_in? %>
-      <%= render partial: "tags/remove_tag",
+      <%= render partial: "tags/remove",
                 locals: {tag:, remove_url: artist_writing_tag_path(artist, writing, tag, taggable_type: "writing")} %>
     <% end %>
   </span>

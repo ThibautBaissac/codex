@@ -2,6 +2,8 @@
 fr:
   activerecord:
     attributes:
+      annotation:
+        content: Contenu
       artist:
         birthdate: Date de naissance
         deathdate: Date de décès
@@ -20,11 +22,19 @@ fr:
       writing:
         one: Écrit
         other: Ces écrits
+  annotations:
+    add_annotation: Ajouter une note
   artists:
     artistes: Artistes
     see_all_writings: Voir tous les écrits de %{name} (%{count})
+  authentication:
+    edit_password: Modifier le mot de passe
+    login: Se connecter
+    logout: Se déconnecter
+    sign_up: S'inscrire
   default:
     back: Retour
+    by: Par %{name}
     cancel: Annuler
     close: Fermer
     create: Créer
@@ -33,19 +43,22 @@ fr:
     new: Nouveau
     save: Sauvegarder
     search: Rechercher
+    search_placeholder: Rechercher...
     show: Afficher
     submit: Valider
     update: Mettre à jour
-    search_placeholder: Rechercher...
-  tags:
-    filter_by_tag: Filtrer par tags
-  writings:
-    filter_by_date: Filtrer par année
-    reset_filter_by_date: Réinitialiser le filtre par année
   pundit:
+    annotations_policy:
+      create?: Vous ne pouvez pas créer d'annotation !
     default: Vous n'êtes pas autorisé à effectuer cette action.
     tag_policy:
       create?: Vous ne pouvez pas créer de tag !
       destroy?: Vous ne pouvez pas supprimer ce tag !
     writing_policy:
       update?: Vous ne pouvez pas modifier cet écrit !
+  tags:
+    add_tag: Ajouter un tag
+    filter_by_tag: Filtrer par tags
+  writings:
+    filter_by_date: Filtrer par année
+    reset_filter_by_date: Réinitialiser le filtre par année

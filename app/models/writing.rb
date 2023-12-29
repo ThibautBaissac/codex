@@ -3,6 +3,7 @@ class Writing < ApplicationRecord
   has_rich_text :content
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :annotations, as: :annotatable
 
   scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
 
@@ -22,5 +23,9 @@ class Writing < ApplicationRecord
 
   def self.tags_for_display
     includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+  end
+
+  def annotation_list
+    annotations.order(:updated_at)
   end
 end

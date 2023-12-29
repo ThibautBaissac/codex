@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :writings, only: %i[index update] do
       get :search, on: :collection
       resources :tags, only: %i[create destroy], controller: 'tags'
+      resources :annotations, only: %i[create], controller: 'annotations'
     end
   end
 

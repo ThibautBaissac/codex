@@ -1,0 +1,7 @@
+<div class="mb-2">
+  <div class="flex items-center justify-between p-2 bg-indigo-200 rounded-t-xl">
+    <span><%= t("default.by", name: annotation.user.email) %></span>
+    <span><%= l(annotation.updated_at.to_date, format: :default) %></span>
+  </div>
+  <div class="p-2 border rounded-b-xl"><%= annotation.content %></div>
+</div>
