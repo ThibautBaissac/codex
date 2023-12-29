@@ -1,4 +1,4 @@
-module Authentification
+module Authentication
   class SessionsController < ApplicationController
     def new
     end

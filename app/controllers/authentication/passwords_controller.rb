@@ -1,6 +1,7 @@
-module Authentification
+module Authentication
   class PasswordsController < ApplicationController
     before_action :authenticate_user!
+
     def edit
     end
 

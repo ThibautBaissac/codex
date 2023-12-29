@@ -1,4 +1,4 @@
-module Authentification
+module Authentication
   class PasswordResetsController < ApplicationController
     before_action :set_user_by_token, only: %i[edit update]
 
@@ -20,7 +20,7 @@ module Authentification
 
     def update
       if @user.update(password_params)
-        redirect_to new_authentification_session_path, notice: 'Password updated successfully!'
+        redirect_to new_authentication_session_path, notice: 'Password updated successfully!'
       else
         render :edit, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ module Authentification
 
     def set_user_by_token
       @user = User.find_by_token_for(:password_reset, params[:token])
-      redirect_to new_authentification_password_reset_path, alert: 'Token has expired.' unless @user.present?
+      redirect_to new_authentication_password_reset_path, alert: 'Token has expired.' unless @user.present?
     end
 
     def password_params

@@ -1,4 +1,4 @@
-module Authentification
+module Authentication
   class RegistrationsController < ApplicationController
     def new
       @user = User.new
