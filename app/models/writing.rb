@@ -7,6 +7,11 @@ class Writing < ApplicationRecord
 
   scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
 
+  def self.search_by_content(query)
+    joins("INNER JOIN action_text_rich_texts ON action_text_rich_texts.record_id = writings.id")
+      .where("action_text_rich_texts.body ILIKE ?", "%#{query}%")
+  end
+
   def tag_list
     tags.order(:name)
   end

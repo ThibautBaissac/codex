@@ -31,8 +31,7 @@ module Writings
     end
 
     def filter_query
-      @writings.joins(:rich_text_content)
-               .where("action_text_rich_texts.body LIKE ?", @query_param)
+      @writings.search_by_content(@query_param)
     end
 
     def filter_by_year
