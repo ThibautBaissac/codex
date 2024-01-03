@@ -4,7 +4,7 @@ class WritingsController < ApplicationController
   before_action :load_tags, only: %i[index search]
 
   def index
-    @pagy, @writings = pagy(@artist.writings.order(date: :asc), items: 20)
+    @pagy, @writings = pagy(@artist.writings.includes([:rich_text_content, { annotations: :user }]).order(date: :asc), items: 20)
   end
 
   def search

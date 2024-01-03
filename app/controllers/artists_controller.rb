@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @pagy, @artists = pagy(Artist.all)
+    @pagy, @artists = pagy(Artist.includes([:rich_text_bio]).all)
   end
 
   def show
