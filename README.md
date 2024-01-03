@@ -29,3 +29,14 @@ or
 docker compose exec web bash
 rm /app/tmp/pids/server.pid
 ```
+
+
+Run tests:
+run `docker compose up` and then:
+```bash
+./run rspec
+# or
+docker compose -e "RAILS_ENV=test" js bash -c rspec
+# or
+docker-compose exec js rspec
+```
