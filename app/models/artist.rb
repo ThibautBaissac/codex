@@ -5,7 +5,11 @@ class Artist < ApplicationRecord
   include Decorable
 
   def random_writings(limit = 5)
-    writings.includes([:rich_text_content, :annotations]).order('RANDOM()').limit(limit)
+    writings_to_include = []
+    writings_to_include << :rich_text_content if writings.joins(:rich_text_content).exists?
+    writings_to_include << :annotations if writings.joins(:annotations).exists?
+
+    writings.includes(writings_to_include).order('RANDOM()').limit(limit)
   end
 
   def years_of_writings

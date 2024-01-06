@@ -8,6 +8,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.before(:each, type: :request) do
+    host! 'localhost:8000'
+  end
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   config.tty = true

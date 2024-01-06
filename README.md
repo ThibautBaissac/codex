@@ -36,7 +36,7 @@ run `docker compose up` and then:
 ```bash
 ./run rspec
 # or
-docker compose -e "RAILS_ENV=test" js bash -c rspec
+docker compose exec -e "RAILS_ENV=test" js bash -c rspec
 # or
-docker-compose exec js rspec
+docker compose exec -e "RAILS_ENV=test" js rspec ./spec/resquests/artists_controller.spec
 ```

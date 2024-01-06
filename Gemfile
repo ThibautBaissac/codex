@@ -29,6 +29,7 @@ group :development, :test do
   gem "byebug"
   gem "factory_bot_rails"
   gem "pry-rails"
+  gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0.0"
 end

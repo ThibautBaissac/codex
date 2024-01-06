@@ -27,3 +27,6 @@ yarn-debug.log*
 # Ignore secrets and other files.
 .env*
 docker-compose.override.yml
+
+# Ignore Mac file system files
+.DS_Store
