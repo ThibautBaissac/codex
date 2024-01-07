@@ -1,10 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Artists", type: :request do
   describe "GET /index" do
-    let!(:greif) { create(:artist, :olivier_greif) }
-    let!(:other_artists) { create_list(:artist, 10) }
-    let!(:artists) { [greif] + other_artists }
+    let!(:artists) { create_list(:artist, 10) }
 
     before do
       get artists_path
@@ -23,22 +21,22 @@ RSpec.describe "Artists", type: :request do
     end
   end
 
-  describe 'GET #show' do
-    let!(:artist) { create(:artist, :olivier_greif) }
+  describe "GET #show" do
+    let(:artist) { create(:artist) }
 
     before do
       get artist_path(artist)
     end
 
-    it 'returns a successful response' do
+    it "returns a successful response" do
       expect(response).to be_successful
     end
 
-    it 'renders the show template' do
+    it "renders the show template" do
       expect(response).to render_template(:show)
     end
 
-    it 'assigns @artist' do
+    it "assigns @artist" do
       expect(assigns(:artist).attributes).to eq(artist.decorate.attributes)
     end
   end

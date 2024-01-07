@@ -16,3 +16,5 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: false
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
