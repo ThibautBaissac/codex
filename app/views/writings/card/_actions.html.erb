@@ -2,11 +2,11 @@
   <%= turbo_frame_tag("writing_#{writing.id}_alert") %>
 
   <%= link_to(edit_artist_writing_path(artist, writing), data: {controller: :turbo} ) do %>
-    <i class="fa-solid fa-edit text-indigo-900"></i>
+    <i class="fa-solid fa-edit text-sky-900"></i>
   <% end %>
 
   <button data-modal-target="#modal_add_annotation_<%= writing.id %>" class="modal-open">
-    <i class="fa-solid fa-file-circle-plus text-indigo-900"></i>
+    <i class="fa-solid fa-file-circle-plus text-sky-900"></i>
   </button>
   <%= render partial: "shared/modal_form", locals: {
              modal: "modal_add_annotation_#{writing.id}",
@@ -16,7 +16,7 @@
 
   <% if writing.annotations.any? %>
     <%= link_to(artist_writing_annotations_path(artist, writing), data: {controller: :turbo} ) do %>
-      <i class="fa-regular fa-note-sticky text-indigo-900"></i>
+      <i class="fa-regular fa-note-sticky text-sky-900"></i>
     <% end %>
   <% end %>
 </div>

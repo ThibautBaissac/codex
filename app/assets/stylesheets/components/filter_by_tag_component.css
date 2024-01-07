@@ -7,9 +7,9 @@
 }
 
 .tag-selector+label {
-  @apply cursor-pointer inline-block text-sm rounded-full px-2 py-0.5 bg-indigo-200 text-indigo-500 border border-indigo-500 mr-1.5 mb-1;
+  @apply cursor-pointer inline-block text-sm rounded-full px-2 py-0.5 bg-sky-200 text-sky-500 border border-sky-500 mr-1.5 mb-1;
 }
 
 .tag-selector:checked+label {
-  @apply bg-indigo-600 text-white ;
+  @apply bg-sky-600 text-white ;
 }

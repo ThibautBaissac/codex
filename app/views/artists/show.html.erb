@@ -1,9 +1,9 @@
 <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl"><%= @artist.fullname %></h2>
-<div class="mb-4 mx-10 p-4 bg-indigo-100 rounded-xl"><%= @artist.biography %></div>
+<div class="mb-4 mx-10 p-4 bg-sky-100 rounded-xl"><%= @artist.biography %></div>
 
 <%= link_to(artist_writings_path(@artist)) do %>
   <i class="fa-solid fa-circle-chevron-right mr-2"></i>
-  <span class="font-medium text-indigo-900 hover:underline">
+  <span class="font-medium text-sky-900 hover:underline">
     <%= Writing.model_name.human(count: 2) %>
   </span>
 <% end %>
