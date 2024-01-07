@@ -1,13 +1,9 @@
 <div class="space-x-3">
   <%= turbo_frame_tag("writing_#{writing.id}_alert") %>
-  <button data-modal-target="#modal_edit_<%= writing.id %>" class="modal-open">
+
+  <%= link_to(edit_artist_writing_path(artist, writing), data: {controller: :turbo} ) do %>
     <i class="fa-solid fa-edit text-indigo-900"></i>
-  </button>
-  <%= render partial: "shared/modal_form", locals: {
-             modal: "modal_edit_#{writing.id}",
-             title: writing.date,
-             form_partial: "writings/form",
-             form_locals: { artist:, writing:}  } %>
+  <% end %>
 
   <button data-modal-target="#modal_add_annotation_<%= writing.id %>" class="modal-open">
     <i class="fa-solid fa-file-circle-plus text-indigo-900"></i>

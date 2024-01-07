@@ -8,6 +8,7 @@
     <div class="flex h-screen">
       <%= render partial: "layouts/sidebar" %>
       <%= render partial: "layouts/main" %>
+      <%= turbo_frame_tag "remote_modal" %>
     </div>
 
     <script>

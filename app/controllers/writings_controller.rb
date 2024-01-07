@@ -1,10 +1,15 @@
 class WritingsController < ApplicationController
-  before_action :load_artist, only: %i[index search]
+  before_action :load_artist, only: %i[index edit search]
   before_action :load_years, only: %i[index search]
   before_action :load_tags, only: %i[index search]
 
   def index
     @pagy, @writings = pagy(@artist.writings.includes([:rich_text_content, { annotations: :user }]).order(date: :asc), items: 20)
+  end
+
+  def edit
+    @writing = Writing.find(params[:id])
+    authorize @writing
   end
 
   def search

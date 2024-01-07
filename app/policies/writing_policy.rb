@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class WritingPolicy < ApplicationPolicy
-  def update?
+  def edit?
     user.present?
+  end
+
+  def update?
+    edit?
   end
 end

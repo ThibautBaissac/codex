@@ -4,11 +4,17 @@
 
 import { application } from "./application"
 
-// import TrixController from "./trix_controller"
-// application.register("trix", TrixController)
 import AlertsController from "./alerts_controller"
 application.register("alerts", AlertsController)
 
-
 import FormSubmitByTagController from "./form_submit_by_tag_controller"
-application.register("form_submit_by_tag", FormSubmitByTagController)
+application.register("form-submit-by-tag", FormSubmitByTagController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
+import TrixController from "./trix_controller"
+application.register("trix", TrixController)
+
+import TurboController from "./turbo_controller"
+application.register("turbo", TurboController)
