@@ -15,12 +15,8 @@
              form_locals: { annotatable_type: "writing", annotatable_id: writing.id, url: artist_writing_annotations_path(writing.artist, writing) } } %>
 
   <% if writing.annotations.any? %>
-    <button data-modal-target="#modal_show_annotation_<%= writing.id %>" class="modal-open">
+    <%= link_to(artist_writing_annotations_path(artist, writing), data: {controller: :turbo} ) do %>
       <i class="fa-regular fa-note-sticky text-indigo-900"></i>
-    </button>
-    <%= render partial: "shared/modal_show", locals: {
-              modal: "modal_show_annotation_#{writing.id}",
-              title: "Toutes les annotations",
-              content: render_writing_annotations(writing) } %>
+    <% end %>
   <% end %>
 </div>

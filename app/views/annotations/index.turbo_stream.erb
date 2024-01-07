@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "remote_modal" do %>
+  <%= render ModalComponent.new(title: "Toutes les annotations") do %>
+    <%= render_writing_annotations(@writing) %>
+  <% end %>
+<% end %>

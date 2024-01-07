@@ -1,4 +1,9 @@
 class AnnotationsController < ApplicationController
+
+  def index
+    @writing = Writing.find(params[:writing_id])
+  end
+
   def create
     authorize Annotation
     @annotation = Annotation.new(annotation_params)
