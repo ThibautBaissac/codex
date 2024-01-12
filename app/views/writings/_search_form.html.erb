@@ -1,5 +1,5 @@
 <div class="relative mx-10 mb-4">
-  <%= form_with(url: search_artist_writings_path(@artist), method: :get, remote: false, class: "search-form", data: { controller: "form_submit_by_tag" }) do |form| %>
+  <%= form_with(url: search_artist_writings_path(@artist), method: :get, remote: false, class: "search-form", data: { controller: "form-submit-by-tag" }) do |form| %>
     <div class="flex flex-col md:flex-row md:space-x-4">
       <%= render partial: 'writings/search_form/query', locals: { form: form } %>
       <%= render partial: 'writings/search_form/years', locals: { form: form } %>
