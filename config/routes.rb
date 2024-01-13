@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :artists, only: %i[index show] do
     resources :writings, only: %i[index edit update] do
       get :search, on: :collection
-      resources :tags, only: %i[create destroy], controller: 'tags'
-      resources :annotations, only: %i[index create], controller: 'annotations'
+      resources :tags, only: %i[create destroy], controller: "tags"
+      resources :annotations, only: %i[index new create edit update], controller: "annotations"
     end
   end
 

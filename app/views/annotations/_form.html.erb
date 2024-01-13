@@ -1,4 +1,4 @@
-<%= form_with(model: Annotation.new, url: , method: :post) do |form| %>
+<%= form_with(model: annotation, url:) do |form| %>
   <%= form.rich_text_area :content, placeholder: t("annotations.add_annotation") %>
   <%= hidden_field_tag "annotation[annotatable_type]", annotatable_type %>
   <%= hidden_field_tag "annotation[annotatable_id]", annotatable_id %>

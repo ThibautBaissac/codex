@@ -31,6 +31,6 @@ class Writing < ApplicationRecord
   end
 
   def annotation_list
-    annotations.includes([:rich_text_content]).order(:updated_at)
+    annotations.includes([:rich_text_content]).order(updated_at: :desc)
   end
 end

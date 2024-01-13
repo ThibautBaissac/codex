@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "remote_modal" do %>
+  <%= render ModalComponent.new(title: t("annotations.edit_annotation")) do %>
+    <%= render partial: 'annotations/form', locals: { annotation: @annotation, annotatable_type: "writing", annotatable_id: @writing.id, url: artist_writing_annotation_path(@writing.artist, @writing, @annotation.id) } %>
+  <% end %>
+<% end %>

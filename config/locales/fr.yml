@@ -24,6 +24,7 @@ fr:
         other: Ces écrits
   annotations:
     add_annotation: Ajouter une note
+    edit_annotation: Éditer la note
   artists:
     artistes: Artistes
     see_all_writings: Voir tous les écrits de %{name} (%{count})
@@ -35,6 +36,7 @@ fr:
   default:
     back: Retour
     by: Par %{name}
+    by_at_date: Par %{author}, le %{date}
     cancel: Annuler
     close: Fermer
     create: Créer

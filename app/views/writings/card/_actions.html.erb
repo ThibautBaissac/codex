@@ -1,22 +1,17 @@
-<div class="space-x-3">
+<div class="space-x-3 flex">
   <%= turbo_frame_tag("writing_#{writing.id}_alert") %>
 
   <%= link_to(edit_artist_writing_path(artist, writing), data: {controller: :turbo} ) do %>
-    <i class="fa-solid fa-edit text-sky-900"></i>
+    <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
   <% end %>
 
-  <button data-modal-target="#modal_add_annotation_<%= writing.id %>" class="modal-open">
-    <i class="fa-solid fa-file-circle-plus text-sky-900"></i>
-  </button>
-  <%= render partial: "shared/modal_form", locals: {
-             modal: "modal_add_annotation_#{writing.id}",
-             title: t("annotations.add_annotation"),
-             form_partial: "annotations/add",
-             form_locals: { annotatable_type: "writing", annotatable_id: writing.id, url: artist_writing_annotations_path(writing.artist, writing) } } %>
+  <%= link_to(new_artist_writing_annotation_path(artist, writing), data: {controller: :turbo} ) do %>
+    <%= render CircleIconComponent.new(icon: "fa-solid fa-file-circle-plus") %>
+  <% end %>
 
   <% if writing.annotations.any? %>
     <%= link_to(artist_writing_annotations_path(artist, writing), data: {controller: :turbo} ) do %>
-      <i class="fa-regular fa-note-sticky text-sky-900"></i>
+      <%= render CircleIconComponent.new(icon: "fa-solid fa-note-sticky") %>
     <% end %>
   <% end %>
 </div>

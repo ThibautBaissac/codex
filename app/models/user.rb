@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Decorable
+
   has_secure_password
   has_many :annotations
 

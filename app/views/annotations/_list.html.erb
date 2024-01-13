@@ -1,7 +1,12 @@
 <div class="mb-2">
   <div class="flex items-center justify-between p-2 bg-sky-200 rounded-t-xl">
-    <span><%= t("default.by", name: annotation.user.email) %></span>
-    <span><%= l(annotation.updated_at.to_date, format: :default) %></span>
+    <span><%= t("default.by_at_date", author: annotation.user.decorate.name_or_email, date: l(annotation.updated_at.to_date, format: :default)) %></span>
+    <span>
+      <%= link_to(edit_artist_writing_annotation_path(annotation.annotatable.artist, annotation.annotatable, annotation), remote: true, data: { controller: :turbo }) do %>
+        <i class="fa-solid fa-edit text-sky-900"></i>
+      <% end %>
+      <%#= link_to t("default.delete"), artist_writing_annotation_path(annotation.annotatable.artist, annotation.annotatable, annotation), method: :delete, remote: true, data: { turbo_confirm: t("default.are_you_sure"), turbo_frame: "remote_modal" } %>
+    </span>
   </div>
   <div class="p-2 border rounded-b-xl"><%= annotation.content %></div>
 </div>
