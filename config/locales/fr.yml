@@ -29,7 +29,15 @@ fr:
     add_annotation: Ajouter une note
     edit_annotation: Éditer la note
   artists:
-    artistes: Artistes
+    artists: Artistes
+    edit: Éditer %{name}
+    flash:
+      create:
+        failure: L'artiste n'a pas pu être créé.
+        success: L'artiste a été créé avec succès.
+      update:
+        failure: L'artiste n'a pas pu être mis à jour.
+        success: L'artiste a été mis à jour avec succès.
     see_all_writings: Voir tous les écrits de %{name} (%{count})
   authentication:
     edit_password: Modifier le mot de passe

@@ -6,7 +6,7 @@
   </h2>
   <div>
     <%= link_to(new_artist_writing_path(@artist), data: {controller: :turbo} ) do %>
-      <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus") %>
+      <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus", bg_color: "bg-orange-700") %>
     <% end %>
   </div>
 </div>

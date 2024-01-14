@@ -1,12 +1,13 @@
-<div class="mb-10">
-  <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
-    <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
-  </h2>
-  <div class="mx-10">
-    <div class="mb-4 p-4 bg-sky-700 text-white rounded-xl"><%= truncate(artist.biography.to_plain_text, length: 500) %></div>
-
-    <div class="flex space-x-4">
-      <%= render partial: 'writings/card', collection: artist.random_writings(3), as: :writing, locals: { artist: } %>
+<div id="artist_<%= artist.id %>">
+  <div class="mb-10">
+    <div class="mb-4 flex justify-between align-center">
+      <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
+        <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
+      </h2>
+      <%= link_to(edit_artist_path(artist), data: {controller: :turbo} ) do %>
+        <%= render CircleIconComponent.new(icon: "fa-solid fa-edit", bg_color: "bg-orange-700") %>
+      <% end %>
     </div>
+    <div class="mb-4 mx-10 p-4 bg-sky-700 text-white rounded-xl"><%= artist.biography %></div>
   </div>
 </div>

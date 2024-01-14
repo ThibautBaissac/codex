@@ -2,5 +2,5 @@
   <%= form.rich_text_area :content, placeholder: t("annotations.add_annotation") %>
   <%= hidden_field_tag "annotation[annotatable_type]", annotatable_type %>
   <%= hidden_field_tag "annotation[annotatable_id]", annotatable_id %>
-  <%= form.submit t("default.save"), class: "mt-2 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline" %>
+  <%= form.submit t("default.save"), class: "mt-2 bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline" %>
 <% end %>

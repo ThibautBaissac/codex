@@ -1,6 +1,6 @@
 class ArtistDecorator < SimpleDelegator
   def fullname
-    "#{firstname.capitalize}  #{lastname.capitalize}"
+    "#{firstname&.capitalize}  #{lastname&.capitalize}"
   end
 
   def biography
