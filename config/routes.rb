@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "artists#index"
 
   resources :artists, only: %i[index show] do
-    resources :writings, only: %i[index edit update] do
+    resources :writings, only: %i[index new create edit update] do
       get :search, on: :collection
       resources :tags, only: %i[create destroy], controller: "tags"
       resources :annotations, only: %i[index new create edit update], controller: "annotations"

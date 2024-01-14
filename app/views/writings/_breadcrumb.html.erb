@@ -1,5 +1,12 @@
-<h2 class="mb-4 text-xl font-bold leading-none tracking-tight md:text-4xl lg:text-2xl">
-  <%= link_to(@artist.fullname, artist_path(@artist), class: "hover:underline hover:text-sky-800") %>
-  >
-  <%= Writing.model_name.human(count: 2) %>
-</h2>
+<div class="flex justify-between align-center">
+  <h2 class="mb-4 text-xl font-bold leading-none tracking-tight md:text-4xl lg:text-2xl">
+    <%= link_to(@artist.fullname, artist_path(@artist), class: "hover:underline hover:text-sky-800") %>
+    >
+    <%= Writing.model_name.human(count: 2) %>
+  </h2>
+  <div>
+    <%= link_to(new_artist_writing_path(@artist), data: {controller: :turbo} ) do %>
+      <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus") %>
+    <% end %>
+  </div>
+</div>

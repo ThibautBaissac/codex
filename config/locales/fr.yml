@@ -14,6 +14,9 @@ fr:
       writing:
         artist: Artiste
         date: Date
+    errors:
+      messages:
+        record_invalid: 'La validation a échoué : %{errors}'
     models:
       artist:
         one: Artiste
@@ -63,4 +66,12 @@ fr:
     filter_by_tag: Filtrer par tags
   writings:
     filter_by_date: Filtrer par année
+    flash:
+      create:
+        failure: L'écrit n'a pas pu être créé.
+        success: L'écrit a été créé avec succès.
+      update:
+        failure: L'écrit n'a pas pu être mis à jour.
+        success: L'écrit a été mis à jour avec succès.
+    new: Nouvel écrit
     reset_filter_by_date: Réinitialiser le filtre par année

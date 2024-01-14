@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "remote_modal" do %>
+  <% title = action_name == "new" ? t("writings.new") : l(@writing.date, format: :long) %>
+  <%= render ModalComponent.new(title:) do %>
+    <%= render "writings/form", artist: @artist, writing: @writing %>
+  <% end %>
+<% end %>

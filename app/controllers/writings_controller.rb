@@ -7,6 +7,24 @@ class WritingsController < ApplicationController
     @pagy, @writings = pagy(@artist.writings.includes([:rich_text_content, :annotations]).order(date: :asc), items: 20)
   end
 
+  def new
+    @writing = Writing.new
+    @artist = Artist.find(params[:artist_id])
+    authorize @writing
+  end
+
+  def create
+    authorize Writing
+    @writing = Writing.new(writing_params)
+    @writing.artist = Artist.find(params[:artist_id])
+    if @writing.save
+      flash[:notice] = t("writings.flash.create.success")
+    else
+      flash[:alert] = t("writings.flash.create.failure")
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   def edit
     @writing = Writing.find(params[:id])
     authorize @writing
@@ -25,7 +43,7 @@ class WritingsController < ApplicationController
     if @writing.update(writing_params)
       respond_with_update
     else
-      redirect_back(fallback_location: root_path, alert: "Something went wrong")
+      redirect_back(fallback_location: root_path, alert: t("writings.flash.update.failure"))
     end
   end
 
@@ -53,7 +71,7 @@ class WritingsController < ApplicationController
 
   def respond_with_update
     respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path, notice: "Writing updated") }
+      format.html { redirect_back(fallback_location: root_path, notice: t("writings.flash.update.success")) }
       format.turbo_stream
     end
   end
