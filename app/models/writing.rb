@@ -27,7 +27,7 @@ class Writing < ApplicationRecord
   end
 
   def self.tags_for_display
-    includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+    Tag.joins(:taggings).where(taggings: {taggable_type: "Writing"}).distinct.order(:name)
   end
 
   def annotation_list

@@ -13,6 +13,9 @@ application.register("form-submit-by-tag", FormSubmitByTagController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import PageTransitionsController from "./page_transitions_controller"
+application.register("page-transitions", PageTransitionsController)
+
 import TrixController from "./trix_controller"
 application.register("trix", TrixController)
 
