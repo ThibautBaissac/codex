@@ -13,9 +13,9 @@ class AnnotationsController < ApplicationController
     @annotation = Annotation.new(annotation_params)
     @annotation.user = current_user
     if @annotation.save
-      flash[:notice] = "Annotation was successfully created."
+      flash[:notice] = t("annotations.flash.create.success")
     else
-      flash[:alert] = "Something went wrong. Please try again."
+      flash[:alert] = t("annotations.flash.create.failure")
     end
     redirect_back(fallback_location: root_path)
   end
@@ -28,9 +28,9 @@ class AnnotationsController < ApplicationController
   def update
     @annotation = Annotation.find(params[:id])
     if @annotation.update(annotation_params)
-      flash[:notice] = "Annotation was successfully updated."
+      flash[:notice] = t("annotations.flash.update.success")
     else
-      flash[:alert] = "Something went wrong. Please try again."
+      flash[:alert] = t("annotations.flash.update.failure")
     end
     redirect_back(fallback_location: root_path)
   end

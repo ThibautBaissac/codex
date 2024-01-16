@@ -28,6 +28,13 @@ fr:
   annotations:
     add_annotation: Ajouter une note
     edit_annotation: Éditer la note
+    flash:
+      create:
+        failure: La note n'a pas pu être créée.
+        success: La note a été créé avec succès.
+      update:
+        failure: La note n'a pas pu être mise à jour.
+        success: La note a été mise à jour avec succès.
   artists:
     artists: Artistes
     edit: Éditer %{name}
@@ -72,6 +79,14 @@ fr:
   tags:
     add_tag: Ajouter un tag
     filter_by_tag: Filtrer par tags
+    flash:
+      create:
+        failure: Le tag n'a pas pu être crée.
+        success: Le tag a été créé avec succès.
+      destroy:
+        failure: Le tag n'a pas pu être supprimé.
+        success: Le tag a été supprimé avec succès.
+      not_found: Le tag n'a pas été trouvé.
   writings:
     filter_by_date: Filtrer par année
     flash:
