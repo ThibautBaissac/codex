@@ -7,9 +7,10 @@ class Writing < ApplicationRecord
 
   scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
 
+  after_save :update_searchable_content
+
   def self.search_by_content(query)
-    joins("INNER JOIN action_text_rich_texts ON action_text_rich_texts.record_id = writings.id")
-      .where("action_text_rich_texts.body ILIKE ?", "%#{query}%")
+    where("searchable_content ILIKE ?", "%#{query}%")
   end
 
   def tag_list
@@ -32,5 +33,11 @@ class Writing < ApplicationRecord
 
   def annotation_list
     annotations.includes([:rich_text_content]).order(updated_at: :desc)
+  end
+
+  private
+
+  def update_searchable_content
+    update_column(:searchable_content, content.to_plain_text)
   end
 end
