@@ -10,7 +10,9 @@ class Writing < ApplicationRecord
   after_save :update_searchable_content
 
   def self.search_by_content(query)
-    where("searchable_content ILIKE ?", "%#{query}%")
+    words = query.split
+    words.map! { |word| "%#{word}%" }
+    where(words.map { |word| "searchable_content ILIKE ?" }.join(" AND "), *words)
   end
 
   def tag_list
