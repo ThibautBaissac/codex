@@ -1,0 +1,29 @@
+<%= form_with(model: user, data: { turbo: true } ) do |form| %>
+  <% if user.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-4" role="alert">
+      <strong class="font-bold"><%= t("default.fix_form_errors") %></strong>
+      <ul class="list-disc ms-6">
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex align-center space-x-3">
+    <div class="mb-4 flex-auto">
+      <%= form.label :firstname, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :firstname, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4 flex-auto">
+      <%= form.label :lastname, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :lastname, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+  </div>
+    <div class="mb-4">
+      <%= form.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.email_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+  <div class="flex items-center justify-between">
+    <%= form.submit t("default.save"), class: "bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline", data: {action: "click->modal#close"} %>
+  </div>
+<% end %>

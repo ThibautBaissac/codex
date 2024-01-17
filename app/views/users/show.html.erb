@@ -1,0 +1,17 @@
+<div class="flex justify-center border-b-2 border-orange-700">
+  <div class="relative w-fit h-fit mb-4">
+    <i class="fa-solid fa-circle-user text-6xl text-orange-800 md:text-8xl"></i>
+    <div class="absolute bottom-0 right-0">
+      <%= link_to(edit_user_path(@user), data: {controller: :turbo} ) do %>
+        <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <h1><%= @user.name_or_email %></h1>
+  <div>
+    <i class="fa-solid fa-circle-chevron-right mr-2 text-orange-700"></i>
+    <%= link_to(t("authentication.edit_password"), edit_authentication_password_path(current_user)) %>
+  </div>
+</div>

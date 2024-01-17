@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "remote_modal" do %>
+  <%= render ModalComponent.new(title: t("users.edit")) do %>
+    <%= render "users/form", user: @user %>
+  <% end %>
+<% end %>
