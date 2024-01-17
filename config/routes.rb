@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[show edit update]
+  resources :statistics, only: %i[index] do
+    collection do
+      get :greif_writings_by_year_chart
+      get :tags_by_name_chart
+    end
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

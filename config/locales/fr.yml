@@ -121,3 +121,7 @@ fr:
         success: L'écrit a été mis à jour avec succès.
     new: Nouvel écrit
     reset_filter_by_date: Réinitialiser le filtre par année
+  statistics:
+    statistics: Statistiques
+    greif_writings_by_year_chart: Nombre d'écrits par année
+    tags_by_name_chart: Nombre d'écrits par tag

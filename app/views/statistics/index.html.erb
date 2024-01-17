@@ -1,0 +1,15 @@
+<h1 class="mb-4 font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
+  <%= link_to(t("statistics.statistics"), statistics_path, class: "hover:underline hover:text-sky-800") %>
+</h1>
+
+<div class="grid grid-cols-1 divide-y divide-orange-700">
+  <div class="py-10 first:pt-0">
+    <h2 class="text-center"><%= t("statistics.greif_writings_by_year_chart") %></h2>
+    <%= column_chart(greif_writings_by_year_chart_statistics_path, colors: ["#c2410c"], dataset: {borderWidth: 10}) %>
+  </div>
+
+  <div class="py-10 first:pb-0">
+    <h2 class="text-center"><%= t("statistics.tags_by_name_chart") %></h2>
+    <%= pie_chart(tags_by_name_chart_statistics_path, legend: :bottom) %>
+  </div>
+</div>
