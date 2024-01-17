@@ -4,7 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.2"
 
 gem "bcrypt", "~> 3.1.7"
+gem "chartkick"
 gem "cssbundling-rails"
+gem "groupdate"
 gem "image_processing", "~> 1.2"
 gem "jbuilder"
 gem "jsbundling-rails"

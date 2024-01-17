@@ -15,6 +15,7 @@
 docker-compose build
 docker-compose up
 docker compose exec js bin/rails action_text:install
+docker compose exec js yarn add chartkick chart.js
 ```
 
 Visit: http://localhost:8000
