@@ -40,48 +40,6 @@
         main.classList.remove('overlay');
       });
 
-      // Modal
-      document.querySelectorAll('.modal-open').forEach(button => {
-        button.addEventListener('click', () => {
-          const modal = document.querySelector(button.dataset.modalTarget);
-          openModal(modal);
-        });
-      });
-
-      document.querySelectorAll('[data-close-button]').forEach(button => {
-        button.addEventListener('click', () => {
-          const modal = button.closest('.modal');
-          closeModal(modal);
-        });
-      });
-
-      function openModal(modal) {
-        if (modal == null) return;
-        modal.classList.remove('hidden'); // Remove hidden first
-        setTimeout(() => {
-          modal.classList.remove('opacity-0'); // Then remove opacity-0
-          modal.classList.add('opacity-100'); // Add opacity-100 for fade-in effect
-        }, 10); // A short delay to allow the browser to render the modal before starting the fade-in
-      }
-
-      function closeModal(modal) {
-        if (modal == null) return;
-        modal.classList.remove('opacity-100'); // Remove opacity-100
-        modal.classList.add('opacity-0'); // Add opacity-0 for fade-out effect
-
-        // Use setTimeout to wait for the fade-out transition before setting the modal to hidden
-        setTimeout(() => {
-          modal.classList.add('hidden');
-        }, 500); // This duration should match the CSS transition duration
-      }
-
-      function overlayClick(event) {
-        // Check if the clicked element is the modal overlay itself
-        if (event.target.classList.contains('modal')) {
-          closeModal(event.target);
-        }
-      }
-
       // Drop-up Menu
       document.getElementById('userMenuButton').addEventListener('click', function (event) {
           event.stopPropagation();

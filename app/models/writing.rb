@@ -5,6 +5,8 @@ class Writing < ApplicationRecord
   has_many :tags, through: :taggings
   has_many :annotations, as: :annotatable
 
+  validates :date, presence: true
+
   scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
 
   after_save :update_searchable_content

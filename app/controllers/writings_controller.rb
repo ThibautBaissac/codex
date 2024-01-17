@@ -16,13 +16,14 @@ class WritingsController < ApplicationController
   def create
     authorize Writing
     @writing = Writing.new(writing_params)
-    @writing.artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:artist_id])
+    @writing.artist = @artist
     if @writing.save
       flash[:notice] = t("writings.flash.create.success")
+      redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = t("writings.flash.create.failure")
+      render :new, status: :unprocessable_entity
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def edit
@@ -41,9 +42,10 @@ class WritingsController < ApplicationController
     authorize @writing
     @artist = @writing.artist
     if @writing.update(writing_params)
+      flash[:notice] = t("writings.flash.update.success")
       respond_with_update
     else
-      redirect_back(fallback_location: root_path, alert: t("writings.flash.update.failure"))
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -71,7 +73,7 @@ class WritingsController < ApplicationController
 
   def respond_with_update
     respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path, notice: t("writings.flash.update.success")) }
+      format.html { redirect_back(fallback_location: root_path) }
       format.turbo_stream
     end
   end

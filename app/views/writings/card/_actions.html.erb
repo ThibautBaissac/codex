@@ -1,6 +1,4 @@
 <div class="space-x-3 flex">
-  <%= turbo_frame_tag("writing_#{writing.id}_alert") %>
-
   <%= link_to(edit_artist_writing_path(artist, writing), data: {controller: :turbo} ) do %>
     <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
   <% end %>
