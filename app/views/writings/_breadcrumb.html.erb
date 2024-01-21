@@ -5,7 +5,7 @@
     <%= Writing.model_name.human(count: 2) %>
   </h2>
   <div>
-    <%= link_to(new_artist_writing_path(@artist), data: {controller: :turbo} ) do %>
+    <%= render_in_modal(url: new_artist_writing_path(@artist), policy: policy(Writing).new?) do %>
       <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus", bg_color: "bg-orange-700") %>
     <% end %>
   </div>

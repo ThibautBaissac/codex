@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
 
     flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
+      format.html { redirect_back(fallback_location: new_authentication_session_path) }
       format.turbo_stream { render turbo_stream: turbo_stream.update("alerts", partial: "shared/alerts/alerts", locals: { flash: }) }
     end
   end

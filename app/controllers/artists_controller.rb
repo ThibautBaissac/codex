@@ -2,10 +2,13 @@ class ArtistsController < ApplicationController
   before_action :load_artist, only: %i[show edit update]
 
   def index
+    authorize Artist
     @pagy, @artists = pagy(Artist.includes([:rich_text_bio]).all)
   end
 
-  def show; end
+  def show
+    authorize @artist
+  end
 
   def edit
     authorize @artist

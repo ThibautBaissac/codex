@@ -1,14 +1,14 @@
 <div class="space-x-3 flex">
-  <%= link_to(edit_artist_writing_path(artist, writing), data: {controller: :turbo} ) do %>
+  <%= render_in_modal(url: edit_artist_writing_path(artist, writing), policy: policy(writing).edit?) do %>
     <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
   <% end %>
 
-  <%= link_to(new_artist_writing_annotation_path(artist, writing), data: {controller: :turbo} ) do %>
+  <%= render_in_modal(url: new_artist_writing_annotation_path(artist, writing), policy: policy(Annotation).new?) do %>
     <%= render CircleIconComponent.new(icon: "fa-solid fa-file-circle-plus") %>
   <% end %>
 
   <% if writing.annotations.any? %>
-    <%= link_to(artist_writing_annotations_path(artist, writing), data: {controller: :turbo} ) do %>
+    <%= render_in_modal(url: artist_writing_annotations_path(artist, writing), policy: policy(Annotation).index?) do %>
       <%= render CircleIconComponent.new(icon: "fa-solid fa-note-sticky") %>
     <% end %>
   <% end %>

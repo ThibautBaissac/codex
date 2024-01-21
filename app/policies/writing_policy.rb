@@ -2,7 +2,7 @@
 
 class WritingPolicy < ApplicationPolicy
   def new?
-    user.present?
+    user.present? && (user.role_admin? || user.role_super_admin?)
   end
 
   def create?
@@ -10,7 +10,7 @@ class WritingPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.present?
+    user.present? && (user.role_admin? || user.role_super_admin?)
   end
 
   def update?

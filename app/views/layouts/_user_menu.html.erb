@@ -12,7 +12,7 @@
       <%= link_to(t("users.profile"), user_path(current_user), class: "w-full text-left block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
       <%= button_to(t("authentication.logout"), authentication_session_path(current_user), method: :delete, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
     <% else %>
-      <%= link_to(t("authentication.sign_up"), new_authentication_registration_path, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
+      <%#= link_to(t("authentication.sign_up"), new_authentication_registration_path, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
       <%= link_to(t("authentication.login"), new_authentication_session_path, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 rounded-xl hover:bg-gray-200", role: "menuitem") %>
     <% end %>
   </div>

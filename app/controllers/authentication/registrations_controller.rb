@@ -5,6 +5,7 @@ module Authentication
     end
 
     def create
+      return # TODO: Remove this line to enable registration
       @user = User.new(registration_params)
       if @user.save
         login(@user)

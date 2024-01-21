@@ -11,6 +11,12 @@ class User < ApplicationRecord
   validates :password, presence: true if Rails.env.production?
   validates_format_of :password, with: Constants::User::PASSWORD_REGEX if Rails.env.production?
 
+  enum role: {
+    user: "user",
+    admin: "admin",
+    super_admin: "super_admin",
+  }, _prefix: true
+
   generates_token_for :password_reset, expires_in: 15.minutes do
     password_salt&.last(10)
   end

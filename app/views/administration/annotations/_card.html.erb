@@ -1,9 +1,8 @@
 <div class="py-4 border-b-2 border-orange-700">
   <div class="font-bold	flex justify-between">
-    <div>
-      <%= l(annotation.updated_at.to_date, format: :default) %> - <%= annotation.user.decorate.name_or_email %>
-    </div>
-    <%= link_to(edit_administration_annotation_path(annotation), data: {controller: :turbo} ) do %>
+    <span><%= t("default.by_at_date", author: annotation.user.decorate.name_or_email, date: l(annotation.updated_at.to_date, format: :default)) %></span>
+
+    <%= render_in_modal(url: edit_administration_annotation_path(annotation), policy: policy(annotation).edit?) do %>
       <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
     <% end %>
     <%#= annotation.annotatable_type.singularize %>

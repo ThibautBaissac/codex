@@ -1,6 +1,6 @@
 class Administration::AnnotationsController < ApplicationController
   def index
-    @pagy, @annotations = pagy(Annotation.all.includes(:rich_text_content, :user).order(updated_at: :desc), items: 2)
+    @pagy, @annotations = pagy(Annotation.all.includes(:rich_text_content, :user).order(updated_at: :desc), items: 20)
   end
 
   def edit

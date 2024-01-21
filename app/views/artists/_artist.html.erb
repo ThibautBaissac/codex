@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
         <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
       </h2>
-      <%= link_to(edit_artist_path(artist), data: {controller: :turbo} ) do %>
+      <%= render_in_modal(url: edit_artist_path(artist), policy: policy(artist).edit?) do %>
         <%= render CircleIconComponent.new(icon: "fa-solid fa-edit", bg_color: "bg-orange-700") %>
       <% end %>
     </div>

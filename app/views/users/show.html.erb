@@ -2,7 +2,7 @@
   <div class="relative w-fit h-fit mb-4">
     <i class="fa-solid fa-circle-user text-6xl text-orange-800 md:text-8xl"></i>
     <div class="absolute bottom-0 right-0">
-      <%= link_to(edit_user_path(@user), data: {controller: :turbo} ) do %>
+      <%= render_in_modal(url: edit_user_path(@user), policy: policy(@user).edit?) do %>
         <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
       <% end %>
     </div>

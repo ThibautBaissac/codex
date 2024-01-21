@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class ArtistPolicy < ApplicationPolicy
-  def edit?
+  def index?
     user.present?
+  end
+
+  def show?
+    user.present?
+  end
+
+  def edit?
+    user.present? && (user.role_admin? || user.role_super_admin?)
   end
 
   def update?
