@@ -1,0 +1,13 @@
+<div class="py-4 border-b-2 border-orange-700">
+  <div class="font-bold	flex justify-between">
+    <div>
+      <%= l(annotation.updated_at.to_date, format: :default) %> - <%= annotation.user.decorate.name_or_email %>
+    </div>
+    <%= link_to(edit_administration_annotation_path(annotation), data: {controller: :turbo} ) do %>
+      <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
+    <% end %>
+    <%#= annotation.annotatable_type.singularize %>
+  </div>
+  <div class="text-gray-500"><%= truncate(annotation.annotatable_type.singularize.classify.constantize.find(annotation.annotatable_id).content.to_plain_text, length: 200) %></div>
+  <%= annotation.content %>
+</div>

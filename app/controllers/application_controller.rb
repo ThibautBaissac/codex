@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  before_action :authenticate_user!
+
   private
 
   def authenticate_user!
-    redirect_to root_path, alert: 'You must sign in or sign up first!' unless user_signed_in?
+    redirect_to new_authentication_session_path, alert: 'You must sign in or sign up first!' unless user_signed_in?
   end
 
   def current_user

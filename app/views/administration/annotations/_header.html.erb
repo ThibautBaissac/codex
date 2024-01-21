@@ -1,0 +1,6 @@
+<h1 class="mb-4 font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
+  <%= link_to(administration_annotations_path, class: "hover:underline hover:text-sky-800") do %>
+    <i class="fa-regular fa-note-sticky me-2"></i>
+    <%= Annotation.model_name.human(count: 2) %>
+  <% end %>
+</h1>

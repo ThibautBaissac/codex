@@ -26,9 +26,12 @@ fr:
         user:
           attributes:
             password:
-              blank: "ne peut pas être vide."
-              invalid: "n'est pas valide."
+              blank: ne peut pas être vide.
+              invalid: n'est pas valide.
     models:
+      annotations:
+        one: Note
+        other: Notes
       artist:
         one: Artiste
         other: Artistes
@@ -89,6 +92,10 @@ fr:
       destroy?: Vous ne pouvez pas supprimer ce tag !
     writing_policy:
       update?: Vous ne pouvez pas modifier cet écrit !
+  statistics:
+    greif_writings_by_year_chart: Nombre d'écrits par année
+    statistics: Statistiques
+    tags_by_name_chart: Nombre d'écrits par tag
   tags:
     add_tag: Ajouter un tag
     filter_by_tag: Filtrer par tags
@@ -121,7 +128,3 @@ fr:
         success: L'écrit a été mis à jour avec succès.
     new: Nouvel écrit
     reset_filter_by_date: Réinitialiser le filtre par année
-  statistics:
-    statistics: Statistiques
-    greif_writings_by_year_chart: Nombre d'écrits par année
-    tags_by_name_chart: Nombre d'écrits par tag

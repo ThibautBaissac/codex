@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :administration do
+    resources :annotations, only: %i[index edit update]
+  end
+
   namespace :authentication do
     resource :registration, only: %i[new create]
     resource :session, only: %i[new create destroy]

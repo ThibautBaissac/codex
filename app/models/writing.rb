@@ -3,7 +3,7 @@ class Writing < ApplicationRecord
   has_rich_text :content
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
-  has_many :annotations, as: :annotatable
+  has_many :annotations, as: :annotatable, dependent: :destroy
 
   validates :date, presence: true
 

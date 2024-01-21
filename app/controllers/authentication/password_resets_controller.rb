@@ -1,6 +1,7 @@
 module Authentication
   class PasswordResetsController < ApplicationController
     before_action :set_user_by_token, only: %i[edit update]
+    skip_before_action :authenticate_user!, only: %i[new]
 
     def new
     end
