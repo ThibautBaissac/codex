@@ -1,6 +1,7 @@
 class Artist < ApplicationRecord
   has_many :writings
   has_rich_text :bio
+  slug :name_for_slug, generic_default: true
 
   include Decorable
 
@@ -14,5 +15,11 @@ class Artist < ApplicationRecord
 
   def years_of_writings
     writings.pluck(:date).map(&:year).uniq.sort
+  end
+
+  private
+
+  def name_for_slug
+    firstname.present? && lastname.present? ? "#{firstname}-#{lastname}".downcase : id
   end
 end

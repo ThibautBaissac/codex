@@ -317,6 +317,10 @@ GEM
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
     simple_command (1.0.1)
+    slug (4.1.1)
+      activerecord (> 3.0.0)
+      activesupport (> 3.0.0)
+      rake
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -398,6 +402,7 @@ DEPENDENCIES
   shoulda-matchers (~> 5.0.0)
   sidekiq (~> 7.2)
   simple_command
+  slug
   sprockets-rails
   stimulus-rails
   timecop (~> 0.9.4)

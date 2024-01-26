@@ -12,7 +12,7 @@ module Writings
 
       set_params
       filter_writings
-      @writings.distinct.order(date: :asc)
+      @writings.distinct
     end
 
     private

@@ -26,7 +26,7 @@ class ArtistsController < ApplicationController
   private
 
   def load_artist
-    @artist = Artist.find(params[:id]).decorate
+    @artist = Artist.find_by_slug(params[:id]).decorate
   end
 
   def artists_params

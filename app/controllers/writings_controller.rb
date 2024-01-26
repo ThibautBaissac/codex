@@ -4,19 +4,19 @@ class WritingsController < ApplicationController
   before_action :load_tags, only: %i[index search]
 
   def index
-    @pagy, @writings = pagy(@artist.writings.includes(%i[rich_text_content annotations]).order(date: :asc), items: 20)
+    @pagy, @writings = pagy(order_writings(@artist.writings), items: 20)
   end
 
   def new
     @writing = Writing.new
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find_by_slug(params[:artist_id])
     authorize @writing
   end
 
   def create
     authorize Writing
     @writing = Writing.new(writing_params)
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find_by_slug(params[:artist_id])
     @writing.artist = @artist
     if @writing.save
       flash[:notice] = t("writings.flash.create.success")
@@ -33,7 +33,7 @@ class WritingsController < ApplicationController
 
   def search
     @writings = Writings::Finder.call(params: search_params, artist: @artist).result
-    @pagy, @writings = pagy(@writings, items: 20)
+    @pagy, @writings = pagy(order_writings(@writings), items: 20)
     render :index
   end
 
@@ -52,7 +52,7 @@ class WritingsController < ApplicationController
   private
 
   def load_artist
-    @artist = Artist.find(params[:artist_id]).decorate
+    @artist = Artist.find_by_slug(params[:artist_id]).decorate
   end
 
   def load_years
@@ -61,6 +61,10 @@ class WritingsController < ApplicationController
 
   def load_tags
     @tags = @artist.writings.tags_for_display
+  end
+
+  def order_writings(writings)
+    writings.includes(%i[rich_text_content annotations]).order(date: :asc)
   end
 
   def writing_params

@@ -19,12 +19,12 @@ gem "rails", "~> 7.1.3"
 gem "redis", "~> 5.0"
 gem "sidekiq", "~> 7.2"
 gem "simple_command"
+gem "slug"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "view_component"
-
 # gem "kredis" # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 
 group :development, :test do
