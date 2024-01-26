@@ -29,6 +29,13 @@
         <% end %>
       </li>
     <% end %>
+    <% if user_super_admin? %>
+      <li>
+        <%= link_to(admin_root_path, role: 'menuitem', class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
+          <span><%= "Administrate" %></span>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 
   <%= render partial: "layouts/user_menu" %>

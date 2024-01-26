@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
+gem "administrate"
 gem "bcrypt", "~> 3.1.7"
 gem "chartkick"
 gem "cssbundling-rails"

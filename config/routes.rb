@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :annotations
+    resources :artists
+    resources :tags
+    resources :taggings
+    resources :users
+    resources :writings
+
+    root to: "annotations#index"
+  end
   root "artists#index"
 
   resources :artists, only: %i[index show edit update] do

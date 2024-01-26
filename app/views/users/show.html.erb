@@ -8,8 +8,16 @@
     </div>
   </div>
 </div>
-<div class="text-center">
+<div class="mt-3 space-y-4">
   <h1><%= @user.name_or_email %></h1>
+  <div>
+    <i class="fa-solid fa-circle-info mr-2 text-orange-700"></i>
+    <%= current_user.email %>
+  </div>
+  <div>
+    <i class="fa-solid fa-circle-info mr-2 text-orange-700"></i>
+    <%= current_user.role %>
+  </div>
   <div>
     <i class="fa-solid fa-circle-chevron-right mr-2 text-orange-700"></i>
     <%= link_to(t("authentication.edit_password"), edit_authentication_password_path(current_user)) %>
