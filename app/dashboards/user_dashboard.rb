@@ -8,9 +8,11 @@ class UserDashboard < Administrate::BaseDashboard
     firstname: Field::String,
     lastname: Field::String,
     password_digest: Field::String,
-    role: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
+    role: Field::Select.with_options(searchable: false, collection: lambda { |field|
+                                                                      field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                                    }),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[

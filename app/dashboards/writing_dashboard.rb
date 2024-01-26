@@ -17,7 +17,7 @@ class WritingDashboard < Administrate::BaseDashboard
     taggings: Field::HasMany,
     tags: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

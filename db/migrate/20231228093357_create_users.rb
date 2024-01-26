@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[7.1]
   def change
-    create_enum :user_roles, ["user", "admin", "super_admin"]
+    create_enum :user_roles, %w[user admin super_admin]
 
     create_table :users do |t|
       t.string :email

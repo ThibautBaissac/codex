@@ -19,7 +19,6 @@ module Admin
       resource_class.order(created_at: :asc)
     end
 
-
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page

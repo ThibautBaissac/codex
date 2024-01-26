@@ -7,14 +7,14 @@ class Writing < ApplicationRecord
 
   validates :date, presence: true
 
-  scope :tagged_with, ->(tag_name) { joins(:tags).where(tags: { name: tag_name&.strip&.downcase }) }
+  scope :tagged_with, lambda { |tag_name| joins(:tags).where(tags: {name: tag_name&.strip&.downcase}) }
 
   after_save :update_searchable_content
 
   def self.search_by_content(query)
     words = query.split
     words.map! { |word| "%#{word}%" }
-    where(words.map { |word| "searchable_content ILIKE ?" }.join(" AND "), *words)
+    where(words.map { |_word| "searchable_content ILIKE ?" }.join(" AND "), *words)
   end
 
   def tag_list

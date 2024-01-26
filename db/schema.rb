@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
+ActiveRecord::Schema[7.1].define(version: 20_240_116_142_501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "user_roles", ["user", "admin", "super_admin"]
+  create_enum "user_roles", %w[user admin super_admin]
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
     t.bigint "record_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+    t.index %w[record_type record_id name], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -35,7 +35,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness",
+                                                    unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -53,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+    t.index %w[blob_id variation_digest], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "annotations", force: :cascade do |t|
@@ -63,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["annotatable_type", "annotatable_id"], name: "index_annotations_on_annotatable"
+    t.index %w[annotatable_type annotatable_id], name: "index_annotations_on_annotatable"
     t.index ["user_id"], name: "index_annotations_on_user_id"
   end
 
@@ -83,7 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_142501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable"
+    t.index %w[taggable_type taggable_id], name: "index_taggings_on_taggable"
   end
 
   create_table "tags", force: :cascade do |t|

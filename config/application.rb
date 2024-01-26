@@ -14,9 +14,9 @@ module Writings
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    config.i18n.load_path += Dir[Rails.root.join("my", "locales", "*.{rb,yml}")]
     config.i18n.default_locale = :fr
 
     # Configuration for the application, engines, and railties goes here.
@@ -30,8 +30,8 @@ module Writings
     # Log to STDOUT because Docker expects all processes to log here. You could
     # then collect logs using journald, syslog or forward them somewhere else.
     config.logger = ActiveSupport::Logger.new(STDOUT)
-      .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
-      .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+                                         .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+                                         .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
     # Set Redis as the back-end for the cache.
     config.cache_store = :redis_cache_store, {

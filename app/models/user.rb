@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, with: Constants::User::REGEX_EMAIL
-  normalizes :email, with: ->(email) { email.downcase.strip }
+  normalizes :email, with: lambda { |email| email.downcase.strip }
 
   validates :password, presence: true if Rails.env.production?
   validates_format_of :password, with: Constants::User::PASSWORD_REGEX if Rails.env.production?
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   enum role: {
     user: "user",
     admin: "admin",
-    super_admin: "super_admin",
+    super_admin: "super_admin"
   }, _prefix: true
 
   generates_token_for :password_reset, expires_in: 15.minutes do

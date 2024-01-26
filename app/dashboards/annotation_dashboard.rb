@@ -8,7 +8,7 @@ class AnnotationDashboard < Administrate::BaseDashboard
     rich_text_content: Field::Text,
     user: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[

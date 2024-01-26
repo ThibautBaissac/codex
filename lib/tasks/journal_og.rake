@@ -1,7 +1,7 @@
 namespace :journal_og do
   task add_year: :environment do
     last_year = nil
-    File.open('resources/journal_og.txt', 'r+') do |file|
+    File.open("resources/journal_og.txt", "r+") do |file|
       lines = file.each_line.to_a
       file.rewind
       file.truncate(0)
@@ -19,8 +19,8 @@ namespace :journal_og do
   end
 
   task remove_lines_with_year_only: :environment do
-    filename = 'resources/journal_og.txt'
-    File.open(filename, 'r+') do |file|
+    filename = "resources/journal_og.txt"
+    File.open(filename, "r+") do |file|
       lines = file.readlines
       file.rewind
       lines.each do |line|
@@ -31,9 +31,9 @@ namespace :journal_og do
   end
 
   task create_writings: :environment do
-    require 'date'
+    require "date"
 
-    file_path = 'resources/journal_og.txt'
+    file_path = "resources/journal_og.txt"
     artist = Artist.first
     content = ""
     date = nil
@@ -41,7 +41,7 @@ namespace :journal_og do
     File.readlines(file_path).each do |line|
       if line =~ /^\d{4}-\d{2}-\d{2}$/
         unless date.nil?
-          artist.writings.create(date: date, content: content.strip)
+          artist.writings.create(date:, content: content.strip)
           content = ""
         end
         date = Date.strptime(line.strip, "%Y-%m-%d")
@@ -51,6 +51,6 @@ namespace :journal_og do
     end
 
     # Create the last writing
-    artist.writings.create(date: date, content: content.strip) unless date.nil?
+    artist.writings.create(date:, content: content.strip) unless date.nil?
   end
 end

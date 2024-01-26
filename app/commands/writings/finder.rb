@@ -41,7 +41,7 @@ module Writings
     end
 
     def filter_by_tags
-      @writings.joins(:tags).where(tags: { id: @tags_param })
+      @writings.joins(:tags).where(tags: {id: @tags_param})
     end
   end
 end

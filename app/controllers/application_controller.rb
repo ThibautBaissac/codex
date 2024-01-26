@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    redirect_to new_authentication_session_path, alert: 'You must sign in or sign up first!' unless user_signed_in?
+    redirect_to new_authentication_session_path, alert: "You must sign in or sign up first!" unless user_signed_in?
   end
 
   def current_user
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
-  def logout(user)
+  def logout(_user)
     Current.user = nil
     reset_session
   end
@@ -42,7 +42,9 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     respond_to do |format|
       format.html { redirect_back(fallback_location: new_authentication_session_path) }
-      format.turbo_stream { render turbo_stream: turbo_stream.update("alerts", partial: "shared/alerts/alerts", locals: { flash: }) }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("alerts", partial: "shared/alerts/alerts", locals: {flash:})
+      end
     end
   end
 end

@@ -7,7 +7,7 @@ module Authentication
 
     def update
       if current_user.update(password_params)
-        redirect_to root_path, notice: 'Password updated successfully!'
+        redirect_to root_path, notice: "Password updated successfully!"
       else
         render :edit, status: :unprocessable_entity
       end

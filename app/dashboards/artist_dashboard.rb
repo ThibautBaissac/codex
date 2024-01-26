@@ -10,7 +10,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     rich_text_bio: Field::Text,
     writings: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[

@@ -14,7 +14,13 @@ Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/RedundantSelf:
+  Enabled: true
 Metrics/CyclomaticComplexity:
   Enabled: false
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+Style/Lambda:
+  EnforcedStyle: lambda

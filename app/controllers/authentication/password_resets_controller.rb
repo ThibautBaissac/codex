@@ -13,7 +13,7 @@ module Authentication
           user.generate_token_for(:password_reset)
         ).password_reset.deliver_later
       end
-      redirect_to root_path, notice: 'Check your email to reset your password.'
+      redirect_to root_path, notice: "Check your email to reset your password."
     end
 
     def edit
@@ -21,7 +21,7 @@ module Authentication
 
     def update
       if @user.update(password_params)
-        redirect_to new_authentication_session_path, notice: 'Password updated successfully!'
+        redirect_to new_authentication_session_path, notice: "Password updated successfully!"
       else
         render :edit, status: :unprocessable_entity
       end
@@ -31,7 +31,7 @@ module Authentication
 
     def set_user_by_token
       @user = User.find_by_token_for(:password_reset, params[:token])
-      redirect_to new_authentication_password_reset_path, alert: 'Token has expired.' unless @user.present?
+      redirect_to new_authentication_password_reset_path, alert: "Token has expired." unless @user.present?
     end
 
     def password_params

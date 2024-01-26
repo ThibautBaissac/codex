@@ -6,7 +6,7 @@ class TaggingDashboard < Administrate::BaseDashboard
     tag: Field::BelongsTo,
     taggable: Field::Polymorphic,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
