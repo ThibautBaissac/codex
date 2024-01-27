@@ -7,6 +7,9 @@ import { application } from "./application"
 import AlertsController from "./alerts_controller"
 application.register("alerts", AlertsController)
 
+import DropUpMenuController from "./drop_up_menu_controller"
+application.register("drop-up-menu", DropUpMenuController)
+
 import FormSubmitByTagController from "./form_submit_by_tag_controller"
 application.register("form-submit-by-tag", FormSubmitByTagController)
 
@@ -15,6 +18,9 @@ application.register("modal", ModalController)
 
 import PageTransitionsController from "./page_transitions_controller"
 application.register("page-transitions", PageTransitionsController)
+
+import SidebarController from "./sidebar_controller"
+application.register("sidebar", SidebarController)
 
 import TrixController from "./trix_controller"
 application.register("trix", TrixController)

@@ -1,8 +1,8 @@
-<nav id="sidebar" role="navigation" aria-label="Main navigation"
+<nav id="sidebar" role="navigation" aria-label="Main navigation" data-sidebar-target="sidebar"
   class="transform transition-transform duration-300 ease-in-out md:block w-72 bg-sky-950 p-4 overflow-y-auto fixed h-full z-40 text-white space-y-2 -translate-x-full md:translate-x-0 rounded-br-2xl">
   <div class="flex items-center">
     <h1 class="font-bold md:ml-0 flex-grow md:hidden"><%= Artist.model_name.human(count: 2) %></h1>
-    <button id="crossIcon" class="w-6 h-6 hidden cursor-pointer" aria-label="Close menu">
+    <button id="crossIcon" data-sidebar-target="crossIcon"  data-action="click->sidebar#toggleSidebar" class="w-6 h-6 hidden cursor-pointer" aria-label="Close menu">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
