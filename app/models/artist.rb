@@ -7,6 +7,9 @@ class Artist < ApplicationRecord
 
   include Decorable
 
+  validates :firstname, :lastname, presence: true
+  validates :firstname, uniqueness: {scope: :lastname}
+
   def random_writings(limit = 5)
     writings_to_include = []
     writings_to_include << :rich_text_content if writings.joins(:rich_text_content).exists?
