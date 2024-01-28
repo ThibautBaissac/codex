@@ -1,0 +1,16 @@
+<div class="flex justify-between items-center">
+  <div>
+    <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
+    <span class="font-medium text-orange-700">
+      <%= Source.model_name.human(count: 2) %>
+    </span>
+  </div>
+
+  <%= render_in_modal(url: new_artist_source_path(artist), policy: policy(Source).new?) do %>
+    <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus", bg_color: "bg-orange-700") %>
+  <% end %>
+</div>
+
+<div id="sources" class="grid grid-cols-2 md:grid-cols-3">
+  <%= render partial: 'sources/card', collection: artist.sources.order(:name), as: :source %>
+</div>

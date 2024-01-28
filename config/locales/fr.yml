@@ -9,6 +9,8 @@ fr:
         deathdate: Date de décès
         firstname: Prénom
         lastname: Nom
+      sources:
+        name: Nom
       tag:
         name: Nom
       user:
@@ -29,7 +31,7 @@ fr:
               blank: ne peut pas être vide.
               invalid: n'est pas valide.
     models:
-      annotations:
+      annotation:
         one: Note
         other: Notes
       artist:
@@ -38,6 +40,9 @@ fr:
       artist_editor:
         one: Éditeur d'artiste
         other: Éditeurs d'artiste
+      source:
+        one: Source
+        other: Sources
       tag:
         one: Tag
         other: Tags
@@ -95,6 +100,16 @@ fr:
       destroy?: Vous ne pouvez pas supprimer ce tag !
     writing_policy:
       update?: Vous ne pouvez pas modifier cet écrit !
+  sources:
+    new: Ajouter une source
+    edit: "Editer la source : %{name}"
+    flash:
+      create:
+        failure: La source n'a pas pu être créée.
+        success: Le source a été créée avec succès.
+      update:
+        failure: La source n'a pas pu être mise à jour.
+        success: La source a été mise à jour avec succès.
   statistics:
     greif_writings_by_year_chart: Nombre d'écrits par année
     statistics: Statistiques
@@ -104,7 +119,7 @@ fr:
     filter_by_tag: Filtrer par tags
     flash:
       create:
-        failure: Le tag n'a pas pu être crée.
+        failure: Le tag n'a pas pu être créé.
         success: Le tag a été créé avec succès.
       destroy:
         failure: Le tag n'a pas pu être supprimé.
@@ -119,8 +134,8 @@ fr:
       update:
         failure: L'utilisateur n'a pas pu être mis à jour.
         success: L'utilisateur a été mis à jour avec succès.
+    my_artists: 'Mes artistes :'
     profile: Mon profil
-    my_artists: "Mes artistes :"
   writings:
     filter_by_date: Filtrer par année
     flash:

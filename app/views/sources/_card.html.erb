@@ -1,0 +1,5 @@
+<span id="source_<%= source.id %>" class="hover:text-orange-700 hover:underline">
+  <%= render_in_modal(url: edit_artist_source_path(source.artist, source), policy: policy(source).edit?) do %>
+    <%= source.name %>
+  <% end %>
+</span>

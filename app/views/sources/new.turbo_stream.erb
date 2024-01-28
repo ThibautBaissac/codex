@@ -1,0 +1,6 @@
+<%= turbo_stream.update("alerts", partial: "shared/alerts/alerts") %>
+<%= turbo_stream.replace "remote_modal" do %>
+  <%= render ModalComponent.new(title: t("sources.new")) do %>
+    <%= render "sources/form", artist: @artist, source: @source %>
+  <% end %>
+<% end %>

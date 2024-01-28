@@ -1,0 +1,9 @@
+<%= form_with(model: [artist, source], data: {turbo: true, turbo_frame: "source_#{source.id}"} ) do |form| %>
+  <%= render partial: "shared/errors", locals: {instance: source} %>
+  <div class="mb-4">
+    <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+  <div class="flex items-center justify-between">
+    <%= form.submit t("default.save"), class: "bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline", data: {action: "click->modal#close"} %>
+  </div>
+<% end %>

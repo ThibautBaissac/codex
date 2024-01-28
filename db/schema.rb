@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_28_110555) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_28_132549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_28_110555) do
     t.index ["slug"], name: "index_artists_on_slug", unique: true
   end
 
+  create_table "sources", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_sources_on_artist_id"
+    t.index ["name", "artist_id"], name: "index_sources_on_name_and_artist_id", unique: true
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.string "taggable_type", null: false
@@ -115,6 +124,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_28_110555) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "writing_sources", force: :cascade do |t|
+    t.bigint "writing_id", null: false
+    t.bigint "source_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_writing_sources_on_source_id"
+    t.index ["writing_id", "source_id"], name: "index_writing_sources_on_writing_id_and_source_id", unique: true
+    t.index ["writing_id"], name: "index_writing_sources_on_writing_id"
+  end
+
   create_table "writings", force: :cascade do |t|
     t.date "date"
     t.bigint "artist_id", null: false
@@ -129,6 +148,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_28_110555) do
   add_foreign_key "annotations", "users"
   add_foreign_key "artist_editors", "artists"
   add_foreign_key "artist_editors", "users"
+  add_foreign_key "sources", "artists"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "writing_sources", "sources"
+  add_foreign_key "writing_sources", "writings"
   add_foreign_key "writings", "artists"
 end

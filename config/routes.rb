@@ -7,12 +7,15 @@ Rails.application.routes.draw do
     resources :users
     resources :writings
     resources :artist_editors
+    resources :sources
+    resources :writing_sources
 
     root to: "annotations#index"
   end
   root "artists#index"
 
   resources :artists, only: %i[index show edit update] do
+    resources :sources
     resources :writings, only: %i[index new create edit update] do
       get :search, on: :collection
       resources :tags, only: %i[create destroy], controller: "tags"

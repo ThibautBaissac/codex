@@ -1,8 +1,14 @@
 <%= render "artists/artist", artist: @artist.decorate %>
 
-<div class="mx-10">
+
+<div class="mx-10 space-y-10">
+  <div>
+    <%= render partial: 'sources/index', locals: {artist: @artist} %>
+  </div>
+
+  <div>
   <%= link_to(artist_writings_path(@artist)) do %>
-    <i class="fa-solid fa-circle-chevron-right mr-2 text-orange-700"></i>
+    <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
     <span class="font-medium text-orange-700 hover:underline">
       <%= Writing.model_name.human(count: 2) %>
     </span>

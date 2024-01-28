@@ -2,6 +2,7 @@ class Artist < ApplicationRecord
   has_many :writings
   has_many :artist_editors
   has_many :users, through: :artist_editors
+  has_many :sources
   has_rich_text :bio
   slug :name_for_slug
 
