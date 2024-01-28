@@ -5,19 +5,19 @@ class AnnotationPolicy < ApplicationPolicy
     user.present?
   end
 
-  def create?
-    user.present? && (user.role_admin? || user.role_super_admin?)
+  def new?
+    user&.role_admin? || user&.role_super_admin?
   end
 
-  def new?
-    user.present? && (user.role_admin? || user.role_super_admin?)
+  def create?
+    user&.role_admin? || user&.role_super_admin?
   end
 
   def edit?
-    user.present? && (user.role_admin? || user.role_super_admin?)
+    user&.role_admin? || user&.role_super_admin?
   end
 
   def update?
-    user.present? && (user.role_admin? || user.role_super_admin?)
+    user&.role_admin? || user&.role_super_admin?
   end
 end

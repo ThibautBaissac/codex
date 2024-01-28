@@ -10,7 +10,7 @@ class ArtistPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.present? && (user.role_admin? || user.role_super_admin?)
+    (user&.role_admin? && record.in?(user&.artists)) || user&.role_super_admin?
   end
 
   def update?

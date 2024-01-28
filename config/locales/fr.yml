@@ -35,6 +35,9 @@ fr:
       artist:
         one: Artiste
         other: Artistes
+      artist_editor:
+        one: Éditeur d'artiste
+        other: Éditeurs d'artiste
       tag:
         one: Tag
         other: Tags
@@ -117,6 +120,7 @@ fr:
         failure: L'utilisateur n'a pas pu être mis à jour.
         success: L'utilisateur a été mis à jour avec succès.
     profile: Mon profil
+    my_artists: "Mes artistes :"
   writings:
     filter_by_date: Filtrer par année
     flash:

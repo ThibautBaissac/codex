@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :taggings
     resources :users
     resources :writings
+    resources :artist_editors
 
     root to: "annotations#index"
   end

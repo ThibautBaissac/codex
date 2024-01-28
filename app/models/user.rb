@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :annotations
+  has_many :artist_editors
+  has_many :artists, through: :artist_editors
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, with: Constants::User::REGEX_EMAIL

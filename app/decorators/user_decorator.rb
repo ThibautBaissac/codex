@@ -1,6 +1,6 @@
 class UserDecorator < SimpleDelegator
   def fullname
-    "#{firstname&.capitalize}  #{lastname&.capitalize}"
+    "#{firstname&.capitalize} #{lastname&.capitalize}"
   end
 
   def name_or_email

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_26_143244) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_28_095927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_143244) do
     t.index ["user_id"], name: "index_annotations_on_user_id"
   end
 
+  create_table "artist_editors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id", "user_id"], name: "index_artist_editors_on_artist_id_and_user_id", unique: true
+    t.index ["artist_id"], name: "index_artist_editors_on_artist_id"
+    t.index ["user_id"], name: "index_artist_editors_on_user_id"
+  end
+
   create_table "artists", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
@@ -116,6 +126,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_143244) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "annotations", "users"
+  add_foreign_key "artist_editors", "artists"
+  add_foreign_key "artist_editors", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "writings", "artists"
 end

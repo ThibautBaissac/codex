@@ -4,12 +4,14 @@ FactoryBot.define do
     lastname { "Doe" }
     birthdate { "2024-01-03" }
     deathdate { "2024-01-03" }
+    sequence(:slug) { |n| "john-doe-#{n}" }
 
     trait :olivier_greif do
       firstname { "Olivier" }
       lastname  { "Greif" }
       birthdate { "1950-01-03" }
       deathdate { "2000-05-13" }
+      slug { "olivier-greif" }
     end
 
     after(:build) do |artist|
