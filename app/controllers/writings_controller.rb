@@ -42,6 +42,7 @@ class WritingsController < ApplicationController
     authorize @writing
     @artist = @writing.artist
     if @writing.update(writing_params)
+      WritingSource.where(writing: @writing).first_or_initialize.update(source_id: params[:writing][:source])
       flash[:notice] = t("writings.flash.update.success")
       respond_with_update
     else
@@ -64,7 +65,7 @@ class WritingsController < ApplicationController
   end
 
   def order_writings(writings)
-    writings.includes(%i[rich_text_content annotations]).order(date: :asc)
+    writings.includes([:rich_text_content, :annotations, {writing_source: :source}]).order(date: :asc)
   end
 
   def writing_params

@@ -1,0 +1,3 @@
+<% if writing.writing_source %>
+  <%= "#{Source.model_name.human} : #{writing.writing_source&.source&.name}" %>
+<% end %>

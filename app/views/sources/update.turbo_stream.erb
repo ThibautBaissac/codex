@@ -1,2 +1,2 @@
 <%= turbo_stream.update("alerts", partial: "shared/alerts/alerts") %>
-<%= turbo_stream.replace("source_#{@source.id}", partial: "sources/card", locals: {source: @source}) %>
+<%= turbo_stream.replace("source_#{@source.id}", partial: "sources/list", locals: {source: @source}) %>

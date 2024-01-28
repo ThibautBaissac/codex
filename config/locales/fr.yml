@@ -102,6 +102,7 @@ fr:
       update?: Vous ne pouvez pas modifier cet écrit !
   sources:
     new: Ajouter une source
+    select_source: Sélectionner une source
     edit: "Editer la source : %{name}"
     flash:
       create:

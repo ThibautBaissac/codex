@@ -1,6 +1,9 @@
 <% if controller_name == "writings" %>
   <%= writing.content %>
-  <%= render "tags/form", url: artist_writing_tags_path(@artist, writing, taggable_type: "writing") if user_signed_in? %>
+  <div class="flex justify-between items-center">
+    <%= render "tags/form", url: artist_writing_tags_path(@artist, writing, taggable_type: "writing") if user_signed_in? %>
+    <%= render partial: "writings/source", locals: {writing:} %>
+  </div>
 <% else %>
   <%= truncate(writing.content.to_plain_text, length: 200) %>
 <% end %>

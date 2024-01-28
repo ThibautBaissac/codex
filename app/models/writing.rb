@@ -4,6 +4,7 @@ class Writing < ApplicationRecord
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :annotations, as: :annotatable, dependent: :destroy
+  has_one :writing_source, dependent: :destroy
 
   validates :date, presence: true
 

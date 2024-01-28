@@ -12,5 +12,5 @@
 </div>
 
 <div id="sources" class="grid grid-cols-2 md:grid-cols-3">
-  <%= render partial: 'sources/card', collection: artist.sources.order(:name), as: :source %>
+  <%= render partial: 'sources/list', collection: artist.sources.order(:name), as: :source %>
 </div>
