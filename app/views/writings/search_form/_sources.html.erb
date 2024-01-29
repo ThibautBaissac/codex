@@ -1,0 +1,7 @@
+<div class="w-full md:w-1/2">
+  <%= form.select :source,
+        options_for_select(sources.map{[_1.name, _1.id]}, params[:source]),
+        { prompt: params[:source].present? ? t("writings.reset_filter_by_source") : t("writings.filter_by_source"), },
+        { onchange: "this.form.submit()" ,
+          class: "bg-sky-700 border border-gray-300 text-gray-100 rounded-xl focus:ring-blue-500 focus:border-gray-500 focus:bg-gray-700 block w-full p-2.5" } %>
+</div>

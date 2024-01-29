@@ -73,7 +73,7 @@ class WritingsController < ApplicationController
   end
 
   def search_params
-    params.permit(:q, :year, tags: [])
+    params.permit(:q, :year, :source, tags: [])
   end
 
   def respond_with_update

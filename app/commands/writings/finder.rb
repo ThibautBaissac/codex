@@ -21,6 +21,7 @@ module Writings
       @query_param = "%#{@params[:q]}%"
       @year_param = @params[:year]
       @tags_param = @params[:tags]
+      @sources_param = @params[:source]
     end
 
     def filter_writings
@@ -28,6 +29,7 @@ module Writings
       @writings = filter_query if @query_param.present?
       @writings = filter_by_year if @year_param.present?
       @writings = filter_by_tags if @tags_param.present?
+      @writings = filter_by_sources if @sources_param.present?
     end
 
     def filter_query
@@ -42,6 +44,10 @@ module Writings
 
     def filter_by_tags
       @writings.joins(:tags).where(tags: {id: @tags_param})
+    end
+
+    def filter_by_sources
+      @writings.joins(:writing_source).where(writing_sources: {source_id: @sources_param})
     end
   end
 end

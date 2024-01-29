@@ -139,6 +139,7 @@ fr:
     profile: Mon profil
   writings:
     filter_by_date: Filtrer par année
+    filter_by_source: Filtrer par source
     flash:
       create:
         failure: L'écrit n'a pas pu être créé.
@@ -148,3 +149,4 @@ fr:
         success: L'écrit a été mis à jour avec succès.
     new: Nouvel écrit
     reset_filter_by_date: Réinitialiser le filtre par année
+    reset_filter_by_source: Réinitialiser le filtre par source
