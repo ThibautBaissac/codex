@@ -4,18 +4,18 @@ class TagsController < ApplicationController
   def create
     authorize Tag
     if @taggable.add_tag(tag_params[:name])
-      redirect_back_with_notice(t("tags.flash.create.success"))
+      handle_response_with_flash(:create)
     else
-      redirect_back_with_alert(t("tags.flash.create.failure"))
+      redirect_back(fallback_location: root_path, alert: t("tags.flash.create.failure"))
     end
   end
 
   def destroy
     authorize Tag
     if @taggable.remove_tag(params[:id])
-      redirect_back_with_notice(t("tags.flash.destroy.success"))
+      handle_response_with_flash(:destroy)
     else
-      redirect_back_with_alert(t("tags.flash.destroy.failure"))
+      redirect_back(fallback_location: root_path, alert: t("tags.flash.destroy.failure"))
     end
   end
 
@@ -40,11 +40,11 @@ class TagsController < ApplicationController
     params.require(:tag).permit(:name)
   end
 
-  def redirect_back_with_notice(notice)
-    redirect_back(fallback_location: root_path, notice:)
-  end
-
-  def redirect_back_with_alert(alert)
-    redirect_back(fallback_location: root_path, alert:)
+  def handle_response_with_flash(action)
+    flash[:notice] = t("tags.flash.#{action}.success")
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.turbo_stream
+    end
   end
 end

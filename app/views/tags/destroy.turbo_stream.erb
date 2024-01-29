@@ -1,0 +1,3 @@
+<%= turbo_stream.update("alerts", partial: "shared/alerts/alerts") %>
+<%= turbo_stream.update("tag_list", partial: "tags/list", locals: {artist: @taggable.artist, writing: @taggable}) %>
+<%= turbo_stream.update("tag_form", partial: "tags/form", locals: {url: artist_writing_tags_path(@taggable.artist, @taggable, taggable_type: @taggable.class.to_s.camelize)}) %>
