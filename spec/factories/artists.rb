@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :artist do
-    firstname { "John" }
-    lastname { "Doe" }
+    sequence(:firstname) { |n| "John-#{n}" }
+    sequence(:lastname) { |n| "Dohn-#{n}" }
     birthdate { "2024-01-03" }
     deathdate { "2024-01-03" }
     sequence(:slug) { |n| "john-doe-#{n}" }

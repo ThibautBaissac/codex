@@ -2,9 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Artists", type: :request do
   describe "GET /index" do
+    let(:user) { create(:user, :admin) }
     let!(:artists) { create_list(:artist, 10) }
 
     before do
+      # post authentication_session_path, params: {email: user.email, password: user.password}
       get artists_path
     end
 
