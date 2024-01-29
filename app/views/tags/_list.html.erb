@@ -3,7 +3,7 @@
     <%= tag.name %>
     <% if user_signed_in? %>
       <%= render partial: "tags/remove",
-                locals: {tag:, remove_url: artist_writing_tag_path(artist, writing, tag, taggable_type: "writing")} %>
+                 locals: {tag:, remove_url: artist_writing_tag_path(artist, writing, tag, taggable_type: "writing")} %>
     <% end %>
   </span>
 <% end %>

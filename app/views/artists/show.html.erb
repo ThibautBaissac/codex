@@ -9,7 +9,7 @@
       </h2>
     <% end %>
     <div class="flex space-x-4">
-      <%= render partial: 'writings/card', collection: @artist.random_writings(3), as: :writing, locals: { artist: @artist } %>
+      <%= render partial: "writings/card", collection: @artist.random_writings(3), as: :writing, locals: {artist: @artist} %>
     </div>
   </div>
 
@@ -24,6 +24,6 @@
         <% end %>
       </div>
     </div>
-    <%= render partial: 'sources/list', locals: {artist: @artist} %>
+    <%= render partial: "sources/list", locals: {artist: @artist} %>
   </div>
 </div>

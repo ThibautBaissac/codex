@@ -1,4 +1,4 @@
-<%= form_with(model: [artist, source], data: {turbo: true, turbo_frame: "source_#{source.id}"} ) do |form| %>
+<%= form_with(model: [artist, source], data: {turbo: true, turbo_frame: "source_#{source.id}"}) do |form| %>
   <%= render partial: "shared/errors", locals: {instance: source} %>
   <div class="mb-4">
     <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>

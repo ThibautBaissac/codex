@@ -1,4 +1,4 @@
-<%= form_with(model: Tag.new, url: , method: :post) do |form| %>
+<%= form_with(model: Tag.new, url:, method: :post) do |form| %>
   <%= form.text_field :name, placeholder: t("tags.add_tag"),
-                      class: "px-2 py-1 bg-gay-300 border border-gray-600 rounded-xl text-sm text-gray-100 focus:outline-none focus:border-gray-500 focus:bg-sky-700" %>
+                             class: "px-2 py-1 bg-gay-300 border border-gray-600 rounded-xl text-sm text-gray-100 focus:outline-none focus:border-gray-500 focus:bg-sky-700" %>
 <% end %>

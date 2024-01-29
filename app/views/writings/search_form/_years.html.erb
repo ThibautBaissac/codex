@@ -1,7 +1,7 @@
 <div class="w-full md:w-1/2">
   <%= form.select :year,
-        options_for_select(@years, params[:year]),
-        { prompt: params[:year].present? ? t("writings.reset_filter_by_date") : t("writings.filter_by_date"), },
-        { onchange: "this.form.submit()" ,
-          class: 'bg-sky-700 border border-gray-300 text-gray-100 rounded-xl focus:ring-blue-500 focus:border-gray-500 focus:bg-gray-700 block w-full p-2.5' } %>
+                  options_for_select(@years, params[:year]),
+                  {prompt: params[:year].present? ? t("writings.reset_filter_by_date") : t("writings.filter_by_date")},
+                  {onchange: "this.form.submit()",
+                   class: "bg-sky-700 border border-gray-300 text-gray-100 rounded-xl focus:ring-blue-500 focus:border-gray-500 focus:bg-gray-700 block w-full p-2.5"} %>
 </div>

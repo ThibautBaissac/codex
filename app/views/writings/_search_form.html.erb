@@ -1,10 +1,10 @@
 <div class="relative mx-10 mb-4">
-  <%= form_with(url: search_artist_writings_path(@artist), method: :get, remote: false, class: "search-form space-y-4", data: { controller: "form-submit-by-tag" }) do |form| %>
-    <%= render partial: 'writings/search_form/query', locals: {form:} %>
+  <%= form_with(url: search_artist_writings_path(@artist), method: :get, remote: false, class: "search-form space-y-4", data: {controller: "form-submit-by-tag"}) do |form| %>
+    <%= render partial: "writings/search_form/query", locals: {form:} %>
     <div class="flex flex-col md:flex-row md:space-x-4">
-      <%= render partial: 'writings/search_form/years', locals: {form:} %>
-      <%= render partial: 'writings/search_form/sources', locals: {form:, sources: @artist.sources} %>
+      <%= render partial: "writings/search_form/years", locals: {form:} %>
+      <%= render partial: "writings/search_form/sources", locals: {form:, sources: @artist.sources} %>
     </div>
-    <%= render partial: 'writings/search_form/tags', locals: {tags: @tags} %>
+    <%= render partial: "writings/search_form/tags", locals: {tags: @tags} %>
   <% end %>
 </div>

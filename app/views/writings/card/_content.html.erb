@@ -3,7 +3,7 @@
   <div class="flex items-center">
     <%= render "tags/form", url: artist_writing_tags_path(artist, writing, taggable_type: "writing") if user_signed_in? %>
     <div id="tag_list" class="flex">
-      <%= render partial: 'tags/list', locals: {artist:, writing:} %>
+      <%= render partial: "tags/list", locals: {artist:, writing:} %>
     </div>
   </div>
 <% else %>

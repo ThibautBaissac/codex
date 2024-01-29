@@ -41,6 +41,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "bullet"
+  gem "erb_lint", require: false
   gem "letter_opener"
   gem "rack-mini-profiler"
   gem "web-console"
