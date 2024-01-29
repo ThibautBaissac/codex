@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "writing_#{writing.id}" do %>
   <div class="flex-1">
     <div class="mb-4 p-2 rounded-lg bg-white transition-colors duration-500 hover:bg-orange-200">
-      <%= render partial: 'writings/card/header', locals: { artist:, writing: } %>
-      <%= render partial: 'writings/card/content', locals: { writing: } %>
+      <%= render partial: 'writings/card/header', locals: {artist:, writing:} %>
+      <%= render partial: 'writings/card/content', locals: {artist:, writing:} %>
     </div>
   </div>
 <% end %>

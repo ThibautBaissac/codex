@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :annotations, only: %i[index new create edit update], controller: "annotations"
     end
   end
+  get :sources, to: "sources#index"
 
   namespace :administration do
     resources :annotations, only: %i[index edit update]

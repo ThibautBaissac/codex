@@ -1,2 +1,2 @@
 <%= turbo_stream.update("alerts", partial: "shared/alerts/alerts") %>
-<%= turbo_stream.update("sources", partial: "sources/list", collection: @artist.sources, as: :source) %>
+<%= turbo_stream.replace("sources", partial: "sources/list", locals: {artist: @artist}) %>

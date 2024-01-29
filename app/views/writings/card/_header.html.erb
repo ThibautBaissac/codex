@@ -1,9 +1,7 @@
 <div class="pb-2 mb-2 border-b-2 border-orange-700 flex items-center justify-between">
-  <%= render partial: "writings/card/date", locals: { writing: } %>
-
-  <div id="tag_list" class="flex mb-1">
-    <%= render partial: 'tags/list', locals: { artist:, writing:} %>
+  <div>
+    <%= render partial: "writings/card/date", locals: { writing: } %>
+    <%= render partial: "writings/source", locals: {writing:} %>
   </div>
-
   <%= render partial: "writings/card/actions", locals: { artist:, writing: } if user_signed_in? %>
 </div>

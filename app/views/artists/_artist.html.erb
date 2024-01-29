@@ -1,13 +1,19 @@
 <div id="artist_<%= artist.id %>">
-  <div class="mb-10">
-    <div class="mb-4 flex justify-between align-center">
-      <h2 class="mb-4 text-3xl font-bold leading-none tracking-tight md:text-4xl lg:text-5xl">
+  <div class="mb-10 space-y-4">
+    <div class="flex justify-between align-center">
+      <h1 class="leading-none tracking-tight md:text-4xl lg:text-5xl">
         <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
-      </h2>
+      </h1>
       <%= render_in_modal(url: edit_artist_path(artist), policy: policy(artist).edit?) do %>
         <%= render CircleIconComponent.new(icon: "fa-solid fa-edit", bg_color: "bg-orange-700") %>
       <% end %>
     </div>
-    <div class="mb-4 mx-10 p-4 bg-sky-700 text-white rounded-xl"><%= artist.biography %></div>
+
+    <div class="mx-10 space-y-4">
+      <div class="flex justify-center">
+        <%= safe_image_tag("artists/#{artist&.lastname&.downcase}.jpg", class: "rounded-xl", data: { title: artist.fullname }) %>
+      </div>
+      <div class="p-4 bg-sky-700 text-white rounded-xl"><%= artist.biography %></div>
+    </div>
   </div>
 </div>

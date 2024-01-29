@@ -15,6 +15,7 @@ class Artist < ApplicationRecord
     writings_to_include = []
     writings_to_include << :rich_text_content if writings.joins(:rich_text_content).exists?
     writings_to_include << :annotations if writings.joins(:annotations).exists?
+    writings_to_include << :writing_source if writings.joins(:writing_source).exists?
 
     writings.includes(writings_to_include).order("RANDOM()").limit(limit)
   end
