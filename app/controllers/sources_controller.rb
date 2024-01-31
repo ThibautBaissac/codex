@@ -3,7 +3,13 @@ class SourcesController < ApplicationController
   before_action :set_source, only: %i[edit update]
   before_action :authorize_source, only: %i[new create edit update]
 
+  layout "full_width", only: :index
+
   def index
+  end
+
+  def show
+    @source = Source.find(params[:id])
   end
 
   def new
@@ -45,7 +51,7 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:name)
+    params.require(:source).permit(:name, :description)
   end
 
   def handle_response_with_flash(action)

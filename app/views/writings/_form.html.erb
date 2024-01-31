@@ -1,7 +1,7 @@
 <%= form_with(model: [artist, writing], data: {turbo: true, turbo_frame: "writing_#{writing.id}"}) do |form| %>
   <%= render partial: "shared/errors", locals: {instance: writing} %>
 
-  <div class="flex align-center space-x-3">
+  <div class="flex items-center space-x-3">
     <div class="mb-4 flex-auto">
       <%= form.label :date, class: "block text-gray-700 text-sm font-bold mb-2" %>
       <%= form.date_field :date, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>

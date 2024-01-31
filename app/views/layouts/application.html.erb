@@ -1,14 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <%= render partial: "layouts/include" %>
-  </head>
-
-  <body class="bg-white">
-    <div class="flex h-screen border-t-4 border-orange-700" data-controller="sidebar">
-      <%= render partial: "layouts/sidebar" %>
-      <%= render partial: "layouts/main" %>
-    </div>
-    <%= turbo_frame_tag "remote_modal" %>
-  </body>
-</html>
+<%= render partial: "layouts/base", locals: {width: "xl:mx-auto xl:w-3/4 2xl:w-1/2"} %>

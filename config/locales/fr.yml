@@ -104,6 +104,7 @@ fr:
     new: Ajouter une source
     select_source: Sélectionner une source
     edit: "Editer la source : %{name}"
+    description_placeholder: "Description de la source"
     flash:
       create:
         failure: La source n'a pas pu être créée.

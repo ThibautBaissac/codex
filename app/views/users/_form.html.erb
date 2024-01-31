@@ -1,6 +1,6 @@
 <%= form_with(model: user, data: {turbo: true}) do |form| %>
   <%= render partial: "shared/errors", locals: {instance: user} %>
-  <div class="flex align-center space-x-3">
+  <div class="flex items-center space-x-3">
     <div class="mb-4 flex-auto">
       <%= form.label :firstname, class: "block text-gray-700 text-sm font-bold mb-2" %>
       <%= form.text_field :firstname, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>

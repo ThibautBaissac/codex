@@ -10,7 +10,7 @@
   </header>
   <div class="bg-sky-950">
     <div class="bg-white md:rounded-tl-2xl">
-      <div class="mt-8 xl:mx-auto xl:w-3/4 2xl:w-1/2 p-2">
+      <div class="mt-8 p-2 <%= width %>">
         <%= turbo_frame_tag "alerts" do %>
           <%= render partial: "shared/alerts/alerts" %>
         <% end %>

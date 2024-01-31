@@ -24,13 +24,13 @@
         <% end %>
       </li>
       <li>
-        <%= link_to(statistics_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= t("statistics.statistics") %></span>
+        <%= link_to(administration_annotations_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
+          <span><%= "Notes" %></span>
         <% end %>
       </li>
       <li>
-        <%= link_to(administration_annotations_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= "Notes" %></span>
+        <%= link_to(statistics_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
+          <span><%= t("statistics.statistics") %></span>
         <% end %>
       </li>
     <% end %>
