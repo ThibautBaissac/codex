@@ -101,10 +101,8 @@ fr:
     writing_policy:
       update?: Vous ne pouvez pas modifier cet écrit !
   sources:
-    new: Ajouter une source
-    select_source: Sélectionner une source
-    edit: "Editer la source : %{name}"
-    description_placeholder: "Description de la source"
+    description_placeholder: Description de la source
+    edit: 'Editer la source : %{name}'
     flash:
       create:
         failure: La source n'a pas pu être créée.
@@ -112,6 +110,8 @@ fr:
       update:
         failure: La source n'a pas pu être mise à jour.
         success: La source a été mise à jour avec succès.
+    new: Ajouter une source
+    select_source: Sélectionner une source
   statistics:
     greif_writings_by_year_chart: Nombre d'écrits par année
     statistics: Statistiques
@@ -139,6 +139,9 @@ fr:
     my_artists: 'Mes artistes :'
     profile: Mon profil
   writings:
+    count:
+      one: Nous avons trouvé %{count} écrit.
+      other: Nous avons trouvé %{count} écrits.
     filter_by_date: Filtrer par année
     filter_by_source: Filtrer par source
     flash:

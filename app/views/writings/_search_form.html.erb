@@ -7,4 +7,5 @@
     </div>
     <%= render partial: "writings/search_form/tags", locals: {tags: @tags} %>
   <% end %>
+  <div class="mt-2"><%= t("writings.count", count: @pagy.count) %></div>
 </div>

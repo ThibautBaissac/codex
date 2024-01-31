@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 md:grid-cols-3">
+<div class="grid grid-cols-2 md:grid-cols-3 text-center">
   <% artist.sources.each do |source| %>
-    <span class="hover:text-orange-700 hover:underline">
+    <span class="hover:text-orange-700 hover:underline my-2">
       <%= link_to(source.name, artist_source_path(source.artist, source), class: "hover:underline hover:text-sky-800") %>
     </span>
   <% end %>
