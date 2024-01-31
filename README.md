@@ -68,3 +68,10 @@ erblint -a app/views/writings/search_form/_years.html.erb
 erblint --lint-all --autocorrect
 erblint -la -a
 ``````
+
+
+7. **GCS**
+To edit "config/credentials.yml.enc" run:
+```bash
+EDITOR="code --wait" rails credentials:edit
+```

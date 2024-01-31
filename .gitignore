@@ -30,3 +30,5 @@ docker-compose.override.yml
 
 # Ignore Mac file system files
 .DS_Store
+
+config/secrets/gcskey.json
