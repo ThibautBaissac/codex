@@ -2,7 +2,7 @@
   <div class="mb-10 space-y-4">
     <div class="flex justify-between items-center">
       <h1 class="leading-none tracking-tight">
-        <%= link_to(artist.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
+        <%= link_to(artist.fullname, artist_path(artist), class: " hover:text-sky-800") %>
       </h1>
       <%= render_in_modal(url: edit_artist_path(artist), policy: policy(artist).edit?) do %>
         <%= render CircleIconComponent.new(icon: "fa-solid fa-edit", bg_color: "bg-orange-700") %>
@@ -13,7 +13,7 @@
       <div class="flex justify-center">
         <%= safe_image_tag("artists/#{artist&.lastname&.downcase}.jpg", class: "rounded-xl", data: {title: artist.fullname}) %>
       </div>
-      <div class="p-4 bg-sky-700 text-white rounded-xl"><%= artist.biography %></div>
+      <div class="p-4 bg-sky-700 text-white rounded-xl text-justify"><%= artist.biography %></div>
     </div>
   </div>
 </div>
