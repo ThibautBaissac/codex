@@ -38,8 +38,8 @@ fr:
         one: Artiste
         other: Artistes
       artist_editor:
-        one: Éditeur d’artiste
-        other: Éditeurs d’artiste
+        one: Éditeur d'artiste
+        other: Éditeurs d'artiste
       source:
         one: Source
         other: Sources
@@ -54,26 +54,26 @@ fr:
     edit_annotation: Éditer la note
     flash:
       create:
-        failure: La note n’a pas pu être créée.
+        failure: La note n'a pas pu être créée.
         success: La note a été créé avec succès.
       update:
-        failure: La note n’a pas pu être mise à jour.
+        failure: La note n'a pas pu être mise à jour.
         success: La note a été mise à jour avec succès.
   artists:
     edit: Éditer %{name}
     flash:
       create:
-        failure: L’artiste n’a pas pu être créé.
-        success: L’artiste a été créé avec succès.
+        failure: L'artiste n'a pas pu être créé.
+        success: L'artiste a été créé avec succès.
       update:
-        failure: L’artiste n’a pas pu être mis à jour.
-        success: L’artiste a été mis à jour avec succès.
+        failure: L'artiste n'a pas pu être mis à jour.
+        success: L'artiste a été mis à jour avec succès.
     see_all_writings: Voir tous les écrits de %{name} (%{count})
   authentication:
     edit_password: Modifier le mot de passe
     login: Se connecter
     logout: Se déconnecter
-    sign_up: S’inscrire
+    sign_up: S'inscrire
   default:
     back: Retour
     by: Par %{name}
@@ -105,52 +105,52 @@ fr:
     edit: 'Editer la source : %{name}'
     flash:
       create:
-        failure: La source n’a pas pu être créée.
+        failure: La source n'a pas pu être créée.
         success: Le source a été créée avec succès.
       update:
-        failure: La source n’a pas pu être mise à jour.
+        failure: La source n'a pas pu être mise à jour.
         success: La source a été mise à jour avec succès.
     new: Ajouter une source
     select_source: Sélectionner une source
   statistics:
-    greif_writings_by_year_chart: Nombre d’écrits par année
+    greif_writings_by_year_chart: Nombre d'écrits par année
     statistics: Statistiques
-    tags_by_name_chart: Nombre d’écrits par tag
+    tags_by_name_chart: Nombre d'écrits par tag
   tags:
     add_tag: Ajouter un tag
     filter_by_tag: Filtrer par tags
     flash:
       create:
-        failure: Le tag n’a pas pu être créé.
+        failure: Le tag n'a pas pu être créé.
         success: Le tag a été créé avec succès.
       destroy:
-        failure: Le tag n’a pas pu être supprimé.
+        failure: Le tag n'a pas pu être supprimé.
         success: Le tag a été supprimé avec succès.
-      not_found: Le tag n’a pas été trouvé.
+      not_found: Le tag n'a pas été trouvé.
   users:
     edit: Éditer mon profil
     flash:
       create:
-        failure: L’utilisateur n’a pas pu être créé.
-        success: L’utilisateur a été créé avec succès.
+        failure: L'utilisateur n'a pas pu être créé.
+        success: L'utilisateur a été créé avec succès.
       update:
-        failure: L’utilisateur n’a pas pu être mis à jour.
-        success: L’utilisateur a été mis à jour avec succès.
+        failure: L'utilisateur n'a pas pu être mis à jour.
+        success: L'utilisateur a été mis à jour avec succès.
     my_artists: 'Mes artistes :'
     profile: Mon profil
   writings:
     count:
-      one: Nous avons trouvé %{count} entrées.
-      other: Nous avons trouvé %{count} entrées.
+      one: Nous avons trouvé %{count} écrit.
+      other: Nous avons trouvé %{count} écrits.
     filter_by_date: Filtrer par année
     filter_by_source: Filtrer par source
     flash:
       create:
-        failure: L’écrit n’a pas pu être créé.
-        success: L’écrit a été créé avec succès.
+        failure: L'écrit n'a pas pu être créé.
+        success: L'écrit a été créé avec succès.
       update:
-        failure: L’écrit n’a pas pu être mis à jour.
-        success: L’écrit a été mis à jour avec succès.
+        failure: L'écrit n'a pas pu être mis à jour.
+        success: L'écrit a été mis à jour avec succès.
     new: Nouvel écrit
     reset_filter_by_date: Réinitialiser le filtre par année
     reset_filter_by_source: Réinitialiser le filtre par source

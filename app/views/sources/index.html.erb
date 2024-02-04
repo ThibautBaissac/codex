@@ -1,8 +1,13 @@
+<h1 class="leading-none tracking-tight md:text-4xl lg:text-5xl mb-4">
+  <%= link_to(Source.model_name.human(count: 2), sources_path, class: "hover:underline hover:text-sky-800") %>
+</h1>
+
 <% current_user.artists.each do |artist| %>
   <div class="flex justify-between items-center mb-4">
-    <h1 class="leading-none tracking-tight md:text-4xl lg:text-5xl mb-4">
-      <%= link_to(Source.model_name.human(count: 2), sources_path, class: " hover:text-sky-800") %>
-    </h1>
+    <h2 class="font-medium text-orange-700">
+      <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
+      <%= link_to(artist.decorate.fullname, artist_path(artist), class: "hover:underline hover:text-sky-800") %>
+    </h2>
 
     <%= render_in_modal(url: new_artist_source_path(artist), policy: policy(Source).new?) do %>
       <%= render CircleIconComponent.new(icon: "fa-solid fa-circle-plus", bg_color: "bg-orange-700") %>
