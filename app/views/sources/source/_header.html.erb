@@ -1,5 +1,5 @@
 <h2 class="mb-4 leading-none tracking-tight">
-  <%= link_to(@source.artist.decorate.fullname, artist_path(@source.artist), class: "hover:underline hover:text-sky-800") %>
+  <%= link_to(@source.artist.decorate.fullname, artist_path(@source.artist), class: " hover:text-sky-800") %>
   >
-  <%= link_to(Source.model_name.human(count: 2), artist_sources_path(@source.artist), class: "hover:underline hover:text-sky-800") %>
+  <%= link_to(Source.model_name.human(count: 2), artist_sources_path(@source.artist), class: " hover:text-sky-800") %>
 </h2>
