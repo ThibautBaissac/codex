@@ -1,11 +1,5 @@
-<div id="source_<%= source.id %>">
-  <div class="flex justify-between items-center">
-    <h1 class="leading-none tracking-tight md:text-4xl lg:text-5xl">
-      <%= source.name %>
-    </h1>
-    <%= render_in_modal(url: edit_artist_source_path(source.artist, source), policy: policy(source).edit?) do %>
-      <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
-    <% end %>
-  </div>
-  <%= source.description %>
-</div>
+<h2 class="mb-4 leading-none tracking-tight">
+  <%= link_to(@source.artist.decorate.fullname, artist_path(@source.artist), class: "hover:underline hover:text-sky-800") %>
+  >
+  <%= link_to(Source.model_name.human(count: 2), artist_sources_path(@source.artist), class: "hover:underline hover:text-sky-800") %>
+</h2>

@@ -19,6 +19,11 @@
     <% end %>
     <% if user_signed_in? %>
       <li>
+        <%= link_to(artist_writings_path(Artist.first), role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
+          <span><%= Writing.model_name.human(count: 2) %></span>
+        <% end %>
+      </li>
+      <li>
         <%= link_to(sources_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
           <span><%= Source.model_name.human(count: 2) %></span>
         <% end %>

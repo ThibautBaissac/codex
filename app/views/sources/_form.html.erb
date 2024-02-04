@@ -5,6 +5,19 @@
   </div>
   <%= form.rich_text_area :description, placeholder: t("sources.description_placeholder") %>
 
+  <%= form.fields_for :source_images do |image_fields| %>
+    <% if image_fields.object.file.attached? %>
+      <div class="existing-image">
+        <%= image_tag(image_fields.object.file, width: 100) %> <!-- Display the image -->
+        <%= image_fields.check_box :_destroy %> Remove <!-- Option to remove the image -->
+        <%= image_fields.hidden_field :id, value: image_fields.object.id %> <!-- Keep the ID for existing images -->
+      </div>
+    <% end %>
+    <%= image_fields.file_field :file, direct_upload: true %>
+    <%= image_fields.check_box :is_cover %> Is this the cover image?
+    <%= image_fields.rich_text_area :description %>
+  <% end %>
+
   <div class="flex items-center justify-between">
     <%= form.submit t("default.save"), class: "bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline", data: {action: "click->modal#close"} %>
   </div>

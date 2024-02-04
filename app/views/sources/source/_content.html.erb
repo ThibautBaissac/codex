@@ -1,0 +1,29 @@
+<div id="source_<%= source.id %>">
+  <div class="flex justify-between items-center">
+    <h3 class="leading-none tracking-tight">
+      <%= source.name %>
+    </h3>
+    <%= render_in_modal(url: edit_artist_source_path(source.artist, source), policy: policy(source).edit?) do %>
+      <%= render CircleIconComponent.new(icon: "fa-solid fa-edit") %>
+    <% end %>
+  </div>
+  <%= source.description %>
+
+  <div class="mt-4 grid grid-cols-2 md:grid-cols-3">
+  <% if source.cover_image&.attached? %>
+      <div class="flex flex-col items-center text-center">
+        <%= image_tag(source.cover_image, size: "200") %>
+        <%= source_images.find_by(is_cover: true)&.description %>
+      </div>
+    <% end %>
+
+    <% source_images.each do |image| %>
+      <% if image.present? && !image.is_cover %>
+        <div class="flex flex-col items-center text-center">
+          <%= image_tag(image.file, size: "200") %>
+          <%= image.description %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
