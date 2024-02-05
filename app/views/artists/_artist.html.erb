@@ -11,7 +11,7 @@
 
     <div class="mx-10 space-y-4">
       <div class="flex justify-center">
-        <%= safe_image_tag("artists/#{artist&.lastname&.downcase}.jpg", class: "rounded-xl", data: {title: artist.fullname}) %>
+        <%= image_tag("artists/#{artist&.lastname&.downcase}.jpg", class: "rounded-xl", data: {title: artist.fullname}) %>
       </div>
       <div class="p-4 bg-sky-700 text-white rounded-xl text-justify"><%= artist.biography %></div>
     </div>

@@ -6,16 +6,14 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
       </svg>
     </button>
-    <i class="fas fa-hippo mr-2 text-white"></i><span class="text-white text-lg font-semibold hidden md:block"></i>Codex</span>
+    <%= image_tag("codex.png", size: 100) %>
   </header>
-  <div class="bg-sky-950">
-    <div class="bg-white md:rounded-tl-2xl">
-      <div class="mt-8 p-2 <%= width %>">
-        <%= turbo_frame_tag "alerts" do %>
-          <%= render partial: "shared/alerts/alerts" %>
-        <% end %>
-        <%= yield %>
-      </div>
+  <div class="bg-white">
+    <div class="mt-8 p-2 <%= width %>">
+      <%= turbo_frame_tag "alerts" do %>
+        <%= render partial: "shared/alerts/alerts" %>
+      <% end %>
+      <%= yield %>
     </div>
   </div>
 </main>
