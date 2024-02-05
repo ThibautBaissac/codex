@@ -3,15 +3,15 @@
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.0-beta.1",
+    "@hotwired/turbo-rails": "^8.0.0-rc.2",
     "@rails/actiontext": "^7.1.2",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "chart.js": "^4.4.1",
     "chartkick": "^5.0.1",
-    "esbuild": "^0.19.8",
-    "postcss": "^8.4.32",
-    "postcss-import": "15.1.0",
-    "tailwindcss": "^3.3.6",
+    "esbuild": "^0.19.11",
+    "postcss": "^8.4.33",
+    "postcss-import": "16.0.0",
+    "tailwindcss": "^3.4.1",
     "trix": "^2.0.8"
   },
   "scripts": {
