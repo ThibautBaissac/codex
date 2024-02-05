@@ -94,4 +94,7 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.assets.css_compressor = nil
+  #  It prevents sprockets of using sass mode and SassC gem in assets:precompile step in docker build process
 end
