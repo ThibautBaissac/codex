@@ -9,9 +9,12 @@ module Sources
 
     def call
       Source.transaction do
-        raise ActiveRecord::Rollback unless @source.update(@source_params)
-
-        cleanup_orphaned_images
+        if @source.update(@source_params)
+          cleanup_orphaned_images
+        else
+          errors.add_multiple_errors(@source.errors.messages) if @source.errors.any?
+          raise ActiveRecord::Rollback
+        end
       end
     end
 

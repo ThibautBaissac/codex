@@ -1,10 +1,13 @@
 <div id="sources">
   <% artist.sources.includes(%i[rich_text_description]).order(:name).each do |source| %>
+    <% source = source.decorate %>
     <%= link_to(artist_source_path(artist, source)) do %>
       <div class="p-2 border-t-2 border-orange-700 grid grid-cols-10 gap-4 hover:bg-orange-200">
         <div class="col-span-1"><%= image_tag(source.cover_image) if source.cover_image.present? %></div>
+        <div class="col-span-1"><%= l(source.start_date, format: :ymd) if source&.start_date.present? %></div>
+        <div class="col-span-1"><%= l(source.end_date, format: :ymd) if source&.end_date.present? %></div>
         <div class="col-span-1"><%= source.name %></div>
-        <div class="col-span-8"><%= source.description %></div>
+        <div class="col-span-6"><%= source.description %></div>
       </div>
     <% end %>
   <% end %>

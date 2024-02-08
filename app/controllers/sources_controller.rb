@@ -1,5 +1,5 @@
 class SourcesController < ApplicationController
-  before_action :set_artist, only: %i[index new create edit]
+  before_action :set_artist, only: %i[index new create edit update]
   before_action :set_source, only: %i[edit update]
   before_action :authorize_source, only: %i[new create edit update]
 
@@ -9,7 +9,7 @@ class SourcesController < ApplicationController
   end
 
   def show
-    @source = Source.find(params[:id])
+    @source = Source.find(params[:id]).decorate
     set_source_images
   end
 
@@ -60,7 +60,7 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:name, :description,
+    params.require(:source).permit(:name, :description, :start_date, :end_date,
                                    source_images_attributes: %i[id file description is_cover _destroy])
   end
 
