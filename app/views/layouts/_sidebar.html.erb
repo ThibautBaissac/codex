@@ -10,39 +10,10 @@
     </button>
   </div>
   <ul class="space-y-2">
-    <% Artist.all.order(:created_at).each do |artist| %>
+    <% NavPresenter.new(user: current_user).items.each do |item| %>
       <li>
-        <%= link_to(artist_path(artist), role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= artist.decorate.fullname %></span>
-        <% end %>
-      </li>
-    <% end %>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to(artist_writings_path(Artist.first), role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= Writing.model_name.human(count: 2) %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to(sources_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= Source.model_name.human(count: 2) %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to(administration_annotations_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= "Notes" %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to(statistics_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= t("statistics.statistics") %></span>
-        <% end %>
-      </li>
-    <% end %>
-    <% if user_super_admin? %>
-      <li>
-        <%= link_to(admin_root_path, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
-          <span><%= "Administrate" %></span>
+        <%= link_to(item.first, role: "menuitem", class: "flex items-center pl-4 p-2 transition duration-500 text-white rounded-xl bg-sky-700 hover:bg-white hover:text-gray-900 group") do %>
+          <span><%= item.last %></span>
         <% end %>
       </li>
     <% end %>
