@@ -1,4 +1,8 @@
-<%= render partial: "writings/breadcrumb" %>
-<%= render partial: "writings/search_form" %>
-<%= render partial: "writings/card", collection: @writings, as: :writing, locals: {artist: @artist} %>
+<div class="<%= centered_layout_classes %>">
+  <%= render partial: "writings/breadcrumb" %>
+  <%= render partial: "writings/search_form" %>
+</div>
+<div class="<%= large_layout_classes %>">
+  <%= render partial: "writings/card", collection: @writings, as: :writing, locals: {artist: @artist} %>
+</div>
 <%= render partial: "shared/pagination", locals: {pagy: @pagy} %>

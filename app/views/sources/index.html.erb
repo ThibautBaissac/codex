@@ -1,6 +1,6 @@
 <% current_user.artists.each do |artist| %>
   <div class="flex justify-between items-center mb-4">
-    <h1 class="leading-none tracking-tight md:text-4xl lg:text-5xl mb-4">
+    <h1 class="leading-none tracking-tight mb-4">
       <%= link_to(Source.model_name.human(count: 2), sources_path, class: " hover:text-sky-800") %>
     </h1>
 

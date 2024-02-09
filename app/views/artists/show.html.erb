@@ -1,29 +1,31 @@
-<%= render "artists/artist", artist: @artist.decorate %>
+<div class="<%= centered_layout_classes %>">
+  <%= render "artists/artist", artist: @artist.decorate %>
 
-<div class="mx-10 space-y-10">
-  <div> <!-- WRITINGS -->
-    <%= link_to(artist_writings_path(@artist)) do %>
-      <h2 class="text-orange-700 ">
-        <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
-        <%= Writing.model_name.human(count: 2) %>
-      </h2>
-    <% end %>
-    <div class="grid grid-cols-3">
-      <%= render partial: "writings/card", collection: @artist.random_writings(3), as: :writing, locals: {artist: @artist} %>
-    </div>
-  </div>
-
-  <div> <!-- SOURCES -->
-    <div class="flex justify-between items-center">
-      <div>
-        <%= link_to(sources_path) do %>
-          <h2 class="text-orange-700 ">
-            <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
-            <%= Source.model_name.human(count: 2) %>
-          </h2>
-        <% end %>
+  <div class="mx-10 space-y-10">
+    <div> <!-- WRITINGS -->
+      <%= link_to(artist_writings_path(@artist)) do %>
+        <h2 class="text-orange-700 ">
+          <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
+          <%= Writing.model_name.human(count: 2) %>
+        </h2>
+      <% end %>
+      <div class="grid grid-cols-3">
+        <%= render partial: "writings/card", collection: @artist.random_writings(3), as: :writing, locals: {artist: @artist} %>
       </div>
     </div>
-    <%= render partial: "artists/source_list", locals: {artist: @artist} %>
+
+    <div> <!-- SOURCES -->
+      <div class="flex justify-between items-center">
+        <div>
+          <%= link_to(sources_path) do %>
+            <h2 class="text-orange-700 ">
+              <i class="fa-solid fa-circle-chevron-right me-2 text-orange-700"></i>
+              <%= Source.model_name.human(count: 2) %>
+            </h2>
+          <% end %>
+        </div>
+      </div>
+      <%= render partial: "artists/source_list", locals: {artist: @artist} %>
+    </div>
   </div>
 </div>

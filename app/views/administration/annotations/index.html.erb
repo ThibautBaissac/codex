@@ -1,3 +1,5 @@
-<%= render partial: "administration/annotations/header" %>
-<%= render partial: "administration/annotations/card", collection: @annotations, as: :annotation %>
-<%= render partial: "shared/pagination", locals: {pagy: @pagy} %>
+<div class="<%= centered_layout_classes %>">
+  <%= render partial: "administration/annotations/header" %>
+  <%= render partial: "administration/annotations/card", collection: @annotations, as: :annotation %>
+  <%= render partial: "shared/pagination", locals: {pagy: @pagy} %>
+</div>

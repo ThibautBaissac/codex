@@ -1,8 +1,10 @@
-<% @artists.each do |artist| %>
-  <%= render "artists/artist", artist: artist.decorate %>
-  <div class="mx-10 flex space-x-4">
-    <%= render partial: "writings/card", collection: artist.random_writings(3), as: :writing, locals: {artist:} %>
-  </div>
-<% end %>
+<div class="<%= centered_layout_classes %>">
+  <% @artists.each do |artist| %>
+    <%= render "artists/artist", artist: artist.decorate %>
+    <div class="mx-10 flex space-x-4">
+      <%= render partial: "writings/card", collection: artist.random_writings(3), as: :writing, locals: {artist:} %>
+    </div>
+  <% end %>
 
-<%= render partial: "shared/pagination", locals: {pagy: @pagy} %>
+  <%= render partial: "shared/pagination", locals: {pagy: @pagy} %>
+</div>

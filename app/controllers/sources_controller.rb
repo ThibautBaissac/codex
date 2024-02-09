@@ -3,8 +3,6 @@ class SourcesController < ApplicationController
   before_action :set_source, only: %i[edit update]
   before_action :authorize_source, only: %i[new create edit update]
 
-  layout "full_width", only: %i[index show]
-
   def index
   end
 
