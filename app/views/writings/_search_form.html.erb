@@ -7,5 +7,10 @@
     </div>
     <%= render partial: "writings/search_form/tags", locals: {tags: @tags} %>
   <% end %>
-  <div class="mt-2"><%= t("writings.count", count: @pagy.count) %></div>
+  <div class="mt-2 flex justify-between items-center">
+    <%= t("writings.count", count: @pagy.count) %>
+    <%= link_to(artist_writings_calendar_index_path(@artist), class: "hover:text-sky-800") do %>
+      <i class="me-2 fa-regular fa-calendar"></i><%= t("writings.calendar") %>
+    <% end %>
+  </div>
 </div>

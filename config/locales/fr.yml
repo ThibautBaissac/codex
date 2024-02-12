@@ -139,6 +139,7 @@ fr:
     my_artists: 'Mes artistes :'
     profile: Mon profil
   writings:
+    calendar: Vue calendrier
     count:
       one: Nous avons trouvé %{count} entrées.
       other: Nous avons trouvé %{count} entrées.

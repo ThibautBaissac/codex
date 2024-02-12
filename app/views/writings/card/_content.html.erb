@@ -1,4 +1,4 @@
-<% if controller_name == "writings" %>
+<% if controller_name.in?(%w[writings calendar]) %>
   <%= writing.content %>
   <div class="flex items-center">
     <div id="tag_form">

@@ -12,10 +12,14 @@ class NavbarPresenter
       menu_items << [artist_path(artist), artist.decorate.fullname, current_item?("artists")]
     end
     if @user.present?
-      menu_items << [artist_writings_path(Artist.first), Writing.model_name.human(count: 2), current_item?("writings")]
-      menu_items << [sources_path, Source.model_name.human(count: 2), current_item?("sources")]
-      menu_items << [administration_annotations_path, "Notes", current_item?("annotations")]
-      menu_items << [statistics_path, I18n.t("statistics.statistics"), current_item?("statistics")]
+      menu_items << [artist_writings_path(Artist.first), Writing.model_name.human(count: 2),
+                     current_item?(%w[writings calendar])]
+      menu_items << [sources_path, Source.model_name.human(count: 2),
+                     current_item?(%w[sources])]
+      menu_items << [administration_annotations_path, "Notes",
+                     current_item?(%w[annotations])]
+      menu_items << [statistics_path, I18n.t("statistics.statistics"),
+                     current_item?(%w[statistics])]
     end
     menu_items << [admin_root_path, "Administrate"] if @user&.role_super_admin?
     menu_items

@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
   resources :artists, only: %i[index show edit update] do
     resources :sources
+    namespace :writings do
+      resources :calendar, only: %i[index show]
+    end
     resources :writings, only: %i[index new create edit update] do
+      get :search, on: :collection
       get :search, on: :collection
       resources :tags, only: %i[create destroy], controller: "tags"
       resources :annotations, only: %i[index new create edit update], controller: "annotations"

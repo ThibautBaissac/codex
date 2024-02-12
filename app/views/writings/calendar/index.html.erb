@@ -1,0 +1,32 @@
+<div class="overflow-auto">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="whitespace-nowrap px-3 py-1.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Day</th>
+        <% @headers.each do |header| %>
+          <th id="<%= header %>" class="whitespace-nowrap px-3 py-1.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= header %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% (1..31).each do |day| %>
+        <tr>
+          <td class="whitespace-nowrap px-3 py-1.5 text-sm text-gray-500"><%= day %></td>
+          <% @headers.each do |header| %>
+            <% date = Date.parse("#{day}-#{header}") rescue nil %>
+            <% writings_for_day = date ? @writings_by_date[date] : nil %>
+            <td class="whitespace-nowrap px-3 py-1.5 text-sm text-gray-500">
+              <% if writings_for_day %>
+                <% writings_for_day.each do |writing| %>
+                  <%= render_in_modal(url: artist_writings_calendar_path(@artist, writing), policy: true) do %>
+                    <%= render CircleIconComponent.new(icon: "fa-solid fa-eye") %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
