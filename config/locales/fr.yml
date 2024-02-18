@@ -71,8 +71,19 @@ fr:
     see_all_writings: Voir tous les écrits de %{name} (%{count})
   authentication:
     edit_password: Modifier le mot de passe
+    invalid_credentials: Vos identifiants sont invalides.
+    logged_in: Vous êtes connecté.
+    logged_out: Vous êtes déconnecté.
     login: Se connecter
     logout: Se déconnecter
+    password: Mot de passe
+    password_confirmation: Confirmation du mot de passe
+    password_forgot: Mot de passe oublié ?
+    password_reset: Réinitialiser le mot de passe
+    password_reset_email_sent: Un email vous a été envoyé pour réinitialiser votre
+      mot de passe.
+    password_reset_successful: Votre mot de passe a été réinitialisé avec succès.
+    reset_your_password: Réinitialiser votre mot de passe
     sign_up: S’inscrire
   default:
     back: Retour
@@ -88,6 +99,7 @@ fr:
     save: Sauvegarder
     search: Rechercher
     search_placeholder: Rechercher...
+    send: Envoyer
     show: Afficher
     submit: Valider
     update: Mettre à jour

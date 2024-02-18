@@ -97,4 +97,17 @@ Rails.application.configure do
 
   config.assets.css_compressor = nil
   #  It prevents sprockets of using sass mode and SassC gem in assets:precompile step in docker build process
+
+  config.action_mailer.default_url_options = {host: "https://codex-app-3c77e4dce4a5.herokuapp.com/"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    user_name: ENV["ACTION_MAILER_SMTP_SETTINGS_USER_NAME"],
+    password: ENV["ACTION_MAILER_SMTP_SETTINGS_PASSWORD"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 5
+  }
 end

@@ -1,7 +1,7 @@
 module Authentication
   class PasswordResetsController < ApplicationController
     before_action :set_user_by_token, only: %i[edit update]
-    skip_before_action :authenticate_user!, only: %i[new]
+    skip_before_action :authenticate_user!, only: %i[new edit create update]
 
     def new
     end
@@ -12,8 +12,10 @@ module Authentication
           user:, token:
           user.generate_token_for(:password_reset)
         ).password_reset.deliver_later
+        redirect_to new_authentication_session_path, notice: t("authentication.password_reset_email_sent")
+      else
+        redirect_to new_authentication_password_reset_path, alert: t("authentication.invalid_credentials")
       end
-      redirect_to root_path, notice: "Check your email to reset your password."
     end
 
     def edit
@@ -21,7 +23,7 @@ module Authentication
 
     def update
       if @user.update(password_params)
-        redirect_to new_authentication_session_path, notice: "Password updated successfully!"
+        redirect_to new_authentication_session_path, notice: t("authentication.password_reset_successful")
       else
         render :edit, status: :unprocessable_entity
       end
