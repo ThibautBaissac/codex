@@ -75,3 +75,15 @@ To edit "config/credentials.yml.enc" run:
 ```bash
 EDITOR="code --wait" rails credentials:edit
 ```
+
+8. **Heroku**
+heroku login
+heroku container:login
+docker build -t codex-app --platform linux/amd64 .
+docker tag codex-app registry.heroku.com/codex-app/web
+docker push registry.heroku.com/codex-app/web
+heroku container:release web -a codex-app
+heroku logs --tail
+heroku run bash
+heroku run rails c
+heroku run rails db:migrate

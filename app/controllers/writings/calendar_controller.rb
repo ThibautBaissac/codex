@@ -2,6 +2,7 @@ module Writings
   class CalendarController < ApplicationController
     def index
       @artist = Artist.find_by_slug(params[:artist_id])
+      authorize @artist, policy_class: ArtistPolicy
       @headers = month_year_headers(@artist.years_of_writings.first, @artist.years_of_writings.last)
       @writings_by_date = @artist.writings.each_with_object({}) do |writing, obj|
         obj[writing.date] ||= []
@@ -11,6 +12,7 @@ module Writings
 
     def show
       @artist = Artist.find_by_slug(params[:artist_id])
+      authorize @artist, policy_class: ArtistPolicy
       @writing = @artist.writings.find(params[:id])
     end
 

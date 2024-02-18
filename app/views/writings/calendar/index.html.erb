@@ -13,7 +13,11 @@
         <tr>
           <td class="whitespace-nowrap px-3 py-1.5 text-sm text-gray-500"><%= day %></td>
           <% @headers.each do |header| %>
-            <% date = Date.parse("#{day}-#{header}") rescue nil %>
+            <% date = begin
+                 Date.parse("#{day}-#{header}")
+               rescue StandardError
+                 nil
+               end %>
             <% writings_for_day = date ? @writings_by_date[date] : nil %>
             <td class="whitespace-nowrap px-3 py-1.5 text-sm text-gray-500">
               <% if writings_for_day %>

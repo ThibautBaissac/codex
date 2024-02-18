@@ -1,3 +1,5 @@
-<% {alert: "bg-red-500", notice: "bg-lime-400"}.each do |type, bg_class| %>
-  <%= render partial: "shared/alerts/flash_message", locals: {type:, bg_class:} %>
-<% end %>
+<div class="<%= centered_layout_classes %>">
+  <% {alert: "bg-red-500", notice: "bg-lime-400"}.each do |type, bg_class| %>
+    <%= render partial: "shared/alerts/flash_message", locals: {type:, bg_class:} %>
+  <% end %>
+</div>
